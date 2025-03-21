@@ -10,7 +10,6 @@
     ../../modules/home-manager/programs/zoxide.nix
 
     ../../modules/home-manager/system/hypr
-    ../../modules/home-manager/system/gnome
 
     ../../modules/home-manager/system/mako.nix
     ../../modules/home-manager/system/rofi.nix

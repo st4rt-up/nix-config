@@ -1,13 +1,15 @@
 { pkgs, ... }: {
 
-  programs.bash.enable = true;
+  # programs.bash.enable = true;
   users.users.kai = {
     description = "kai";
 
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager"] ;
 
-    defaultUserShell = pkgs.bash;
+    useDefaultShell = true;
   };
+
+  users.defaultUserShell = pkgs.bash;
 
 }

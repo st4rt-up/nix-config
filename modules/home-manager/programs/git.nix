@@ -3,6 +3,6 @@
     enable = true;
 
     userName = "Kai R";
-    userEmail = "stfourrtup@proton.me";
+    userEmail = "stfourrtup@gmail.com";
   };
 }
