@@ -1,0 +1,8 @@
+hosts
+modules
+- core
+- home
+pkgs
+wallpapers
+
+nvidia belongs in hardware-conf
