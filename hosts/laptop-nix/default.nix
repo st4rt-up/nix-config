@@ -14,4 +14,6 @@
 
   home-manager.users."${username}" = import ./home.nix {inherit username;};
   # programs.home-manager.enable = true;
+
+  system.stateVersion = "24.11";
 }

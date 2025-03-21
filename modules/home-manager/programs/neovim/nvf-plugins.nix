@@ -12,6 +12,16 @@
       indent-blankline.enable = true;
     };
 
+    ui = {
+      colorizer.enable = true;
+
+      borders.enable = true;
+      # fastaction.enable = true;
+      # illuminate.enable = true;
+
+      noice.enable = true;
+    };
+
     statusline.lualine = {
       enable = true;
       globalStatus = true;
