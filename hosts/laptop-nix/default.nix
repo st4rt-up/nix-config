@@ -8,6 +8,8 @@
     ../../modules/nixos/boot.nix
     ../../modules/nixos/fonts.nix
     ../../modules/nixos/users.nix
+
+    ../../modules/nixos/gnome
   ];
 
   home-manager.users."${username}" = import ./home.nix {inherit username;};
