@@ -10,6 +10,6 @@
 
     ripgrep
 
-    xrandr
+    xorg.xrandr
   ];
 }
