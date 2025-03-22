@@ -8,4 +8,6 @@
     enable = true;
     user = "kai";
   };
+
+  programs.hyprland.enable = true;
 }
