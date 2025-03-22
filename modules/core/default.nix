@@ -2,7 +2,7 @@
   imports = [
     ./core-packages.nix
     ./nh.nix
-    ./nix.nix
+    ./nix-settings.nix
     ./users.nix
   ];
 }
