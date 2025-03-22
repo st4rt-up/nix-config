@@ -29,6 +29,7 @@ in let
             nixpkgs.hostPlatform = system;
             nixpkgs.config.allowUnfree = true;
           }
+          ./../modules/core
           ./${hostname}
         ]
         ++ modules;
