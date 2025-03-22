@@ -8,8 +8,8 @@
     ../../modules/nixos/audio.nix
     ../../modules/nixos/boot.nix
     ../../modules/nixos/fonts.nix
-    ../../modules/nixos/users.nix
-
+    ../../modules/nixos/wayland.nix
+    
     ../../modules/nixos/gnome
   ];
 
