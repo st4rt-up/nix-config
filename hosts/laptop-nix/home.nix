@@ -4,6 +4,10 @@
 
     ../../modules/home-manager/programs/git.nix
     ../../modules/home-manager/programs/kitty.nix
+
+    ../../modules/home-manager/programs/nixcord.nix
+    ../../modules/home-manager/programs/obsidian.nix
+
     ../../modules/home-manager/programs/tmux.nix
     ../../modules/home-manager/programs/vscode.nix
     ../../modules/home-manager/programs/zen.nix
