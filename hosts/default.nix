@@ -35,7 +35,7 @@ in let
         ++ modules;
     };
 in {
-  laptop = mkHost {
+  laptop-nix = mkHost {
     hostname = "laptop-nix";
     modules = [
       home-manager.nixosModules.home-manager
@@ -45,7 +45,7 @@ in {
     ];
   };
 
-  wsl = mkHost {
+  wsl-nix = mkHost {
     hostname = "wsl-nix";
     modules = [
       nixos-wsl.nixosModules.default
