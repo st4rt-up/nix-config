@@ -3,6 +3,7 @@
     ../../modules/home-manager
     ./nvidia.nix
     ./hardware-configuration.nix
+    ./packages.nix
 
     ../../modules/nixos/audio.nix
     ../../modules/nixos/boot.nix
