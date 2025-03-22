@@ -1,10 +1,4 @@
 {pkgs, ...}: {
-  imports = [
-    ./nix
-    
-
-  ];
-
   environment.systemPackages = with pkgs; [
     alejandra
     
