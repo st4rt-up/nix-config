@@ -9,5 +9,7 @@
     nixd
 
     ripgrep
+
+    xrandr
   ];
 }

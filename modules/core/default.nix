@@ -1,7 +1,7 @@
 {...}: {
   imports = [
     ./core-packages.nix
-    ./nh.nix # broken rn
+    ./nh.nix
     ./nix.nix
     ./users.nix
   ];

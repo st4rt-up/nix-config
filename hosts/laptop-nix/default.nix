@@ -1,9 +1,10 @@
 {username, ...}: {
   imports = [
-    ../../modules/home-manager
     ./nvidia.nix
     ./hardware-configuration.nix
     ./packages.nix
+
+    ../../modules/home-manager
 
     ../../modules/nixos/audio.nix
     ../../modules/nixos/boot.nix

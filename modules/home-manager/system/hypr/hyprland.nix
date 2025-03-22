@@ -5,7 +5,6 @@
 }: {
   home.packages = with pkgs; [
     wayland
-    swww
 
     # these were copy pasted from https://github.com/Frost-Phoenix/nixos-config/blob/main/modules/home/hyprland/hyprland.nix
     # might be worth looking into
