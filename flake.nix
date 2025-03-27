@@ -14,10 +14,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nix-secrets = {
-    #   url = "git+ssh://git@github.com:st4rt-up/nix-secrets.git";
-    #   inputs = { };
-    # };
+    nix-secrets = {
+      url = "git+ssh://git@github.com:st4rt-up/nix-secrets.git";
+      inputs = { };
+    };
 
     hyprland = {
       url = "github:hyprwm/Hyprland?submodules=1";
