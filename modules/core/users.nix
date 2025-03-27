@@ -1,6 +1,9 @@
 { pkgs, ... }: {
 
   # programs.bash.enable = true;
+
+  # sops.secrets.
+  
   users.users.kai = {
     description = "kai";
 
