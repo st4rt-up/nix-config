@@ -14,6 +14,7 @@
     ../../modules/nixos/gnome
   ];
 
+  programs.ssh.startAgent = true;
   home-manager.users."${username}" = import ./home.nix {inherit username;};
   # programs.home-manager.enable = true;
 
