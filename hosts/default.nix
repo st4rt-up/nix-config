@@ -2,6 +2,7 @@
   nixpkgs,
   self,
   home-manager,
+  sops-nix,
   nixos-wsl,
   ...
 }:
@@ -34,14 +35,15 @@ in let
         ]
         ++ modules;
     };
+
 in {
+
   laptop-nix = mkHost {
     hostname = "laptop-nix";
     modules = [
+      
       home-manager.nixosModules.home-manager
-      {
-        home-manager.extraSpecialArgs = {inherit inputs flake;};
-      }
+      { home-manager.extraSpecialArgs = {inherit inputs flake;}; }
     ];
   };
 
@@ -50,6 +52,7 @@ in {
     modules = [
       nixos-wsl.nixosModules.default
       home-manager.nixosModules.home-manager
+      { home-manager.extraSpecialArgs = {inherit inputs flake;}; }
     ];
   };
 }

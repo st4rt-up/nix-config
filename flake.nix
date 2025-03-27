@@ -14,6 +14,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # nix-secrets = {
+    #   url = "git+ssh://git@github.com:st4rt-up/nix-secrets.git";
+    #   inputs = { };
+    # };
+
     hyprland = {
       url = "github:hyprwm/Hyprland?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,6 +31,11 @@
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    sops-nix = {
+      url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

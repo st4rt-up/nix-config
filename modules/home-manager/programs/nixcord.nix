@@ -49,7 +49,6 @@
         noF1.enable = true;
         voiceChatDoubleClick.enable = true;
         youtubeAdblock.enable = true;
-        
 
         # ui
         accountPanelServerProfile.enable = true;
@@ -74,14 +73,14 @@
         whoReacted.enable = true;
 
         # input qol
-        betterFolders = {
-          enable = true;
+        # betterFolders = {
+        #   enable = true;
 
-          closeAllFolders = true;
-          closeAllHomeButton = true;
-          closeOthers = true;
-          forceOpen = true;
-        };
+        #   closeAllFolders = true;
+        #   closeAllHomeButton = true;
+        #   closeOthers = true;
+        #   forceOpen = true;
+        # };
         betterSettings = {
           enable = true;
           disableFade = true;
