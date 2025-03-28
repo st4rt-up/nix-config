@@ -1,5 +1,5 @@
 {
-  description = "hello world"; 
+  description = "hello world";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -8,15 +8,15 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-24.11"; # update manually
 
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
-    
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-secrets = {
-      url = "git+ssh://git@github.com:st4rt-up/nix-secrets.git";
-      inputs = { };
+      url = "git+ssh://git@github.com/st4rt-up/nix-secrets.git?ref=main&shallow=1";
+      inputs = {};
     };
 
     hyprland = {
@@ -43,13 +43,11 @@
       url = "github:kaylorben/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
 
   # nixConfig = {};
 
-  outputs = inputs@{ ... }: { 
+  outputs = inputs @ {...}: {
     nixosConfigurations = import ./hosts inputs;
   };
-
 }

@@ -27,6 +27,10 @@
     "xdg-desktop-autostart.target"
   ];
 
+  services.hypridle = {
+    enable = true;
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
 

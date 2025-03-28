@@ -1,10 +1,9 @@
-{ inputs, pkgs, ... }: {
-
-  programs.nix-ld.enable = true;
-  programs.ssh.startAgent = true;
-
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     wget
   ];
-  
-  }
+}
