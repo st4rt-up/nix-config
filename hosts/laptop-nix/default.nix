@@ -10,9 +10,13 @@
     ../../modules/nixos/boot.nix
     ../../modules/nixos/fonts.nix
     ../../modules/nixos/wayland.nix
-    
+
     ../../modules/nixos/gnome
   ];
+
+  security.sudo.extraConfig = ''
+    Defaults    env_keep+=SSH_AUTH_SOCK
+  '';
 
   programs.ssh.startAgent = true;
   home-manager.users."${username}" = import ./home.nix {inherit username;};

@@ -459,6 +459,23 @@
         "type": "github"
       }
     },
+    "nix-secrets": {
+      "locked": {
+        "lastModified": 1743071179,
+        "narHash": "sha256-r9asMF2LCDCvdR/i+RE2Gpdh8Ycu1RAs+UA2WPVo4Sk=",
+        "ref": "main",
+        "rev": "017c16da26031f0a5ca4df5a9c06cd822853aa3b",
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@github.com/st4rt-up/nix-secrets.git"
+      },
+      "original": {
+        "ref": "main",
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@github.com/st4rt-up/nix-secrets.git"
+      }
+    },
     "nixcord": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -666,6 +683,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "nix-secrets": "nix-secrets",
         "nixcord": "nixcord",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_3",
