@@ -1,15 +1,8 @@
 {
   nixpkgs,
   self,
-  home-manager,
-  sops-nix,
-  nixos-wsl,
   ...
-}:
-# assumed same username in every system
-let
-  username = "kai";
-in let
+}: let
   inherit (self) inputs;
   flake = self;
 
@@ -20,39 +13,29 @@ in let
   }:
     nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = {inherit inputs system username flake;};
+      specialArgs = {inherit inputs system flake hostname;};
 
       modules =
         [
-          {
-            _module.args = {inherit inputs;};
-            networking.hostName = hostname;
-            nixpkgs.hostPlatform = system;
-            nixpkgs.config.allowUnfree = true;
-          }
+          # {_module.args = {inherit inputs system flake;};}
           ./../modules/core
           ./${hostname}
         ]
         ++ modules;
     };
-
 in {
-
-  laptop-nix = mkHost {
-    hostname = "laptop-nix";
+  laptop = mkHost {
+    hostname = "laptop";
     modules = [
-      
-      home-manager.nixosModules.home-manager
-      { home-manager.extraSpecialArgs = {inherit inputs flake;}; }
+      # inputs.home-manager.nixosModules.home-manager
+      inputs.stylix.nixosModules.stylix
     ];
   };
-
-  wsl-nix = mkHost {
+  wsl = mkHost {
     hostname = "wsl-nix";
     modules = [
-      nixos-wsl.nixosModules.default
-      home-manager.nixosModules.home-manager
-      { home-manager.extraSpecialArgs = {inherit inputs flake;}; }
+      inputs.home-manager.nixosModules.home-manager
+      inputs.stylix.nixosModules.stylix
     ];
   };
 }

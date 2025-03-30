@@ -1,12 +1,23 @@
-# imported from /hosts/default.nix
-# every host gets these
-
-{...}: {
+{
+  config,
+  hostname,
+  ...
+}: {
   imports = [
     ./core-packages.nix
-    ./nh.nix
+    ./options-host.nix
+    ./ssh-agent.nix
     ./nix.nix
-    ./sops.nix
-    ./users.nix
+    ./user.nix
   ];
+
+  networking = {
+    hostName = hostname;
+    networkmanager.enable = true;
+  };
+
+  time = {
+    timeZone = config.var.timezone;
+    hardwareClockInLocalTime = true;
+  };
 }
