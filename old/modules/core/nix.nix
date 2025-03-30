@@ -13,7 +13,11 @@
 
   programs.nix-ld.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+  };
 
   programs.nh = {
     enable = true;
