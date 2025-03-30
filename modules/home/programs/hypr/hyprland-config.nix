@@ -7,6 +7,8 @@
 
       exec-once = [
         "$terminal"
+        "hypridle"
+        "neofetch"
       ];
 
       env = [

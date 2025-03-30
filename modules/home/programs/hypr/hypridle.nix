@@ -1,7 +1,9 @@
-{...}: {
-  wayland.windowManager.hyprland.settings.exec-once = [
-    "hypridle"
-  ];
+{pkgs, ...}: {
+  home.packages = with pkgs; [hypridle];
+
+  wayland.windowManager.hyprland.settings = {
+    exec-once = ["hypridle"];
+  };
 
   services.hypridle = {
     enable = true;
@@ -15,8 +17,13 @@
 
       listener = [
         {
-          timeout = 900;
+          timeout = 10;
           on-timeout = "hyprlock";
+        }
+        {
+          timeout = 12;
+          on-timeout = "hyprctl dispatch dpms off";
+          on-resume = "hyprctl dispatch dpms on";
         }
       ];
     };
