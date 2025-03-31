@@ -48,7 +48,7 @@
       "$mainMod SHIFT, r, exec, $terminal"
       "$mainMod ALT, q, exit"
       "$mainMod, q, killactive"
-      "$mainMod, l, exec, hyprlock"
+      "$mainMod, v, togglefloating"
     ];
 
     # mouse binding

@@ -28,9 +28,29 @@
       default = "America/New_York";
     };
 
+    gui = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+    };
+
+    shell = lib.mkOption {
+      type = lib.types.str;
+      default = "bash";
+    };
+
+    terminal = lib.mkOption {
+      type = lib.types.str;
+      default = "kitty";
+    };
+
     var = lib.mkOption {
       type = lib.types.attrs;
       default = {};
+    };
+
+    wallpaper = lib.mkOption {
+      type = lib.types.str;
+      default = null;
     };
   };
 }

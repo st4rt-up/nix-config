@@ -5,11 +5,13 @@
   ...
 }: let
   olivia-pink = "#F1BEB0";
-  olivia-pink-darker = "#b9897c";
+  olivia-pink-darker = "#85594d";
   green = "#afd8b7";
-  blue = "#68b3f3";
-  yellow = "#edbc69";
-  purple = "#d9b1ff";
+  blue = "#5ca7e6";
+  light-blue = "#9fd4ff";
+  indigo = "#094074";
+  yellow = "#ffcd7a";
+  purple = "#9d78ff";
 
   white = "#ffffff";
   basically-white = "#d6d6d6";
@@ -49,19 +51,19 @@ in {
       base01 = gray; # lighter background
       base02 = light-gray; # selection background
 
-      base03 = "#9ca0b0"; # comments
+      base03 = olivia-pink-darker; # comments
       base04 = blue; # dark foreground
       base05 = basically-white; # default foreground
 
       base06 = white; # light foreground 1
-      base07 = green; # light foreground 2
+      base07 = light-gray; # light foreground 2
 
-      base08 = blue; # Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
-      base09 = blue; # Integers, Boolean, Constants, XML Attributes, Markup Link Url
-      base0B = olivia-pink-darker; # Strings, Inherited Class, Markup Code, Diff Inserted
+      base08 = yellow; # Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+      base09 = light-blue; # Integers, Boolean, Constants, XML Attributes, Markup Link Url
+      base0B = olivia-pink; # Strings, Inherited Class, Markup Code, Diff Inserted
       base0C = yellow; # Support, Regular Expressions, Escape Characters, Markup Quotes
       base0D = olivia-pink; # Functions, Methods, Attribute IDs, Headings, Accent color
-      base0E = white; # Keywords, Storage, Selector, Markup Italic, Diff Changed
+      base0E = blue; # Keywords, Storage, Selector, Markup Italic, Diff Changed
       base0F = purple; # Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
       base0A = olivia-pink; # Classes, Markup Bold, Search Text Background
     };

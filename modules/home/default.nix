@@ -7,7 +7,6 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
     # ./programs/home-manager.nix
-    ./options-home.nix
   ];
 
   home-manager = {
