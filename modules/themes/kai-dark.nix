@@ -27,17 +27,19 @@ in {
       rounding = 8;
       gaps-in = 10;
       gaps-out = 10 * 2;
-      active_opacity = 0.92;
-      inactive_opacity = 0.88;
+      active-opacity = 0.92;
+      inactive-opacity = 0.88;
       blur = true;
-      border_size = 2;
+      border-size = 2;
       # animation-speed = "fast";
       # fetch = "none";
+
+      cursor-size = 28;
 
       bar = {
         position = "top";
         transparent = false;
-        transparentButtons = false;
+        transparent-buttons = false;
         floating = true;
       };
     };
