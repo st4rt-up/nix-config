@@ -1,30 +1,36 @@
 {
+  lib,
   var,
   inputs,
   ...
 }: {
-  imports = [
-    {_module.args = {inherit inputs;};}
-    ./../../themes/kai-dark.nix
+  imports =
+    [
+      ./../../themes/kai-dark.nix
+      # ./../options-home.nix
 
-    ./../programs/hypr
-    ./../programs/mako.nix
-    ./../programs/rofi.nix
+      ./../programs/neovim
 
-    ./../programs/neovim
+      ./../programs/shell/tmux.nix
+      ./../programs/shell/zoxide.nix
 
-    ./../programs/shell/tmux.nix
-    ./../programs/shell/zoxide.nix
+      ./../programs/git.nix
+    ]
+    ++ lib.optionals
+    var.gui
+    [
+      ./../programs/nixcord.nix
+      ./../programs/obsidian.nix
+      ./../programs/vscode.nix
 
-    ./../programs/kitty.nix
-    ./../programs/git.nix
+      ./../programs/zen-browser.nix
 
-    ./../programs/nixcord.nix
-    ./../programs/obsidian.nix
-    ./../programs/vscode.nix
-
-    ./../programs/zen-browser.nix
-  ];
+      ./../programs/hypr
+      ./../programs/kitty.nix
+      ./../programs/mako.nix
+      ./../programs/rofi.nix
+      ./../programs/gtk.nix
+    ];
 
   home = {
     username = var.username;

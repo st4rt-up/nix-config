@@ -20,8 +20,8 @@
       colorizer.enable = true;
 
       borders.enable = true;
-      # fastaction.enable = true;
-      # illuminate.enable = true;
+      fastaction.enable = true;
+      illuminate.enable = true;
 
       noice.enable = true;
     };

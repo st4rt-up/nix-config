@@ -1,6 +1,8 @@
 {
   inputs,
   system,
+  var,
+  pkgs,
   ...
 }: {
   home.packages = [
