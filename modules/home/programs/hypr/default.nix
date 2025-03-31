@@ -12,6 +12,5 @@
     ./hyprpaper.nix
     ./hypridle.nix
     ./hyprlock.nix
-    # ./cursor.nix
   ];
 }
