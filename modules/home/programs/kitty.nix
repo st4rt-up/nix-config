@@ -15,10 +15,10 @@
       # -=
       # font settings
 
-      font_family = "iMWritingMono Nerd Font Mono:style=Regular";
-      bold_font = "iMWritingMono Nerd Font Mono:style=Bold";
-      italic_font = "iMWritingMono Nerd Font Mono:style=Italic";
-      bold_italic_font = "iMWritingMono Nerd Font Mono:style=Bold Italic";
+      font_family = config.stylix.fonts.monospace.name;
+      # bold_font = "iMWritingMono Nerd Font Mono";
+      # italic_font = "iMWritingMono Nerd Font Mono";
+      # bold_italic_font = "iMWritingMono Nerd Font Mono";
 
       font_size = config.stylix.fonts.sizes.terminal;
 

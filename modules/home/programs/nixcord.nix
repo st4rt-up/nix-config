@@ -2,10 +2,18 @@
   imports = [
     inputs.nixcord.homeManagerModules.nixcord
   ];
+  stylix.targets = {
+    nixcord.enable = true;
+    vencord.enable = true;
+    vesktop.enable = true;
+  };
   programs.nixcord = {
     enable = true;
 
     config = {
+      transparent = true;
+      frameless = true;
+
       plugins = {
         # new features
         betterGifPicker.enable = true;

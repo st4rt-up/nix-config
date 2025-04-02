@@ -1,6 +1,11 @@
-{...}: {
+{config, ...}: {
   wayland.windowManager.hyprland.settings.exec-once = [
     "waybar"
+  ];
+
+  imports = [
+    ./waybar-widgets.nix
+    ./waybar-style.nix
   ];
 
   programs.waybar = {
@@ -8,9 +13,11 @@
 
     settings.mainBar = {
       layer = "top";
-      position = "bottom";
-      height = 40;
-
+      position = config.theme.bar.position;
+      height = config.theme.bar.height;
+      margin-left = config.theme.gaps-out;
+      margin-right = config.theme.gaps-out;
+      spacing = config.theme.gaps-in;
       modules-left = [
         "hyprland/window"
       ];
@@ -25,25 +32,6 @@
         "battery"
         "clock"
       ];
-
-      "hyprland/workspaces" = {
-        format = "{id}";
-      };
-
-      "hyprland/window" = {
-        icon = "true";
-        icon-size = 24;
-        format = "{}";
-        max-length = 50;
-        rewrite."" = ":)";
-        # seperate-outputs = "true";
-      };
-
-      "clock" = {
-        format = "{:%I:%M %p}";
-      };
-
-      # "network" = {};
     };
   };
 }
