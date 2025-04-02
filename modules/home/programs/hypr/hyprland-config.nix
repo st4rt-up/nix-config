@@ -11,9 +11,6 @@
 
       exec-once = [
         "$terminal"
-        "hypridle"
-        "hyprpaper"
-        "neofetch"
       ];
 
       env = [

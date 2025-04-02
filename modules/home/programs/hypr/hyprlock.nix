@@ -1,9 +1,13 @@
-{pkgs, ...}: {
+{
+  var,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [hyprlock];
 
-  wayland.windowManager.hyprland.settings = {
-    exec-once = ["hyprlock"];
-  };
+  # wayland.windowManager.hyprland.settings = {
+  #   exec-once = ["hyprlock"];
+  # };
   programs.hyprlock = {
     enable = true;
 
@@ -28,6 +32,11 @@
         animation = [
           "fade, 1, 0.01, linear"
         ];
+      };
+
+      background = {
+        path = var.wallpaper;
+        blur_passes = 2;
       };
     };
   };

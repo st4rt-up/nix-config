@@ -12,6 +12,7 @@
   indigo = "#094074";
   yellow = "#ffcd7a";
   purple = "#9d78ff";
+  red = "#f9636a";
 
   white = "#ffffff";
   basically-white = "#d6d6d6";
@@ -25,7 +26,7 @@ in {
 
     default = {
       rounding = 8;
-      gaps-in = 10;
+      gaps-in = 6;
       gaps-out = 10 * 2;
       active-opacity = 0.92;
       inactive-opacity = 0.88;
@@ -37,10 +38,11 @@ in {
       cursor-size = 28;
 
       bar = {
-        position = "top";
+        position = "bottom";
         transparent = false;
         transparent-buttons = false;
         floating = true;
+        height = 40;
       };
     };
   };
@@ -48,6 +50,7 @@ in {
   config.stylix = {
     enable = true;
 
+    opacity.applications = 0.94;
     base16Scheme = {
       base00 = black; # default background
       base01 = gray; # lighter background
@@ -66,24 +69,26 @@ in {
       base0C = yellow; # Support, Regular Expressions, Escape Characters, Markup Quotes
       base0D = olivia-pink; # Functions, Methods, Attribute IDs, Headings, Accent color
       base0E = blue; # Keywords, Storage, Selector, Markup Italic, Diff Changed
-      base0F = purple; # Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
+      base0F = red; # Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
       base0A = olivia-pink; # Classes, Markup Bold, Search Text Background
     };
 
     fonts = {
       monospace = {
-        package = pkgs.nerd-fonts.im-writing;
-        name = "iMWritingMono Nerd Font Mono:style=Regular";
+        package = pkgs.nerd-fonts.blex-mono;
+        name = "BlexMono Nerd Font";
       };
 
       sansSerif = {
-        package = pkgs.nerd-fonts.im-writing;
-        name = "iMWritingQuat Nerd Font Propo:style=Regular";
+        package = pkgs.nerd-fonts.blex-mono;
+        name = "Atkinson Hyperlegible Next";
+        # package = pkgs.lora;
+        # name = "Lora,Lora Semibold";
       };
 
       serif = {
-        package = pkgs.nerd-fonts.fira-code;
-        name = "Fira Code Nerd Font Propo";
+        package = pkgs.lora;
+        name = "Lora";
       };
 
       emoji = {

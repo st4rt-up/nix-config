@@ -13,7 +13,7 @@ in {
     terminal = "kitty";
     gui = true;
 
-    wallpaper = "./..//wallpaper/cherry-blossom.jpg";
+    wallpaper = "~/nix-config/wallpaper/cherry-blossom.jpg";
   };
 
   imports = [
