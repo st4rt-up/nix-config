@@ -52,5 +52,15 @@
         "󰁹"
       ];
     };
+    "wireplumber" = {
+      "format" = "{icon} {volume}%";
+      "format-muted" = "{icon} x %";
+      "format-icons" = {
+        "mute" = "";
+        "default" = ["󰕿" "󰖀" "󰕾"];
+      };
+
+      "on-click" = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+    };
   };
 }

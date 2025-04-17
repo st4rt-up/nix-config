@@ -22,6 +22,7 @@
       ./../programs/nixcord.nix
       ./../programs/obsidian.nix
       ./../programs/vscode.nix
+      ./../programs/signal.nix
 
       ./../programs/zen-browser.nix
 
@@ -29,6 +30,10 @@
       ./../programs/kitty.nix
       ./../programs/mako.nix
       ./../programs/rofi.nix
+      ./../programs/wofi.nix
+      ./../programs/swayosd.nix
+      ./../programs/wayland-utils.nix
+
       ./../programs/gtk.nix
     ];
 

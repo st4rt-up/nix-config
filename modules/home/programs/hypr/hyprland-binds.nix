@@ -44,7 +44,6 @@
       "$mainMod SHIFT, k, movewindow, u"
       "$mainMod SHIFT, l, movewindow, r"
 
-      "$mainMod, r, exec, pkill rofi || rofi -show drun"
       "$mainMod SHIFT, r, exec, $terminal"
       "$mainMod ALT, q, exit"
       "$mainMod, q, killactive"
