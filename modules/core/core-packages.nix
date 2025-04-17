@@ -1,8 +1,15 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     # programming / dev
+    ## nix
     alejandra # nix formatting
     nixd
+
+    ## rust
+    cargo
+    rustc
+    rustfmt
+    rustlings
 
     # general utility
     fzf
@@ -10,8 +17,20 @@
     ripgrep
     xorg.xrandr
     wget
+    yt-dlp
+    htop
+
+    lf
+
+    brightnessctl
 
     neofetch
+    fastfetch
+
+    # cli rice
+    tty-clock
+    figlet
+    cava
 
     # for secrets management
     age

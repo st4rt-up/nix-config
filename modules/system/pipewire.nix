@@ -1,5 +1,9 @@
-{...}: {
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
+    wireplumber # change volume with command
+  ];
   services.pulseaudio.enable = false;
+
   services.pipewire = {
     enable = true;
 

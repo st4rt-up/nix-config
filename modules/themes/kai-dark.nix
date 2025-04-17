@@ -19,7 +19,7 @@
 
   black = "#171717";
   gray = "#242424";
-  light-gray = "3d3d3d";
+  light-gray = "#3d3d3d";
 in {
   options.theme = lib.mkOption {
     type = lib.types.attrs;
@@ -49,6 +49,7 @@ in {
 
   config.stylix = {
     enable = true;
+    autoEnable = true;
 
     opacity.applications = 0.94;
     base16Scheme = {

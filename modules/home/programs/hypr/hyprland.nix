@@ -5,6 +5,7 @@
 }: {
   home.packages = with pkgs; [
     wayland
+    hyprpolkitagent
 
     # these were copy pasted from https://github.com/Frost-Phoenix/nixos-config/blob/main/modules/home/hyprland/hyprland.nix
     # might be worth looking into
@@ -26,6 +27,10 @@
   systemd.user.targets.hyprland-session.Unit.Wants = [
     "xdg-desktop-autostart.target"
   ];
+
+  services.hyprpolkitagent = {
+    enable = true;
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;

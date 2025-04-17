@@ -18,7 +18,9 @@
         "MOZ_ENABLE_WAYLAND, 1" # for firefox to run on wayland
         "MOZ_WEBRENDER, 1" # for firefox to run on wayland
         "HYPRCURSOR_THEME, rose-pine-hyprcursor"
-        "HYPRCURSOR_SIZE, ${builtins.toString config.theme.cursor-size}"
+        "HYPRCURSOR_SIZE, ${toString config.theme.cursor-size}"
+        "XCURSOR_THEME, BreezeX-RosePine-Linux"
+        "XCURSOR_SIZE, ${toString config.theme.cursor-size}"
       ];
 
       input = {
@@ -70,6 +72,11 @@
       };
 
       "$mainMod" = "SUPER";
+      "$raiseBrightness" = "XF86MonBrightnessUp";
+      "$lowerBrightness" = "XF86MonBrightnessDown";
+      "$raiseVolume" = "XF86AudioRaiseVolume";
+      "$lowerVolume" = "XF86AudioLowerVolume";
+      "$muteVolume" = "XF86AudioMute";
     };
   };
 }

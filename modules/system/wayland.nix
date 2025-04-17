@@ -14,10 +14,10 @@
     inputs.rose-pine-hyprcursor.packages.${system}.default
   ];
 
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = "kai";
-  };
+  # services.displayManager.autoLogin = {
+  #   enable = true;
+  #   user = "kai";
+  # };
 
   security.pam.services.hyprlock = {};
 

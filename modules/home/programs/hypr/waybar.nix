@@ -27,8 +27,8 @@
       ];
 
       modules-right = [
-        # "volume"
         "network"
+        "wireplumber"
         "battery"
         "clock"
       ];

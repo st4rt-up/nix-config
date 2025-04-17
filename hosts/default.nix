@@ -31,6 +31,7 @@ in {
       inputs.stylix.nixosModules.stylix
     ];
   };
+
   wsl = mkHost {
     hostname = "wsl-nix";
     modules = [

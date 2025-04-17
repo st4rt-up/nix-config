@@ -6,7 +6,10 @@
       viAlias = true;
       vimAlias = true;
 
-      lineNumberMode = "number";
+      useSystemClipboard = true;
+      syntaxHighlighting = true;
+
+      lineNumberMode = "relative";
 
       options = {
         tabstop = 2;
@@ -15,6 +18,7 @@
 
       lazy.enable = true;
       telescope.enable = true;
+      treesitter.context.enable = true;
 
       lsp = {
         formatOnSave = true;
@@ -42,7 +46,10 @@
           };
         };
 
-        rust.enable = true;
+        rust = {
+          enable = true;
+          crates.enable = true;
+        };
       };
     };
   };

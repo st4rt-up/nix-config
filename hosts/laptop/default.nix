@@ -30,9 +30,11 @@ in {
     ./../../modules/home
     ./hardware-configuration.nix
 
-    # ./../../modules/system/greetd.nix
+    ./../../modules/system/greetd.nix
     ./../../modules/system/wayland.nix
-    ./../../modules/system/gnome.nix
+    # ./../../modules/system/gnome.nix
+
+    ./../../modules/system/thunar.nix
   ];
 
   config.system.stateVersion = "24.11";
