@@ -28,5 +28,12 @@
       base0E = "ffcd7a";
       base0F = "493d39";
     };
+
+    gaps-in = 5;
+    gaps-out = 10;
+
+    blur = false;
+
+    active-opacity = 0.97;
   };
 }

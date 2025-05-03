@@ -24,30 +24,9 @@
     '';
   };
 
-  powerManagement = {
-    enable = true;
-    powertop.enable = true;
-  };
-
-  services = {
-    thermald.enable = true;
-    power-profiles-daemon.enable = false;
-
-    auto-cpufreq = {
-      enable = true;
-
-      settings = {
-        battery = {
-          governor = "powersave";
-          turbo = "never";
-        };
-        charger = {
-          governor = "powersave";
-          turbo = "auto";
-        };
-      };
-    };
-  };
+  security.sudo.extraConfig = ''
+    Defaults        timestamp_timeout=30
+  '';
 
   hardware.nvidia = {
     modesetting.enable = true;
