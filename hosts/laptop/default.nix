@@ -27,7 +27,8 @@ in {
     ./../../modules/system/systemd-boot.nix
     ./../../modules/system/pipewire.nix
     ./../../modules/system/bluetooth.nix
-    ./../../modules/system/fingerprint.nix
+    # ./../../modules/system/fingerprint.nix
+    ./../../modules/system/power-management.nix
 
     ./../../modules/system/steam.nix
 

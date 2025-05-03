@@ -74,10 +74,10 @@
         "HYPRCURSOR_THEME, $hyprcursor_theme"
         "HYPRCURSOR_SIZE, ${toString theme.cursor-size}"
         "XCURSOR_THEME, ${toString theme.cursor.xcursor.name}"
-        "XCURSOR_SIZE, ${toString (theme.cursor-size * theme.monitor-scaling)}"
+        "XCURSOR_SIZE, ${toString theme.cursor-size}"
         "QT_AUTO_SCREEN_SCALE_FACTOR, 1"
         "QT_CURSOR_SIZE, ${toString theme.cursor-size}"
-        "GDK_SCALE, 2"
+        # "GDK_SCALE, 2"
       ];
 
       input = {
@@ -105,6 +105,7 @@
         active_opacity = theme.active-opacity;
         inactive_opacity = theme.inactive-opacity;
 
+        # drop_shadow = true;
         blur = {
           enabled = theme.blur;
         };
