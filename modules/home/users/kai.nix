@@ -1,3 +1,4 @@
+# user files are home level
 {
   lib,
   var,
@@ -6,7 +7,7 @@
 }: {
   imports =
     [
-      ./../../themes/kai-dark.nix
+      # ./../../themes/kai-dark.nix
       # ./../options-home.nix
 
       ./../programs/neovim
@@ -33,6 +34,8 @@
       ./../programs/wofi.nix
       ./../programs/swayosd.nix
       ./../programs/wayland-utils.nix
+
+      ./../programs/godot.nix
 
       ./../programs/gtk.nix
     ];

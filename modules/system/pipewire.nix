@@ -4,6 +4,7 @@
   ];
   services.pulseaudio.enable = false;
 
+  #sound.enable = true;
   services.pipewire = {
     enable = true;
 

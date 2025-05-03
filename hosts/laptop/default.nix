@@ -19,6 +19,8 @@ in {
   imports = [
     # {_module.args = {inherit inputs;};}
 
+    ./../../modules/themes/kai-dark.nix
+
     # system level imports
     ./../../modules/system/fonts.nix
 
@@ -26,6 +28,8 @@ in {
     ./../../modules/system/pipewire.nix
     ./../../modules/system/bluetooth.nix
     ./../../modules/system/fingerprint.nix
+
+    ./../../modules/system/steam.nix
 
     ./../../modules/home
     ./hardware-configuration.nix

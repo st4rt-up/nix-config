@@ -4,7 +4,6 @@
   imports = [
     ./hyprland.nix
 
-    ./hyprland-config.nix
     ./hyprland-binds.nix
 
     ./waybar.nix

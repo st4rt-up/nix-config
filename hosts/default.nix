@@ -1,6 +1,7 @@
 {
   nixpkgs,
   self,
+  sops-nix,
   ...
 }: let
   inherit (self) inputs;
@@ -29,6 +30,7 @@ in {
     modules = [
       # inputs.home-manager.nixosModules.home-manager
       inputs.stylix.nixosModules.stylix
+      sops-nix.nixosModules.sops
     ];
   };
 
