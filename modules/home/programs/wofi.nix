@@ -1,16 +1,17 @@
 {
   config,
   pkgs,
+  theme,
   ...
 }: let
-  font = config.stylix.fonts.monospace.name;
-  font-size = config.stylix.fonts.sizes.popups + 5;
-  background = "${config.lib.stylix.colors.base00}";
+  font = theme.fonts.monospace.name;
+  font-size = theme.fonts.sizes.popups + 5;
+  background = theme.colour.background;
 
-  border-color = "${config.lib.stylix.colors.base0B}";
-  opacity = config.theme.inactive-opacity;
-  border = config.theme.border-size;
-  radius = config.theme.rounding;
+  border-color = theme.colour.background;
+  opacity = theme.inactive-opacity;
+  border = theme.border-size;
+  radius = theme.rounding;
 in {
   home.packages = with pkgs; [wofi];
 
@@ -39,7 +40,6 @@ in {
 
       window {
         background-color: ${background};
-        opacity: ${toString opacity};
 
         border-radius: ${toString radius}px;
         border: ${toString border}px solid ${border-color};

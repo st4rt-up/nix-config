@@ -27,7 +27,7 @@
         trouble.enable = true;
 
         lspSignature.enable = true;
-        lsplines.enable = true;
+        # lsplines.enable = true;
       };
 
       languages = {

@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  theme,
+  ...
+}: {
   wayland.windowManager.hyprland.settings.exec-once = [
     "waybar"
   ];
@@ -13,11 +17,11 @@
 
     settings.mainBar = {
       layer = "top";
-      position = config.theme.bar.position;
-      height = config.theme.bar.height;
-      margin-left = config.theme.gaps-out;
-      margin-right = config.theme.gaps-out;
-      spacing = config.theme.gaps-in;
+      position = theme.bar.position;
+      height = theme.bar.height;
+      # margin-left = theme.gaps-out;
+      # margin-right = theme.gaps-out;
+      spacing = theme.gaps-in;
       modules-left = [
         "hyprland/window"
       ];

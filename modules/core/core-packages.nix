@@ -12,20 +12,31 @@
     rustlings
 
     # general utility
-    fzf
+    fzf # fuzzy find
     git
-    ripgrep
-    xorg.xrandr
+    ripgrep # rust grep
+
+    xorg.xrandr # display info
     wget
-    yt-dlp
     htop
 
-    lf
+    alsa-utils # audio tools
+
+    ## drive tools
+    smartmontools
+    e2fsprogs
+
+    lf # file browser
+    #libgpod # ipod tools
+    #clementine
+    rhythmbox
 
     brightnessctl
 
     neofetch
     fastfetch
+
+    yt-dlp
 
     # cli rice
     tty-clock

@@ -28,14 +28,16 @@
       default = "America/New_York";
     };
 
-    gui = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-
     shell = lib.mkOption {
       type = lib.types.str;
       default = "bash";
+    };
+
+    # === GUI SPECFIC
+
+    gui = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
     };
 
     terminal = lib.mkOption {
@@ -43,14 +45,17 @@
       default = "kitty";
     };
 
-    var = lib.mkOption {
-      type = lib.types.attrs;
-      default = {};
-    };
+    # for use with wallpaper daemon
+    # relative path
 
     wallpaper = lib.mkOption {
       type = lib.types.str;
       default = null;
+    };
+
+    var = lib.mkOption {
+      type = lib.types.attrs;
+      default = {};
     };
   };
 }

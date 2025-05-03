@@ -1,5 +1,6 @@
 {
   config,
+  theme,
   pkgs,
   lib,
   ...
@@ -32,9 +33,9 @@
       cursor_trail_decay = "0.05 0.1";
 
       # -=
-      background_opacity = lib.mkForce config.theme.active-opacity;
+      background_opacity = lib.mkForce theme.active-opacity;
       background_blur =
-        if config.theme.blur
+        if theme.blur
         then 1
         else 0;
     };

@@ -1,14 +1,18 @@
-{config, ...}: let
+{
+  config,
+  theme,
+  ...
+}: let
   font = config.stylix.fonts.sansSerif.name;
   font-size = config.stylix.fonts.sizes.popups;
 
   background = "#${config.lib.stylix.colors.base00}";
   accent = "#${config.lib.stylix.colors.base0D}";
 
-  gaps-in = config.theme.gaps-in;
-  gaps-out = config.theme.gaps-out;
+  gaps-in = theme.gaps-in;
+  gaps-out = theme.gaps-out;
 
-  rounding = config.theme.rounding;
+  rounding = theme.rounding;
 in {
   stylix.targets.mako.enable = false;
   services.mako = {

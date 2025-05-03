@@ -15,6 +15,7 @@
     extraSpecialArgs = {
       inherit inputs system;
       var = config.var;
+      theme = config.theme;
     };
 
     useUserPackages = true;

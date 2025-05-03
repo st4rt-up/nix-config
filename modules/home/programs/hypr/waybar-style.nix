@@ -1,23 +1,25 @@
 {
   config,
+  theme,
   var,
   ...
 }: let
-  accent = "${config.lib.stylix.colors.base0D}";
-  background = "${config.lib.stylix.colors.base00}";
-  background-alt = "${config.lib.stylix.colors.base01}";
-  foreground = "${config.lib.stylix.colors.base05}";
+  # accent = theme.colour.base0D;
+  background = theme.colour.base00;
+  background-alt = theme.colour.base01;
+  foreground = theme.colour.base05;
 
   #temp
-  red = "${config.lib.stylix.colors.base0F}";
-  yellow = "${config.lib.stylix.colors.base08}";
-  charged-color = "${config.lib.stylix.colors.base0B}";
+  accent = theme.colour.base0F;
+  red = theme.colour.red;
+  yellow = theme.colour.yellow;
+  charged-color = theme.colour.base0B;
 
-  font = config.stylix.fonts.monospace.name;
-  rounding = config.theme.rounding;
+  font = theme.fonts.monospace.name;
+  rounding = theme.rounding;
   font-size = config.stylix.fonts.sizes.popups;
-  gaps-out = config.theme.gaps-out;
-  gaps-in = config.theme.gaps-in;
+  gaps-out = theme.gaps-out;
+  gaps-in = theme.gaps-in;
 in {
   # maybe make this imported in style ... ?
   programs.waybar.style = ''
@@ -33,15 +35,15 @@ in {
     }
 
     #battery.plugged, #battery.charging {
-      color: #${toString accent};
+      color: #${theme.colour.primary};
     }
 
     #battery.warning {
-      color: #${toString yellow};
+      color: #${theme.colour.yellow};
     }
 
     #battery.critical {
-      color: #${toString red};
+      color: #${theme.colour.red};
     }
 
     #clock {
@@ -53,7 +55,7 @@ in {
     }
 
     #wireplumber.muted {
-      color: #${toString red}
+      color: #${toString accent}
     }
   '';
 }
