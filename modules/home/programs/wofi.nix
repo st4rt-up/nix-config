@@ -10,7 +10,7 @@
 
   border-color = theme.colour.background;
   opacity = theme.inactive-opacity;
-  border = theme.border-size;
+  border-size = theme.border-size;
   radius = theme.rounding;
 in {
   home.packages = with pkgs; [wofi];
@@ -33,16 +33,20 @@ in {
 
     style = ''
 
+      @define-color background #${toString theme.colour.background};
+      @define-color background-alt #${toString theme.colour.background-alt};
+      @define-color border #${toString theme.colour.background};
+
       * {
         font-family: ${font};
         font-size: ${toString font-size}px;
       }
 
       window {
-        background-color: ${background};
+        background-color: @background;
 
         border-radius: ${toString radius}px;
-        border: ${toString border}px solid ${border-color};
+        border: ${toString border-size}px solid @border;
       }
     '';
   };

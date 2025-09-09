@@ -22,6 +22,5 @@
 
   time = {
     timeZone = config.var.timezone;
-    hardwareClockInLocalTime = true;
   };
 }

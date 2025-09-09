@@ -1,7 +1,10 @@
 {...}: {
   boot = {
     loader = {
-      systemd-boot.enable = true;
+      systemd-boot = {
+        enable = true;
+        # editor = false;
+      };
       efi.canTouchEfiVariables = true;
 
       # mash space for boot menu
@@ -19,5 +22,10 @@
       "rd.udev.log_level=3"
       "udev.log_priority=3"
     ];
+
+    initrd = {
+      verbose = false;
+      systemd.enable = true;
+    };
   };
 }

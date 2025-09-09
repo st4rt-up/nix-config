@@ -345,7 +345,7 @@ in {
 
         desktop = mkOption {
           type = types.int;
-          default = 11;
+          default = 16;
         };
 
         popups = mkOption {

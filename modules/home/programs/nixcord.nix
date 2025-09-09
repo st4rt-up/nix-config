@@ -11,14 +11,14 @@
     enable = true;
 
     config = {
-      transparent = true;
+      # transparent = true;
       frameless = true;
 
       plugins = {
         # new features
         betterGifPicker.enable = true;
         nsfwGateBypass.enable = true;
-        emoteCloner.enable = true;
+        # emoteCloner.enable = true;
         fakeNitro.enable = true;
         favoriteEmojiFirst.enable = true;
         favoriteGifSearch.enable = true;
@@ -61,7 +61,7 @@
         blurNSFW.enable = true;
         callTimer.enable = true;
         forceOwnerCrown.enable = true;
-        friendsSince.enable = true;
+        # friendsSince.enable = true;
         memberCount.enable = true;
         noUnblockToJump.enable = true;
         platformIndicators.enable = true;
@@ -70,13 +70,13 @@
         sendTimestamps.enable = true;
         serverInfo.enable = true;
         serverListIndicators.enable = true;
-        shikiCodeblocks.enable = true;
-        showConnections.enable = true;
+        # shikiCodeblocks.enable = true;
+        # showConnections.enable = true;
         themeAttributes.enable = true;
         typingIndicator.enable = true;
         typingTweaks.enable = true;
         userVoiceShow.enable = true;
-        whoReacted.enable = true;
+        # whoReacted.enable = true;
 
         # input qol
         # betterFolders = {
@@ -105,11 +105,11 @@
           attemptToPreventCrashes = true;
         };
         validUser.enable = true;
-        webScreenShareFixes.enable = true;
+        # webScreenShareFixes.enable = true;
 
         # fun
         moreKaomoji.enable = true;
-        moyai.enable = true;
+        # moyai.enable = true;
       };
     };
 

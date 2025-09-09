@@ -13,6 +13,8 @@ in {
     terminal = "kitty";
     gui = true;
 
+    timezone = "America/Toronto";
+
     wallpaper = "~/nix-config/wallpaper/cherry-blossom.jpg";
   };
 

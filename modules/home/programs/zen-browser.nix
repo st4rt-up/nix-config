@@ -9,8 +9,22 @@
     inputs.zen-browser.homeModules.twilight-official
   ];
 
+  stylix.targets.zen-browser = {
+    enable = true;
+    profileNames = ["default"];
+  };
+
   programs.zen-browser = {
     enable = true;
+
+    profiles = {
+      default = {
+        id = 0;
+        name = "default";
+        isDefault = true;
+      };
+    };
+
     policies = {
       DisableAppUpdate = true;
       DisableTelemetry = true;
@@ -26,6 +40,13 @@
 
       DisableFirefoxStudies = true;
       DisablePocket = true; # save webs for later reading
+
+      EnableTrackingProtection = {
+        Value = true;
+        Locked = true;
+        Cryptomining = true;
+        Fingerprinting = true;
+      };
 
       ExtensionSettings = with builtins; let
         extension = shortId: uuid: {
@@ -51,7 +72,8 @@
           (extension "control-panel-for-twitter" "{5cce4ab5-3d47-41b9-af5e-8203eea05245}")
           (extension "reddit-enhancer" "{46abbc04-ce38-475f-9ef8-e0a4a59d0c9f}")
 
-          (extension "enhancer-for-youtube" "enhancerforyoutube@maximerf.addons.mozilla.org")
+          # (extension "enhancer-for-youtube" "enhancerforyoutube@maximerf.addons.mozilla.org")
+          (extension "youtube-addon" "{3c6bf0cc-3ae2-42fb-9993-0d33104fdcaf}")
           (extension "sponsorblock" "sponsorBlocker@ajay.app")
           (extension "dearrow" "deArrow@ajay.app")
 

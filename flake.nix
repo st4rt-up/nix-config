@@ -15,7 +15,8 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     home-manager = {
-      url = "github:0x006E/home-manager"; # fork
+      url = "github:nix-community/home-manager";
+      # url = "github:0x006E/home-manager"; # fork
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -27,6 +28,11 @@
     nix-secrets = {
       url = "git+ssh://git@github.com/st4rt-up/nix-secrets.git?ref=main&shallow=1";
       inputs = {};
+    };
+
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hyprland = {

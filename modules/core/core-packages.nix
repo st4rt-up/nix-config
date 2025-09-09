@@ -4,8 +4,9 @@
     ## nix
     alejandra # nix formatting
     nixd
+    comma
 
-    ## rust
+    ## rust dev
     cargo
     rustc
     rustfmt
@@ -14,34 +15,43 @@
     # general utility
     fzf # fuzzy find
     git
+
     ripgrep # rust grep
 
     xorg.xrandr # display info
-    wget
-    htop
+    wget # files over https
+    htop # task manager
+
+    networkmanagerapplet
 
     alsa-utils # audio tools
 
     ## drive tools
-    smartmontools
-    e2fsprogs
+    # smartmontools
+    # e2fsprogs
 
-    lf # file browser
-    #libgpod # ipod tools
-    #clementine
-    rhythmbox
+    # lf # file browser
 
-    brightnessctl
+    # file management
+    yazi # file browser
 
-    neofetch
+    # definitely extras
+    wiki-tui # wikipedia
+    ncspot # spotify
+
+    # libgpod # ipod tools
+    # clementine
+    # rhythmbox
+
+    # neofetch
     fastfetch
 
-    yt-dlp
+    # yt-dlp
 
     # cli rice
-    tty-clock
-    figlet
-    cava
+    # tty-clock
+    # figlet
+    # cava
 
     # for secrets management
     age
