@@ -5,7 +5,7 @@
   ...
 }: let
   font = theme.fonts.monospace.name;
-  font-size = theme.fonts.sizes.popups + 5;
+  font-size = theme.fonts.sizes.desktop;
   background = theme.colour.background;
 
   border-color = theme.colour.background;
@@ -17,7 +17,7 @@ in {
 
   stylix.targets.wofi.enable = false;
   wayland.windowManager.hyprland.settings.bind = [
-    "$mainMod, r, exec, pkill wofi || wofi --show drun --sort-order=alphabetical"
+    "$mainMod, r, exec, pkill wofi || wofi --show drun --sort-order=alphabetical "
   ];
 
   programs.wofi = {
@@ -27,7 +27,9 @@ in {
       mode = "drun";
 
       show_all = false;
-      print_command = true;
+
+      # allow_images = true;  
+      # print_command = true;
       insensitive = true;
     };
 

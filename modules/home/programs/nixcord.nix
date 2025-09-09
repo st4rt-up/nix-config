@@ -68,7 +68,7 @@
         youtubeAdblock.enable = true;
 
         # ui
-        accountPanelServerProfile.enable = true;
+        # accountPanelServerProfile.enable = true;
         blurNSFW.enable = true;
         callTimer.enable = true;
         forceOwnerCrown.enable = true;
@@ -76,14 +76,14 @@
         memberCount.enable = true;
         noUnblockToJump.enable = true;
         platformIndicators.enable = true;
-        relationshipNotifier.enable = true;
+        # relationshipNotifier.enable = true;
         replyTimestamp.enable = true;
         sendTimestamps.enable = true;
         serverInfo.enable = true;
         serverListIndicators.enable = true;
         # shikiCodeblocks.enable = true;
         # showConnections.enable = true;
-        themeAttributes.enable = true;
+        # themeAttributes.enable = true;
         typingIndicator.enable = true;
         typingTweaks.enable = true;
         userVoiceShow.enable = true;

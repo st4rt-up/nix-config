@@ -33,6 +33,12 @@
       "$mainMod SHIFT, 9, movetoworkspacesilent, 9"
       "$mainMod SHIFT, 0, movetoworkspacesilent, 10"
       "$mainMod CTRL, c, movetoworkspace, empty"
+        
+
+      "$mainMod CTRL, left, workspace, -1"
+      "$mainMod CTRL, right, workspace, +1"
+
+      "$mainMod, TAB, workspace, +1"
 
       "$mainMod SHIFT, left, movewindow, l"
       "$mainMod SHIFT, right, movewindow, r"

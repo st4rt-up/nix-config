@@ -34,6 +34,9 @@
 
     # file management
     yazi # file browser
+    
+    # terminal img view
+    timg
 
     # definitely extras
     wiki-tui # wikipedia

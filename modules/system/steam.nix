@@ -2,8 +2,8 @@
   environment.systemPackages = with pkgs; [
     mangohud
     protonup-qt
-    lutris
-    bottles
+    # lutris
+    # bottles
   ];
 
   programs = {
