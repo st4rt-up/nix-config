@@ -17,7 +17,7 @@ in {
 
   stylix.targets.wofi.enable = false;
   wayland.windowManager.hyprland.settings.bind = [
-    "$mainMod, r, exec, pkill wofi || wofi --show drun"
+    "$mainMod, r, exec, pkill wofi || wofi --show drun --sort-order=alphabetical"
   ];
 
   programs.wofi = {
@@ -27,7 +27,7 @@ in {
       mode = "drun";
 
       show_all = false;
-
+      print_command = true;
       insensitive = true;
     };
 

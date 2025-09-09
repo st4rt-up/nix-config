@@ -57,13 +57,12 @@
       treesitter.context.enable = true;
 
       lsp = {
-        enable = true;
         formatOnSave = true;
 
         lightbulb.enable = true;
-        trouble.enable = true;
+        # trouble.enable = true;
 
-        lspSignature.enable = true;
+        # lspSignature.enable = true;
         # lsplines.enable = true;
       };
 
@@ -84,7 +83,7 @@
 
         rust = {
           enable = true;
-          crates.enable = true;
+          # crates.enable = true;
         };
 
         clang = {
