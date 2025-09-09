@@ -7,6 +7,17 @@
     vencord.enable = true;
     vesktop.enable = true;
   };
+  
+  # custom desktop shortcut to fix blurry wayland issues
+  xdg.desktopEntries.discord = {
+    name = "Discord";
+    exec = "discord --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto"; 
+    terminal = false;
+    categories = [ "Chat" ];
+    # mimeType = [];
+
+  };
+
   programs.nixcord = {
     enable = true;
 
