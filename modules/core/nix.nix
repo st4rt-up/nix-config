@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{inputs, ...}: let
+  inherit (inputs) nix-index-database;
+in {
+  imports = [nix-index-database.nixosModules.nix-index];
+
   nix = {
     settings = {
       auto-optimise-store = true;
@@ -12,6 +16,7 @@
   };
 
   programs.nix-ld.enable = true;
+  programs.nix-index-database.comma.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 

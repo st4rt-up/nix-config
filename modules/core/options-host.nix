@@ -25,7 +25,7 @@
 
     timezone = lib.mkOption {
       type = lib.types.str;
-      default = "America/New_York";
+      default = "America/Toronto";
     };
 
     shell = lib.mkOption {

@@ -17,15 +17,16 @@ in {
   stylix.targets.mako.enable = false;
   services.mako = {
     enable = true;
+    settings = {
+      default-timeout = 5 * 1000;
 
-    defaultTimeout = 5 * 1000;
+      font = "${font} 11";
 
-    font = "${font} 11";
+      background-color = background;
+      border-color = accent;
+      border-radius = rounding;
 
-    backgroundColor = background;
-    borderColor = accent;
-    borderRadius = rounding;
-
-    padding = "${toString gaps-in}";
+      padding = "${toString gaps-in}";
+    };
   };
 }

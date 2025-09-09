@@ -17,7 +17,7 @@
 
   font = theme.fonts.monospace.name;
   rounding = theme.rounding;
-  font-size = config.stylix.fonts.sizes.popups;
+  font-size = config.stylix.fonts.sizes.desktop;
   gaps-out = theme.gaps-out;
   gaps-in = theme.gaps-in;
 in {
