@@ -8,6 +8,8 @@
 
     ./options-host.nix
     ./options-theme.nix
+    
+    ./sops.nix
 
     ./ssh-agent.nix
     ./stylix.nix

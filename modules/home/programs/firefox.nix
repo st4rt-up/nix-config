@@ -1,4 +1,4 @@
-{var, ...}: {
+#{var, ...}: {
   programs.firefox = {
     enable = true;
     # package = inputs.zen-browser.packages."${system}".default;

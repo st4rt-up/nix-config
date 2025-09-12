@@ -11,6 +11,9 @@
     rustc
     rustfmt
     rustlings
+    
+    ## c dev
+    clangd
 
     # general utility
     fzf # fuzzy find
@@ -40,7 +43,7 @@
 
     # definitely extras
     wiki-tui # wikipedia
-    ncspot # spotify
+    # ncspot # spotify
 
     # libgpod # ipod tools
     # clementine

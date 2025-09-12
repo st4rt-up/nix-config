@@ -11,9 +11,13 @@
       # ./../options-home.nix
 
       ./../programs/neovim
+      
+      ./../programs/shell/bash.nix
+      ./../programs/shell/shell-aliases.nix
 
       ./../programs/shell/tmux.nix
       ./../programs/shell/zoxide.nix
+      ./../programs/shell/direnv.nix
 
       ./../programs/git.nix
     ]
@@ -26,6 +30,7 @@
       ./../programs/signal.nix
 
       ./../programs/zen-browser.nix
+      ./../programs/okular.nix
 
       ./../programs/hypr
       ./../programs/kitty.nix

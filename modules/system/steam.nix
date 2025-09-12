@@ -5,7 +5,7 @@
     # lutris
     # bottles
   ];
-
+  
   programs = {
     steam = {
       enable = true;
