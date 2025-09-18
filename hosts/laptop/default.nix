@@ -22,6 +22,11 @@ in {
       wallpaper = "${config-directory}/wallpaper/cherry-blossom.jpg";
     };
 
+    services.syncthing = {
+      key = "/run/${username}/syncthing-laptop/key.pem";
+      cert = "/run/${username}/syncthing-laptop/cert.pem";
+    };
+
     sops.secrets = {
       "secrets/syncthing/laptop/key" = {
         path = "/run/${username}/syncthing-laptop/key.pem";
