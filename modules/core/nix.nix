@@ -1,4 +1,8 @@
-{inputs, ...}: let
+{
+  inputs,
+  config,
+  ...
+}: let
   inherit (inputs) nix-index-database;
 in {
   imports = [nix-index-database.nixosModules.nix-index];
@@ -15,15 +19,17 @@ in {
     nixPath = ["nixpkgs=${inputs.nixpkgs}"];
   };
 
-  programs.nix-ld.enable = true;
-  programs.nix-index-database.comma.enable = true;
-
   nixpkgs.config.allowUnfree = true;
 
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/home/kai/nix-config";
+  programs = {
+    nh = {
+      enable = true;
+      clean.enable = true;
+      clean.extraArgs = "--keep-since 4d --keep 3";
+      flake = config.var.config-directory;
+    };
+
+    nix-index-database.comma.enable = true;
+    nix-ld.enable = true;
   };
 }

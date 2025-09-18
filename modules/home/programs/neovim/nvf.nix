@@ -7,6 +7,7 @@
       vimAlias = true;
 
       clipboard.enable = true;
+
       syntaxHighlighting = true;
 
       lineNumberMode = "relative";
@@ -18,77 +19,33 @@
         mouse = "";
       };
 
-      keymaps = [
-        {
-          key = "<Up>";
-          mode = ["n" "v" "i"];
-          action = "<Nop>";
-          silent = true;
-          desc = "Unbind arrow keys (up)";
-        }
+      binds.hardtime-nvim = {
+        enable = true;
 
-        {
-          key = "<Down>";
-          mode = ["n" "v" "i"];
-          action = "<Nop>";
-          silent = true;
-          desc = "Unbind arrow keys (down)";
-        }
-
-        {
-          key = "<Right>";
-          mode = ["n" "v" "i"];
-          action = "<Nop>";
-          silent = true;
-          desc = "Unbind arrow keys (right)";
-        }
-
-        {
-          key = "<Left>";
-          mode = ["n" "v" "i"];
-          action = "<Nop>";
-          silent = true;
-          desc = "Unbind arrow keys (left)";
-        }
-      ];
+        setupOpts = {
+          max_count = 5;
+          restriction_mode = "hint_and_block";
+          disable_mouse = true;
+        };
+      };
 
       lazy.enable = true;
       telescope.enable = true;
       treesitter.context.enable = true;
 
       lsp = {
+        enable = true;
         formatOnSave = true;
 
         lightbulb.enable = true;
-        # trouble.enable = true;
+        trouble.enable = true;
 
-        # lspSignature.enable = true;
-        # lsplines.enable = true;
-      };
+        inlayHints.enable = true;
 
-      languages = {
-        enableFormat = true;
-        enableTreesitter = true;
-        enableExtraDiagnostics = true;
-
-        nix = {
-          enable = true;
-          lsp.server = "nixd";
-          treesitter.enable = false;
-          lsp.options = {
-            nixpkgs = {expr = "import <nixpkgs> { }";};
-            formatting.command = ["alejandra"];
+        servers = {
+          "clangd" = {
+            filetypes = ["c"];
           };
-        };
-
-        rust = {
-          enable = true;
-          # crates.enable = true;
-        };
-
-        clang = {
-          enable = true;
-          dap.enable = true;
         };
       };
     };

@@ -11,7 +11,7 @@
       # ./../options-home.nix
 
       ./../programs/neovim
-      
+
       ./../programs/shell/bash.nix
       ./../programs/shell/shell-aliases.nix
 
@@ -20,6 +20,8 @@
       ./../programs/shell/direnv.nix
 
       ./../programs/git.nix
+
+      ./../secrets/kai.nix
     ]
     ++ lib.optionals
     var.gui
