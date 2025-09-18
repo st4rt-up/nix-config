@@ -1,18 +1,19 @@
-{ pkgs, lib, config, inputs, ... } : let 
-sopsFolder = builtins.toString inputs.nix-secrets;
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}: let
+  sopsFolder = builtins.toString inputs.nix-secrets;
 in {
   sops = {
-    age.sshKeyPaths = [ 
+    age.sshKeyPaths = [
       "/etc/ssh/ssh_host_ed25519_key"
-#      "/home/${config.var.username}/.ssh/id_ed25519"
+      #      "/home/${config.var.username}/.ssh/id_ed25519"
     ];
-
 
     defaultSopsFile = "${sopsFolder}/secrets.yaml";
     validateSopsFiles = false;
-
- };
-
-
-
+  };
 }

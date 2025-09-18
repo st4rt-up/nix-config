@@ -1,11 +1,9 @@
-{ ... }: {
+{var, ...}: {
   programs.bash = {
     enable = true;
 
     shellAliases = {
-      "nixedit" = "cd ~/nix-config && sudo nvim";
-
+      "nixedit" = "cd ${var.config-directory} && sudo nvim";
     };
-
   };
 }

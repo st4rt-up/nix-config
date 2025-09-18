@@ -3,8 +3,6 @@
   pkgs,
   ...
 }: {
-  sops.secrets."keys/ssh/github-ssh" = {};
-
   users = {
     defaultUserShell = pkgs.bash;
     users."${config.var.username}" = {

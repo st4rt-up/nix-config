@@ -6,15 +6,6 @@
     nixd
     comma
 
-    ## rust dev
-    cargo
-    rustc
-    rustfmt
-    rustlings
-    
-    ## c dev
-    clangd
-
     # general utility
     fzf # fuzzy find
     git
@@ -29,6 +20,7 @@
 
     alsa-utils # audio tools
 
+    stm32cubemx
     ## drive tools
     # smartmontools
     # e2fsprogs
@@ -37,7 +29,7 @@
 
     # file management
     yazi # file browser
-    
+
     # terminal img view
     timg
 

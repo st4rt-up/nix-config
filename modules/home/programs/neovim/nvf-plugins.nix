@@ -42,17 +42,21 @@
       whichKey.enable = true;
     };
 
-    # filetree.neo-tree.enable = true;
+    filetree.neo-tree.enable = true;
 
     debugger.nvim-dap = {
       enable = true;
-      ui.enable = true;
+      ui = {
+        enable = true;
+
+        autoStart = true;
+      };
     };
 
     git = {
       enable = true;
       gitsigns.enable = true;
-      gitsigns.codeActions.enable = false;
+      # gitsigns.codeActions.enable = false;
     };
   };
 }

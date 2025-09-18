@@ -5,17 +5,31 @@
   ...
 }: let
   username = "kai";
+in let
+  files-directory = "/home/${username}/files";
+  config-directory = "/home/${username}/files/dev-nix/nix-config";
 in {
   # set variables declared in /modules/core/config-host
-  config.var = {
-    inherit username hostname;
+  config = {
+    var = {
+      inherit username hostname config-directory files-directory;
 
-    terminal = "kitty";
-    gui = true;
+      terminal = "kitty";
+      gui = true;
 
-    timezone = "America/Toronto";
+      timezone = "America/Toronto";
 
-    wallpaper = "~/nix-config/wallpaper/cherry-blossom.jpg";
+      wallpaper = "${config-directory}/wallpaper/cherry-blossom.jpg";
+    };
+
+    sops.secrets = {
+      "secrets/syncthing/laptop/key" = {
+        path = "/run/${username}/syncthing-laptop/key.pem";
+      };
+      "secrets/syncthing/laptop/cert" = {
+        path = "/run/${username}/syncthing-laptop/cert.pem";
+      };
+    };
   };
 
   imports = [
@@ -33,6 +47,7 @@ in {
     ./../../modules/system/power-management.nix
 
     ./../../modules/system/steam.nix
+    ./../../modules/system/syncthing.nix
 
     ./../../modules/home
     ./hardware-configuration.nix

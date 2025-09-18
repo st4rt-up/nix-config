@@ -2,6 +2,7 @@
   imports = [
     ./nvf.nix
     ./nvf-plugins.nix
+    ./nvf-languages.nix
 
     inputs.nvf.homeManagerModules.default
   ];
