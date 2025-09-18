@@ -22,9 +22,6 @@ in {
     dataDir = "${files}/share/syncthing";
     configDir = "/home/${config.var.username}/.config/syncthing";
 
-    key = "/run/${config.var.username}/syncthing-laptop/key.pem";
-    cert = "/run/${config.var.username}/syncthing-laptop/cert.pem";
-
     settings = {
       # gui = {
       #   user = "${config.var.username}";
@@ -32,12 +29,13 @@ in {
       # };
 
       devices = {
-        "phone".id = inputs.nix-secrets.syncthing.phone-id;
+        "phone".id = inputs.nix-secrets.syncthing.devices.phone.id;
       };
 
       folders = {
         #   "notes" = {};
         "school" = {
+          id = inputs.nix-secrets.syncthing.folders.school.id;
           path = "${files}/school";
           devices = ["phone"];
           ignorePerms = false;

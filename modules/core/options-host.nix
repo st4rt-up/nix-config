@@ -13,15 +13,6 @@
       default = "nixos";
     };
 
-    config-directory = lib.mkOption {
-      type = lib.types.str;
-      default = "~/nix-config";
-    };
-
-    files-directory = lib.mkOption {
-      type = lib.types.str;
-      default = "~/files";
-    };
     hostname = lib.mkOption {
       type = lib.types.str;
       default = "nixos";
@@ -42,6 +33,17 @@
       default = "bash";
     };
 
+    # === HELPER
+
+    config-directory = lib.mkOption {
+      type = lib.types.str;
+      default = "~/nix-config";
+    };
+
+    files-directory = lib.mkOption {
+      type = lib.types.str;
+      default = "~/files";
+    };
     # === GUI SPECFIC
 
     gui = lib.mkOption {

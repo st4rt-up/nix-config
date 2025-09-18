@@ -676,10 +676,10 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1758234207,
-        "narHash": "sha256-JHrlfgteNf+IQyqomX696eIWSCgALy26dt/1hkDi4Iw=",
+        "lastModified": 1758236985,
+        "narHash": "sha256-Hb30tbV8lZAhdSzeXUysPJRHwdN0GwyPPj0YhH1U6Io=",
         "ref": "main",
-        "rev": "f7edecc6ffc86d3e48c4021bcd4bccba453765a7",
+        "rev": "96a7d229af2a88ef559e584acaa5852c021070a8",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/st4rt-up/nix-secrets.git"
