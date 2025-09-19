@@ -62,6 +62,8 @@ in {
     # ./../../modules/system/gnome.nix
 
     ./../../modules/system/thunar.nix
+
+    ./../../modules/optional/school-packages.nix
   ];
 
   config.system.stateVersion = "24.11";
