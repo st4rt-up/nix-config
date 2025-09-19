@@ -20,12 +20,11 @@
 
     alsa-utils # audio tools
 
-    stm32cubemx
     ## drive tools
     # smartmontools
     # e2fsprogs
 
-    # lf # file browser
+    rquickshare
 
     # file management
     yazi # file browser
@@ -34,7 +33,7 @@
     timg
 
     # definitely extras
-    wiki-tui # wikipedia
+    # wiki-tui # wikipedia
     # ncspot # spotify
 
     # libgpod # ipod tools
