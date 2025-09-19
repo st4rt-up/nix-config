@@ -8,6 +8,7 @@
 in let
   files-directory = "/home/${username}/files";
   config-directory = "/home/${username}/files/dev-nix/nix-config";
+  syncthing-key-path = "/run/${username}/syncthing-laptop";
 in {
   # set variables declared in /modules/core/config-host
   config = {
@@ -23,17 +24,13 @@ in {
     };
 
     services.syncthing = {
-      key = "/run/${username}/syncthing-laptop/key.pem";
-      cert = "/run/${username}/syncthing-laptop/cert.pem";
+      key = "${syncthing-key-path}/key.pem";
+      cert = "${syncthing-key-path}/cert.pem";
     };
 
     sops.secrets = {
-      "secrets/syncthing/laptop/key" = {
-        path = "/run/${username}/syncthing-laptop/key.pem";
-      };
-      "secrets/syncthing/laptop/cert" = {
-        path = "/run/${username}/syncthing-laptop/cert.pem";
-      };
+      "secrets/syncthing/laptop/key".path = "${syncthing-key-path}/key.pem";
+      "secrets/syncthing/laptop/cert".path = "${syncthing-key-path}/cert.pem";
     };
   };
 
@@ -52,7 +49,8 @@ in {
     ./../../modules/system/power-management.nix
 
     ./../../modules/system/steam.nix
-    ./../../modules/system/syncthing.nix
+
+    ./syncthing.nix
 
     ./../../modules/home
     ./hardware-configuration.nix

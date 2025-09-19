@@ -3,6 +3,7 @@
   environment.systemPackages = with pkgs; [
     stm32cubemx
 
-    quartus-prime-lite
+    # quartus-prime-lite
+    # too big for compter
   ];
 }
