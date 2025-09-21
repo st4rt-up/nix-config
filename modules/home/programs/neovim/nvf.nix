@@ -34,6 +34,7 @@ _: {
 
       lazy.enable = true;
       telescope.enable = true;
+      treesitter.context.enable = true;
 
       diagnostics = {
         enable = true;

@@ -17,7 +17,6 @@
     htop # task manager
 
     networkmanagerapplet
-    pdftk
 
     alsa-utils # audio tools
 
