@@ -2,23 +2,13 @@
   programs.nvf = {
     settings.vim = {
       lsp.servers = {
-        nixd = {
-          filetypes = [
-            "nix"
-          ];
-        };
-        clangd = {
-          filetypes = [
-            "c"
-            "cpp"
-          ];
-        };
-        vhdl-ls = {
-          cmd = ["vhdl_ls"];
-          filetypes = ["vhdl"];
-        };
+      nixd.filetypes = [
+      "nix"];
+      clangd.filetypes = [
+        "c"
+        "cpp"
+      ];
       };
-
       languages = {
         enableFormat = true;
         enableTreesitter = true;
@@ -48,6 +38,8 @@
         clang = {
           enable = true;
           cHeader = true;
+
+          treesitter.enable = true;
 
           lsp = {
             enable = true;

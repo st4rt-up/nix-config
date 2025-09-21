@@ -31,6 +31,7 @@
 
       lazy.enable = true;
       telescope.enable = true;
+      treesitter.context.enable = true;
 
       lsp = {
         enable = true;
