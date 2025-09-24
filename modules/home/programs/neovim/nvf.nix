@@ -32,12 +32,25 @@
       lazy.enable = true;
       telescope.enable = true;
 
+      diagnostics = {
+        enable = true;
+
+        # nvim-lint.enable = true;
+
+        config = {
+          virtual_text = true;
+          virtual_lines = true;
+        };
+      };
+
       lsp = {
         enable = true;
         formatOnSave = true;
 
         lightbulb.enable = true;
         trouble.enable = true;
+
+        lspSignature.enable = true;
 
         inlayHints.enable = true;
 

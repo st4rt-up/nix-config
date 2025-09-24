@@ -33,6 +33,11 @@
       default = "bash";
     };
 
+    secrets = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+    };
+
     # === HELPER
 
     config-directory = lib.mkOption {

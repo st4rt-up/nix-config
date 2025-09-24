@@ -11,8 +11,14 @@ in {
   ];
 
   sops = {
-    age.keyFile = "${home-dir}/.config/sops/age/keys.txt";
+    age = {
+      keyFile = "${home-dir}/.config/sops/age/keys.txt";
+      generateKey = true;
+    };
+
     defaultSopsFile = "${sopsFolder}/secrets.yaml";
+    validateSopsFiles = true;
+
     secrets = {
       "secrets/ssh-key/github-ssh" = {
         path = "${home-dir}/.ssh/github-ssh";

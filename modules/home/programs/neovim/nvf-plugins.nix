@@ -17,6 +17,8 @@
       highlight-undo.enable = true;
       fidget-nvim.enable = true;
       indent-blankline.enable = true;
+
+      rainbow-delimiters.enable = true;
     };
 
     notify.nvim-notify.enable = true;
