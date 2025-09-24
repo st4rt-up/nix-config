@@ -2,7 +2,6 @@
 {
   lib,
   var,
-  inputs,
   ...
 }: {
   imports =
@@ -20,8 +19,6 @@
       ./../programs/shell/direnv.nix
 
       ./../programs/git.nix
-
-      ./../secrets/kai.nix
     ]
     ++ lib.optionals
     var.gui
@@ -45,10 +42,15 @@
       ./../programs/godot.nix
 
       ./../programs/gtk.nix
+    ]
+    ++ lib.optionals
+    var.secrets
+    [
+      ./../../secrets/users/kai.nix
     ];
 
   home = {
-    username = var.username;
+    inherit (var) username;
 
     stateVersion = "24.11";
   };

@@ -3,5 +3,7 @@
     Defaults    env_keep+=SSH_AUTH_SOCK
   '';
 
-  programs.ssh.startAgent = true;
+  programs.ssh = {
+    startAgent = true;
+  };
 }

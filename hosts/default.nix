@@ -2,6 +2,7 @@
   nixpkgs,
   self,
   sops-nix,
+  nixos-wsl,
   ...
 }: let
   inherit (self) inputs;
@@ -28,17 +29,18 @@ in {
   laptop = mkHost {
     hostname = "laptop";
     modules = [
-      # inputs.home-manager.nixosModules.home-manager
       inputs.stylix.nixosModules.stylix
       sops-nix.nixosModules.sops
     ];
   };
 
-  wsl = mkHost {
+  wsl-nix = mkHost {
     hostname = "wsl-nix";
     modules = [
-      inputs.home-manager.nixosModules.home-manager
+      nixos-wsl.nixosModules.default
+
       inputs.stylix.nixosModules.stylix
+      sops-nix.nixosModules.sops
     ];
   };
 }
