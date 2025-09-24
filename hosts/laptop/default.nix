@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  hostname,
-  ...
-}: let
+{hostname, ...}: let
   username = "kai";
 in let
   files-directory = "/home/${username}/files";
@@ -17,6 +12,8 @@ in {
 
       terminal = "kitty";
       gui = true;
+
+      secrets = true;
 
       timezone = "America/Toronto";
 
