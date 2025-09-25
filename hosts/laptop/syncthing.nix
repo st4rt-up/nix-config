@@ -46,6 +46,16 @@ in {
           ];
           ignorePerms = false;
         };
+
+        "notes" = {
+          id = inputs.nix-secrets.syncthing.folders.notes.id;
+          path = "${files}/notes";
+          devices = [
+            "pixel-7-phone"
+            "samsung-s6-tablet"
+            "pc"
+          ];
+        };
       };
     };
   };
