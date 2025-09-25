@@ -25,4 +25,13 @@ in {
       };
     };
   };
+
+  programs.ssh = {
+    extraConfig = "
+      Host git-personal
+        HostName github.com
+        User git
+        IdentityFile ${home-dir}/.ssh/github-ssh
+    ";
+  };
 }

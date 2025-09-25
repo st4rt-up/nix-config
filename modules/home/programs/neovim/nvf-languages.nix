@@ -15,7 +15,7 @@
         };
         vhdl-ls = {
           cmd = ["vhdl_ls"];
-          filetypes = ["vhdl"];
+          filetypes = ["vhdl" "vhd"];
         };
       };
 
@@ -51,7 +51,7 @@
 
           lsp = {
             enable = true;
-            package = pkgs.clang-tools_16;
+            package = pkgs.clang;
             server = "clangd";
           };
 

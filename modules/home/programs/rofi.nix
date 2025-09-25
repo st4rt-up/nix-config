@@ -10,13 +10,13 @@
   inherit (config.lib.formats.rasi) mkLiteral;
 in {
   home.packages = with pkgs; [
-    rofi-wayland
+    rofi
   ];
 
   stylix.targets.rofi.enable = false;
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
+    package = pkgs.rofi;
 
     location = "center";
 
