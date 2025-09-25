@@ -33,7 +33,6 @@
       "$mainMod SHIFT, 9, movetoworkspacesilent, 9"
       "$mainMod SHIFT, 0, movetoworkspacesilent, 10"
       "$mainMod CTRL, c, movetoworkspace, empty"
-        
 
       "$mainMod CTRL, left, workspace, -1"
       "$mainMod CTRL, right, workspace, +1"
@@ -55,6 +54,32 @@
       "$mainMod, q, killactive"
       "$mainMod, v, togglefloating"
     ];
+
+    #    binde = [
+    #      "CTRL, ALT, left, resizeactive, -10 0"
+    #      "CTRL, ALT, h, resizeactive, -10 0"
+    #
+    #      "CTRL, ALT, right, resizeactive, 10 0"
+    #      "CTRL, ALT, l, resizeactive, 10 0"
+    #
+    #      "CTRL, ALT, up, resizeactive, 0 10"
+    #      "CTRL, ALT, k, resizeactive, 0 10"
+    #
+    #      "CTRL, ALT, down, resizeactive, 0 -10"
+    #      "CTRL, ALT, j, resizeactive, 0 -10"
+    #    ];
+
+    #    submaps = {
+    #      resize.settings = {
+    #
+    #        bind = [
+    #          " , enter, submap, reset"
+    #          " , escape, submap, reset"
+    #
+    #          " , Return, submap, reset"
+    #        ];
+    #      };
+    #    };
 
     # mouse binding
     bindm = [
