@@ -1,4 +1,4 @@
-{...}: {
+_: {
   programs.git = {
     enable = true;
 
@@ -9,22 +9,25 @@
   home.shellAliases = {
     "ga" = "git add";
     "gc" = "git commit -m";
+    "gs" = "git status";
   };
 
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
     matchBlocks = {
+      "*" = {};
       "github-personal" = {
         hostname = "github.com";
         user = "git";
-        # preferredAuthentications = "publickey";
-        identityFile = "~/.ssh/github-ssh";
+        identityFile = "~/.ssh/github-personal";
       };
 
-      #    "git-school" = {
-      #      hostname = "github.com";
-      #      identityFile = "~/.ssh/github-school-ssh";
-      #    };
+      "github-school" = {
+        hostname = "github.com";
+        user = "git";
+        identityFile = "~/.ssh/github-school";
+      };
     };
   };
 }

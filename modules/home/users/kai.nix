@@ -15,7 +15,8 @@
       ./../programs/shell/shell-aliases.nix
 
       ./../programs/shell/tmux.nix
-      ./../programs/shell/zoxide.nix
+      ./../programs/shell/zoxide.nix # cd replacment
+      ./../programs/shell/eza.nix # ls replacement
       ./../programs/shell/direnv.nix
 
       ./../programs/git.nix
