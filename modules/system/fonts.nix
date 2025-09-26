@@ -17,6 +17,9 @@
       atkinson-hyperlegible-next
       atkinson-hyperlegible-mono
 
+      ia-writer-duospace
+      ia-writer-quattro
+
       manrope
       # serifs
       lora

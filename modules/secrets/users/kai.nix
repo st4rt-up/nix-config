@@ -20,18 +20,13 @@ in {
     validateSopsFiles = true;
 
     secrets = {
-      "secrets/ssh-key/github-ssh" = {
-        path = "${home-dir}/.ssh/github-ssh";
+      "secrets/ssh-key/github-personal" = {
+        path = "${home-dir}/.ssh/github-personal";
+      };
+
+      "secrets/ssh-key/github-school" = {
+        path = "${home-dir}/.ssh/github-school";
       };
     };
-  };
-
-  programs.ssh = {
-    extraConfig = "
-      Host git-personal
-        HostName github.com
-        User git
-        IdentityFile ${home-dir}/.ssh/github-ssh
-    ";
   };
 }

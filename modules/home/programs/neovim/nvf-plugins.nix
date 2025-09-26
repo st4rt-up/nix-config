@@ -1,4 +1,4 @@
-{...}: {
+_: {
   programs.nvf.settings.vim = {
     minimap.codewindow.enable = true;
     spellcheck.enable = true;
@@ -39,12 +39,16 @@
       icons.enable = true;
     };
 
+    filetree = {
+      nvimTree.enable = true;
+    };
+    mini = {
+      tabline.enable = true;
+    };
     binds = {
       cheatsheet.enable = true;
       whichKey.enable = true;
     };
-
-    filetree.neo-tree.enable = true;
 
     debugger.nvim-dap = {
       enable = true;
@@ -57,8 +61,10 @@
 
     git = {
       enable = true;
-      gitsigns.enable = true;
-      # gitsigns.codeActions.enable = false;
+      #      gitsigns = {
+      #        enable = true;
+      #        codeActions.enable = true;
+      #      };
     };
   };
 }
