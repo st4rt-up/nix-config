@@ -45,7 +45,7 @@ in {
     # ./../../modules/system/fingerprint.nix
     ./../../modules/system/power-management.nix
 
-    ./../../modules/system/steam.nix
+    # ./../../modules/system/steam.nix
 
     ./syncthing.nix
 

@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    wf-recorder
+    # wf-recorder
 
     # screenshot utilities
     grim
@@ -9,7 +9,6 @@
 
   wayland.windowManager.hyprland.settings.bind = [
     ", Print, exec, grimshot --notify savecopy screen"
-    "Control_L , Print, exec, grimshot --notify savecopy area"
-
+    "CTRL, Print, exec, grimshot --notify savecopy area"
   ];
 }

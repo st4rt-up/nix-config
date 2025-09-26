@@ -17,7 +17,7 @@ in {
 
   stylix.targets.wofi.enable = false;
   wayland.windowManager.hyprland.settings.bind = [
-    "$mainMod, r, exec, pkill wofi || wofi --show drun --sort-order=alphabetical "
+    "$mainMod, space, exec, pkill wofi || wofi --show drun --sort-order=alphabetical "
   ];
 
   programs.wofi = {
@@ -28,7 +28,7 @@ in {
 
       show_all = false;
 
-      # allow_images = true;  
+      # allow_images = true;
       # print_command = true;
       insensitive = true;
     };
