@@ -1,4 +1,4 @@
-{...}: {
+_: {
   programs.nvf = {
     enable = true;
 
@@ -6,11 +6,14 @@
       viAlias = true;
       vimAlias = true;
 
-      clipboard.enable = true;
+      clipboard = {
+        enable = true;
+        providers.wl-copy.enable = true;
+      };
 
       syntaxHighlighting = true;
 
-      lineNumberMode = "relative";
+      lineNumberMode = "relNumber";
 
       options = {
         tabstop = 2;

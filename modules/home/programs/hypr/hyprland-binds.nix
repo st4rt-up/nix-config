@@ -55,6 +55,18 @@
       "$mainMod, v, togglefloating"
     ];
 
+    binde = [
+      "$mainMod ALT, left, resizeactive, -10 0"
+      "$mainMod ALT, down, resizeactive, 0 10"
+      "$mainMod ALT, up, resizeactive, 0 -10"
+      "$mainMod ALT, right, resizeactive, 10 0"
+
+      "$mainMod ALT, h, resizeactive, -10 0"
+      "$mainMod ALT, j, resizeactive, 0 10"
+      "$mainMod ALT, k, resizeactive, 0 -10"
+      "$mainMod ALT, l, resizeactive, 10 0"
+    ];
+
     #    binde = [
     #      "CTRL, ALT, left, resizeactive, -10 0"
     #      "CTRL, ALT, h, resizeactive, -10 0"
@@ -72,7 +84,7 @@
     #    submaps = {
     #      resize.settings = {
     #
-    #        bind = [
+    #        bind = k
     #          " , enter, submap, reset"
     #          " , escape, submap, reset"
     #

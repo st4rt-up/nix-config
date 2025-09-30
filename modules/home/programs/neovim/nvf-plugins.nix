@@ -4,9 +4,9 @@ _: {
     spellcheck.enable = true;
     autocomplete.nvim-cmp.enable = true;
 
-    dashboard.alpha = {
-      enable = true; # greeter
-    };
+    # dashboard.alpha = {
+    # enable = true; # greeter
+    # };
 
     visuals = {
       nvim-scrollbar.enable = true;
