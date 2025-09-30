@@ -59,6 +59,10 @@
             enable = true;
           };
         };
+
+        python = {
+          enable = true;
+        };
       };
     };
   };
