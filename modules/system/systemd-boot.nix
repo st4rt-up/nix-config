@@ -1,4 +1,10 @@
 {pkgs, ...}: {
+  systemd = {
+    services = {
+      NetworkManager-wait-online.enable = false;
+      systemd-udev-settle.enable = false;
+    };
+  };
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     loader = {
@@ -15,6 +21,8 @@
 
     # Silent boot
     # thanks https://github.com/anotherhadi/nixy/blob/main/nixos/systemd-boot.nix
+
+    consoleLogLevel = 3;
     kernelParams = [
       "quiet"
       "splash"

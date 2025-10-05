@@ -12,10 +12,25 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-amd"];
-  boot.extraModulePackages = [];
+  boot = {
+    initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod"];
+    initrd.kernelModules = [];
+    blacklistedKernelModules = [
+      "i2c_piix4"
+      "8250_core"
+    ];
+    kernelModules = [
+      "kvm-amd"
+      "nvidia"
+      "nvidia_uvm"
+      "nvidia_modeset"
+    ];
+    extraModulePackages = [];
+
+    kernelParams = [
+      "8250.nr_uarts=0"
+    ];
+  };
 
   services.xserver = {
     videoDrivers = ["nvidia" "displaylink" "modesettings"];
@@ -47,16 +62,36 @@
     };
   };
 
-  fileSystems."/" = {
-    device = "dev/disk/by-uuid/b52785cc-94cb-43c8-b16d-540c915b29c7";
-    fsType = "ext4";
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/b52785cc-94cb-43c8-b16d-540c915b29c7";
+      fsType = "ext4";
+    };
+
+    "/boot" = {
+      device = "/dev/disk/by-uuid/109A-6458";
+      fsType = "vfat";
+      options = ["fmask=0077" "dmask=0077"];
+    };
+
+    # Example for the Windows partition (p3)
+    #    "/mnt/windows" = {
+    #      device = "/dev/disk/by-uuid/894d0ff5-a064-449c-b0ea-c96c8dee8877";
+    #      fsType = "ntfs"; # Assuming NTFS
+    #      options = ["nofail" "x-systemd.device-timeout=500ms"]; # 🟢 Crucial change
+    #    };
+    #
+    #    # Example for the RECOVERY partition (p4)
+    #    "/mnt/recovery" = {
+    #      device = "/dev/disk/by-uuid/E69632A9963279DF";
+    #      fsType = "ntfs"; # Or appropriate type
+    #      options = ["nofail" "x-systemd.device-timeout=500ms"]; # 🟢 Crucial change
+    #    };
   };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/109A-6458";
-    fsType = "vfat";
-    options = ["fmask=0077" "dmask=0077"];
-  };
+  # Repeat for /dev/nvme0n1p5 and /dev/nvme0n1p2 if they are defined as mounts.
+  # If they are not mounted, this wait time is Udev's device discovery phase, which is harder to fix.
+  # Applying 'nofail' to all non-essential mounts is the best solution here.
 
   swapDevices = [
     {

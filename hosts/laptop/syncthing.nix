@@ -2,11 +2,17 @@
   inputs,
   config,
   pkgs,
+  lib,
   ...
 }: let
   files = config.var.files-directory;
 in {
   environment.systemPackages = [pkgs.syncthing];
+
+  systemd.services.syncthing-init = {
+    wantedBy = lib.mkForce ["graphical.target"];
+    after = ["graphical.target"];
+  };
 
   services.syncthing = {
     enable = true;
