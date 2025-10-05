@@ -1,5 +1,14 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   environment.systemPackages = with pkgs; [powertop];
+
+  # systemd.services.powertop = {
+  # wantedBy = lib.mkForce ["multi-user.target"];
+  # after = ["multi-user.target"];
+  # };
   services = {
     power-profiles-daemon.enable = false;
 
