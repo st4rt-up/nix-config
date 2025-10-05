@@ -55,7 +55,7 @@ _: {
 
         lspSignature.enable = true;
 
-        inlayHints.enable = true;
+        # inlayHints.enable = true;
 
         servers = {
           "clangd" = {
