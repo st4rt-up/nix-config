@@ -9,9 +9,12 @@
         };
         clangd = {
           filetypes = [
+            "h"
+            "hpp"
             "c"
             "cpp"
           ];
+          root_markers = [".git"];
         };
         vhdl-ls = {
           cmd = ["vhdl_ls"];
@@ -51,8 +54,6 @@
 
           lsp = {
             enable = true;
-            package = pkgs.clang;
-            server = "clangd";
           };
 
           dap = {
@@ -62,6 +63,16 @@
 
         python = {
           enable = true;
+        };
+
+        markdown = {
+          enable = true;
+
+          format.enable = true;
+
+          extensions = {
+            render-markdown-nvim.enable = true;
+          };
         };
       };
     };

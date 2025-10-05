@@ -23,6 +23,10 @@ _: {
 
     notify.nvim-notify.enable = true;
 
+    utility = {
+      motion.flash-nvim.enable = true;
+    };
+
     ui = {
       colorizer.enable = true;
 
@@ -39,9 +43,9 @@ _: {
       icons.enable = true;
     };
 
-    filetree = {
-      nvimTree.enable = true;
-    };
+    #    filetree = {
+    #      nvimTree.enable = true;
+    #    };
     mini = {
       tabline.enable = true;
     };
