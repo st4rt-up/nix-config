@@ -1,30 +1,39 @@
 _: {
   programs.nvf.settings.vim = {
-    minimap.codewindow.enable = true;
-    spellcheck.enable = true;
-    autocomplete.nvim-cmp.enable = true;
+    # minimap.codewindow.enable = true;
+    # spellcheck.enable = true;
+    autocomplete.nvim-cmp = {
+      enable = true;
+      setupOpts = {
+        completion.completeopt = "menu,menuone,noselect,fuzzy";
+      };
+    };
 
     # dashboard.alpha = {
     # enable = true; # greeter
     # };
 
     visuals = {
-      nvim-scrollbar.enable = true;
-      nvim-cursorline.enable = true;
-      cinnamon-nvim.enable = true;
+      # nvim-scrollbar.enable = true;
+      nvim-cursorline.enable = true; # underline word under cursor
+      cinnamon-nvim.enable = true; # smooth scrolling
       nvim-web-devicons.enable = true;
 
       highlight-undo.enable = true;
-      fidget-nvim.enable = true;
+      fidget-nvim.enable = true; # notifications (bottom right)
       indent-blankline.enable = true;
 
-      rainbow-delimiters.enable = true;
+      # rainbow-delimiters.enable = true;
     };
 
-    notify.nvim-notify.enable = true;
+    notify.nvim-notify.enable = true; # pop up notifications (top right)
+
+    navigation = {
+      harpoon.enable = true; # turbo marks
+    };
 
     utility = {
-      motion.flash-nvim.enable = true;
+      motion.flash-nvim.enable = true; # turbo find / jump
     };
 
     ui = {
@@ -46,11 +55,11 @@ _: {
     #    filetree = {
     #      nvimTree.enable = true;
     #    };
-    mini = {
-      tabline.enable = true;
-    };
+
+    # mini = { tabline.enable = true;};
+
     binds = {
-      cheatsheet.enable = true;
+      # cheatsheet.enable = true;
       whichKey.enable = true;
     };
 
@@ -58,17 +67,16 @@ _: {
       enable = true;
       ui = {
         enable = true;
-
         autoStart = true;
       };
     };
 
-    git = {
-      enable = true;
-      #      gitsigns = {
-      #        enable = true;
-      #        codeActions.enable = true;
-      #      };
-    };
+    # git = {
+    # enable = true;
+    #      gitsigns = {
+    #        enable = true;
+    #        codeActions.enable = true;
+    #      };
+    # };
   };
 }
