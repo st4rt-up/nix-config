@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+_: {
   programs.nvf = {
     settings.vim = {
       lsp.servers = {
