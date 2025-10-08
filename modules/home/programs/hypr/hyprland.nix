@@ -106,9 +106,12 @@
         active_opacity = theme.active-opacity;
         inactive_opacity = theme.inactive-opacity;
 
-        # drop_shadow = true;
         blur = {
           enabled = theme.blur;
+        };
+
+        shadow = {
+          enabled = false; # TODO add this to options-theme
         };
       };
 
