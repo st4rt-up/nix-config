@@ -1,7 +1,5 @@
 _: {
   programs.nvf.settings.vim = {
-    # minimap.codewindow.enable = true;
-    # spellcheck.enable = true;
     autocomplete.nvim-cmp = {
       enable = true;
       setupOpts = {
@@ -34,6 +32,7 @@ _: {
 
     utility = {
       motion.flash-nvim.enable = true; # turbo find / jump
+      surround.enable = true;
     };
 
     ui = {
