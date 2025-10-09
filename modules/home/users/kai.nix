@@ -15,7 +15,7 @@
       ./../programs/shell/shell-aliases.nix
 
       ./../programs/shell/tmux.nix
-      ./../programs/shell/atuin # command history
+      ./../programs/shell/atuin.nix # command history
       ./../programs/shell/zoxide.nix # cd replacment
       ./../programs/shell/eza.nix # ls replacement
       ./../programs/shell/direnv.nix

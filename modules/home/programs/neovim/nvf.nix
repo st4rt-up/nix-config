@@ -6,19 +6,19 @@ _: {
       viAlias = true;
       vimAlias = true;
 
+      syntaxHighlighting = true;
+      lineNumberMode = "relNumber";
+      lazy.enable = true;
+      telescope.enable = true;
+
       clipboard = {
         enable = true;
         providers.wl-copy.enable = true;
       };
 
-      syntaxHighlighting = true;
-
-      lineNumberMode = "relNumber";
-
       options = {
         tabstop = 2;
         shiftwidth = 2;
-
         mouse = "";
       };
 
@@ -32,18 +32,17 @@ _: {
         };
       };
 
+<<<<<<< HEAD
       lazy.enable = true;
       telescope.enable = true;
       treesitter.context.enable = true;
 
+=======
+>>>>>>> 0e95b36 (updated system, added atuin)
       diagnostics = {
         enable = true;
-
+        config.virtual_text = true;
         # nvim-lint.enable = true;
-
-        config = {
-          virtual_text = true;
-        };
       };
 
       lsp = {
@@ -51,17 +50,8 @@ _: {
         formatOnSave = true;
 
         lightbulb.enable = true;
-        trouble.enable = true;
-
         lspSignature.enable = true;
-
-        # inlayHints.enable = true;
-
-        servers = {
-          "clangd" = {
-            filetypes = ["c"];
-          };
-        };
+        # trouble.enable = true;
       };
     };
   };

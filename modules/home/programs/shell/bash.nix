@@ -6,4 +6,6 @@
       "nixedit" = "cd ${var.config-directory} && sudo nvim";
     };
   };
+
+  stylix.targets.yazi.enable = false;
 }
