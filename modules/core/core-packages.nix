@@ -41,10 +41,10 @@
     # clementine
     # rhythmbox
 
-    # neofetch
     fastfetch
 
-    # yt-dlp
+    yt-dlp
+    ffmpeg
 
     # cli rice
     # tty-clock

@@ -6,19 +6,19 @@ _: {
       viAlias = true;
       vimAlias = true;
 
+      syntaxHighlighting = true;
+      lineNumberMode = "relNumber";
+      lazy.enable = true;
+      telescope.enable = true;
+
       clipboard = {
         enable = true;
         providers.wl-copy.enable = true;
       };
 
-      syntaxHighlighting = true;
-
-      lineNumberMode = "relNumber";
-
       options = {
         tabstop = 2;
         shiftwidth = 2;
-
         mouse = "";
       };
 
@@ -32,17 +32,10 @@ _: {
         };
       };
 
-      lazy.enable = true;
-      telescope.enable = true;
-
       diagnostics = {
         enable = true;
-
+        config.virtual_text = true;
         # nvim-lint.enable = true;
-
-        config = {
-          virtual_text = true;
-        };
       };
 
       lsp = {
@@ -50,17 +43,8 @@ _: {
         formatOnSave = true;
 
         lightbulb.enable = true;
-        trouble.enable = true;
-
         lspSignature.enable = true;
-
-        # inlayHints.enable = true;
-
-        servers = {
-          "clangd" = {
-            filetypes = ["c"];
-          };
-        };
+        # trouble.enable = true;
       };
     };
   };

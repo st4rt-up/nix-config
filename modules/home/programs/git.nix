@@ -4,6 +4,10 @@ _: {
 
     userName = "Kai R";
     userEmail = "stfourrtup@gmail.com";
+
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
   };
 
   home.shellAliases = {
@@ -22,7 +26,6 @@ _: {
         user = "git";
         identityFile = "~/.ssh/github-personal";
       };
-
       "github-school" = {
         hostname = "github.com";
         user = "git";
