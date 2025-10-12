@@ -1,8 +1,8 @@
-{config, ...}: {
+{username, ...}: {
   wsl = {
     enable = true;
 
-    defaultUser = config.var.username;
+    defaultUser = username;
 
     wrapBinSh = true;
 

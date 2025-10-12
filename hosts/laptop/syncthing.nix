@@ -1,5 +1,6 @@
 {
   inputs,
+  username,
   config,
   pkgs,
   lib,
@@ -18,7 +19,7 @@ in {
     enable = true;
     openDefaultPorts = true;
 
-    user = "${config.var.username}";
+    user = username;
     overrideDevices = true;
     overrideFolders = true;
 
@@ -26,11 +27,11 @@ in {
     # extraFlags = ["--no-default-folder"];
 
     dataDir = "${files}/share/syncthing";
-    configDir = "/home/${config.var.username}/.config/syncthing";
+    configDir = "/home/${username}/.config/syncthing";
 
     settings = {
       # gui = {
-      #   user = "${config.var.username}";
+      #   user = "${username}";
       #   password = #implement later;
       # };
 
@@ -43,7 +44,7 @@ in {
       folders = {
         #   "notes" = {};
         "school" = {
-          id = inputs.nix-secrets.syncthing.folders.school.id;
+          inherit (inputs.nix-secrets.syncthing.folders.school) id;
           path = "${files}/school";
           devices = [
             "pixel-7-phone"
@@ -54,7 +55,7 @@ in {
         };
 
         "notes" = {
-          id = inputs.nix-secrets.syncthing.folders.notes.id;
+          inherit (inputs.nix-secrets.syncthing.folders.notes) id;
           path = "${files}/notes";
           devices = [
             "pixel-7-phone"

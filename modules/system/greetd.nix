@@ -1,6 +1,5 @@
 {
-  inputs,
-  config,
+  username,
   pkgs,
   ...
 }: let
@@ -14,7 +13,7 @@ in {
 
     settings = {
       initial_session = {
-        user = "${config.var.username}";
+        user = "${username}";
         command = "${session}"; # temp
       };
       default_session = {

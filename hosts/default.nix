@@ -1,21 +1,22 @@
 {
   nixpkgs,
-  self,
   sops-nix,
+  self,
   nixos-wsl,
   ...
-}: let
-  inherit (self) inputs;
-  flake = self;
-
+} @ inputs: let
   mkHost = {
     hostname,
     system ? "x86_64-linux",
     modules ? [],
   }:
+  # helper function
     nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = {inherit inputs system flake hostname;};
+      specialArgs = {
+        inherit inputs system hostname;
+        flake = self;
+      };
 
       modules =
         [

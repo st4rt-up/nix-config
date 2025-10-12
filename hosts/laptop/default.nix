@@ -1,5 +1,16 @@
 {hostname, ...}: let
   username = "kai";
+  users = [
+    "kai-new"
+  ];
+  systemImports = [
+    "fonts"
+    "systemd-boot"
+    "pipewire-audio"
+    "bluetooth"
+    "power-management"
+    "greetd"
+  ];
 in let
   files-directory = "/home/${username}/files";
   config-directory = "/home/${username}/files/dev-nix/nix-config";
@@ -8,7 +19,7 @@ in {
   # set variables declared in /modules/core/config-host
   config = {
     var = {
-      inherit username hostname config-directory files-directory;
+      inherit hostname config-directory files-directory;
 
       terminal = "kitty";
       gui = true;
@@ -29,37 +40,17 @@ in {
       "secrets/syncthing/laptop/key".path = "${syncthing-key-path}/key.pem";
       "secrets/syncthing/laptop/cert".path = "${syncthing-key-path}/cert.pem";
     };
+    system.stateVersion = "24.11";
   };
 
-  imports = [
-    # {_module.args = {inherit inputs;};}
+  imports =
+    [
+      # {_module.args = {inherit inputs;};}
+      ./../../modules/themes/kai-dark.nix
 
-    ./../../modules/themes/kai-dark.nix
-
-    # system level imports
-    ./../../modules/system/fonts.nix
-
-    ./../../modules/system/systemd-boot.nix
-    ./../../modules/system/pipewire.nix
-    ./../../modules/system/bluetooth.nix
-    # ./../../modules/system/fingerprint.nix
-    ./../../modules/system/power-management.nix
-
-    # ./../../modules/system/steam.nix
-
-    ./syncthing.nix
-
-    ./../../modules/home
-    ./hardware-configuration.nix
-
-    ./../../modules/system/greetd.nix
-    ./../../modules/system/wayland.nix
-    # ./../../modules/system/gnome.nix
-
-    ./../../modules/system/thunar.nix
-
-    ./../../modules/optional/school-packages.nix
-  ];
-
-  config.system.stateVersion = "24.11";
+      ./hardware-configuration.nix
+      ./syncthing.nix
+    ]
+    ++ map (p: ./../../modules/system/${p}.nix) systemImports
+    ++ map (user: ./../../modules/users/${user}.nix) users;
 }

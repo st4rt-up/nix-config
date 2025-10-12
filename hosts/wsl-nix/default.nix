@@ -8,7 +8,11 @@ in {
   # set variables declared in /modules/core/config-host
   config = {
     var = {
-      inherit username hostname config-directory files-directory;
+      inherit
+        hostname
+        config-directory
+        files-directory
+        ;
 
       gui = false;
       secrets = true;
