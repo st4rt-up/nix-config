@@ -4,6 +4,10 @@ _: {
 
     userName = "Kai R";
     userEmail = "stfourrtup@gmail.com";
+
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
   };
 
   home.shellAliases = {

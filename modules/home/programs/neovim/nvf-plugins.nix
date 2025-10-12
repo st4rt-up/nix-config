@@ -12,16 +12,13 @@ _: {
     # };
 
     visuals = {
-      # nvim-scrollbar.enable = true;
       nvim-cursorline.enable = true; # underline word under cursor
       cinnamon-nvim.enable = true; # smooth scrolling
-      nvim-web-devicons.enable = true;
-
-      highlight-undo.enable = true;
       fidget-nvim.enable = true; # notifications (bottom right)
-      indent-blankline.enable = true;
 
-      # rainbow-delimiters.enable = true;
+      nvim-web-devicons.enable = true;
+      indent-blankline.enable = true;
+      highlight-undo.enable = true;
     };
 
     notify.nvim-notify.enable = true; # pop up notifications (top right)
@@ -32,17 +29,21 @@ _: {
 
     utility = {
       motion.flash-nvim.enable = true; # turbo find / jump
-      surround.enable = true;
+      surround.enable = true; # surround vim motions with brackets etc
     };
 
     ui = {
-      colorizer.enable = true;
-
+      illuminate.enable = true; # highlight every occurance of word under cursor
       borders.enable = true;
       fastaction.enable = true;
-      illuminate.enable = true;
 
-      noice.enable = true;
+      colorizer = {
+        # highlight colour codes
+        enable = true;
+        setupOpts.filetypes."*" = {};
+      };
+
+      noice.enable = true; # visual overhaul
     };
 
     statusline.lualine = {
@@ -69,13 +70,5 @@ _: {
         autoStart = true;
       };
     };
-
-    # git = {
-    # enable = true;
-    #      gitsigns = {
-    #        enable = true;
-    #        codeActions.enable = true;
-    #      };
-    # };
   };
 }
