@@ -1,7 +1,7 @@
 {hostname, ...}: let
   username = "kai";
   users = [
-    "kai-new"
+    "kai"
   ];
   systemImports = [
     "fonts"
@@ -45,7 +45,6 @@ in {
 
   imports =
     [
-      # {_module.args = {inherit inputs;};}
       ./../../modules/themes/kai-dark.nix
 
       ./hardware-configuration.nix

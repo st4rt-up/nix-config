@@ -73,25 +73,7 @@
       fsType = "vfat";
       options = ["fmask=0077" "dmask=0077"];
     };
-
-    # Example for the Windows partition (p3)
-    #    "/mnt/windows" = {
-    #      device = "/dev/disk/by-uuid/894d0ff5-a064-449c-b0ea-c96c8dee8877";
-    #      fsType = "ntfs"; # Assuming NTFS
-    #      options = ["nofail" "x-systemd.device-timeout=500ms"]; # 🟢 Crucial change
-    #    };
-    #
-    #    # Example for the RECOVERY partition (p4)
-    #    "/mnt/recovery" = {
-    #      device = "/dev/disk/by-uuid/E69632A9963279DF";
-    #      fsType = "ntfs"; # Or appropriate type
-    #      options = ["nofail" "x-systemd.device-timeout=500ms"]; # 🟢 Crucial change
-    #    };
   };
-
-  # Repeat for /dev/nvme0n1p5 and /dev/nvme0n1p2 if they are defined as mounts.
-  # If they are not mounted, this wait time is Udev's device discovery phase, which is harder to fix.
-  # Applying 'nofail' to all non-essential mounts is the best solution here.
 
   swapDevices = [
     {
