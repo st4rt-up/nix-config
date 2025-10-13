@@ -17,6 +17,7 @@
         cinnamon-nvim.enable = true; # smooth scrolling
         fidget-nvim.enable = true; # notifications (bottom right)
 
+        # should be self explanatory
         nvim-web-devicons.enable = true;
         indent-blankline.enable = true;
         highlight-undo.enable = true;
@@ -37,6 +38,8 @@
         illuminate.enable = true; # highlight every occurance of word under cursor
         borders.enable = true;
         fastaction.enable = true;
+
+        nvim-highlight-colors.enable = true;
 
         colorizer = {
           # highlight colour codes

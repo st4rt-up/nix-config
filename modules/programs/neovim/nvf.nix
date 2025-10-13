@@ -9,6 +9,7 @@
 
         syntaxHighlighting = true;
         lineNumberMode = "relNumber";
+        hideSearchHighlight = true;
         lazy.enable = true;
         telescope.enable = true;
 
@@ -21,16 +22,6 @@
           tabstop = 2;
           shiftwidth = 2;
           mouse = "";
-        };
-
-        binds.hardtime-nvim = {
-          enable = true;
-
-          setupOpts = {
-            max_count = 5;
-            restriction_mode = "hint_and_block";
-            disable_mouse = true;
-          };
         };
 
         diagnostics = {

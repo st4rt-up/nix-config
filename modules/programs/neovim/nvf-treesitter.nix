@@ -14,11 +14,14 @@
         # fold = true;
 
         grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
-          vhdl
-          rust
-          # nix
-          cpp
           c
+          cpp
+          java
+          latex
+          rust
+          markdown
+          nix
+          vhdl
         ];
       };
     };

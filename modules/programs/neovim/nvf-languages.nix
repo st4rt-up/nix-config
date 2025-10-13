@@ -2,27 +2,6 @@
   home-manager.users.${username} = {
     programs.nvf = {
       settings.vim = {
-        lsp.servers = {
-          nixd = {
-            filetypes = [
-              "nix"
-            ];
-          };
-          clangd = {
-            filetypes = [
-              "h"
-              "hpp"
-              "c"
-              "cpp"
-            ];
-            root_markers = [".git"];
-          };
-          vhdl-ls = {
-            cmd = ["vhdl_ls"];
-            filetypes = ["vhdl" "vhd"];
-          };
-        };
-
         languages = {
           enableFormat = true;
           enableTreesitter = true;
@@ -31,12 +10,12 @@
 
           nix = {
             enable = true;
+            extraDiagnostics.enable = true;
             treesitter.enable = true;
 
             lsp = {
               enable = true;
               server = "nixd";
-
               options = {
                 nixpkgs = {expr = "import <nixpkgs> { }";};
                 formatting.command = ["alejandra"];
@@ -52,28 +31,41 @@
           clang = {
             enable = true;
             cHeader = true;
-
-            lsp = {
-              enable = true;
-            };
-
-            dap = {
-              enable = true;
-            };
+            lsp.enable = true;
+            dap.enable = true;
           };
 
-          python = {
+          python.enable = true;
+          java = {
             enable = true;
+            lsp.enable = true;
+            treesitter.enable = true;
           };
 
           markdown = {
             enable = true;
-
             format.enable = true;
-
             extensions = {
               render-markdown-nvim.enable = true;
             };
+          };
+        };
+
+        lsp.servers = {
+          nixd = {filetypes = ["nix"];};
+
+          clangd = {
+            filetypes = [
+              "h"
+              "hpp"
+              "c"
+              "cpp"
+            ];
+            root_markers = [".git"];
+          };
+          vhdl-ls = {
+            cmd = ["vhdl_ls"];
+            filetypes = ["vhdl" "vhd"];
           };
         };
       };

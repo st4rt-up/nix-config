@@ -8,6 +8,7 @@
     ./nvf-plugins.nix
     ./nvf-languages.nix
     ./nvf-treesitter.nix
+    ./nvf-binds.nix
   ];
 
   home-manager.users.${username} = {
