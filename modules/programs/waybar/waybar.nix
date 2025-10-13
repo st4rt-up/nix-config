@@ -1,5 +1,9 @@
-{config, ...}: let
-  inherit (config) theme username;
+{
+  username,
+  config,
+  ...
+}: let
+  inherit (config) theme;
 in {
   home-manager.users.${username} = {
     wayland.windowManager.hyprland.settings.exec-once = [

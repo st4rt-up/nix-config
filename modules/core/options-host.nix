@@ -3,11 +3,6 @@
   # https://www.reddit.com/r/NixOS/comments/1jkco6c/configurationwide_variables_in_nixos/
 
   options = {
-    username = lib.mkOption {
-      type = lib.types.str;
-      default = "nixos";
-    };
-
     var = {
       hostname = lib.mkOption {
         type = lib.types.str;

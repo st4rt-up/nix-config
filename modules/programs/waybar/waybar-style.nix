@@ -1,5 +1,9 @@
-{config, ...}: let
-  inherit (config) theme username;
+{
+  username,
+  config,
+  ...
+}: let
+  inherit (config) theme;
 in let
   # accent = theme.colour.base0D;
   # background = theme.colour.base00;

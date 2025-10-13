@@ -5,57 +5,32 @@
     alejandra # nix formatting
     nixd
     comma
+    clang
+    home-manager
 
     # general utility
     fzf # fuzzy find
-    git
+    git # you know what this is
+    wget # files over https
 
     ripgrep # rust grep
+    fd # rust find
 
+    yazi # tui file browser
+
+    # info and profiling
     xorg.xrandr # display info
-    wget # files over https
     htop # task manager
 
-    networkmanagerapplet
-
-    alsa-utils # audio tools
+    # terminal img view
+    timg
 
     ## drive tools
     # smartmontools
     # e2fsprogs
 
-    rquickshare
-
-    # file management
-    yazi # file browser
-
-    # terminal img view
-    timg
-
-    # definitely extras
-    # wiki-tui # wikipedia
-    # ncspot # spotify
-
     # libgpod # ipod tools
     # clementine
     # rhythmbox
-
-    fastfetch
-
-    yt-dlp
-    ffmpeg
-
-    # cli rice
-    # tty-clock
-    # figlet
-    # cava
-
-    # for secrets management
-    age
-    ssh-to-age
-    mkpasswd
-
-    # nix
-    home-manager
   ];
 }
