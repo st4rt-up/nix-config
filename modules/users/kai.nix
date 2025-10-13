@@ -1,62 +1,86 @@
-# user files are home level
-{
-  lib,
-  var,
-  ...
-}: {
+{inputs, ...}: let
+  username = "kai";
+
+  programs = [
+    "bash" # terminal
+    "shell-aliases"
+    "neovim" # editor
+    "tmux" # juiced terminal
+    "direnv" # venv for directories
+
+    "zoxide" # cd replacment
+    "eza" # ls replacement
+    "atuin" # command history (ctrl + r)
+
+    "git" # version control
+    "extras-cli" # misc extras
+  ];
+
+  guiPrograms = [
+    "nixcord" # declarative vencord
+    "zen-browser" # firefox fork
+
+    "obsidian" # markdown note taking
+    "okular" # pdf reader
+
+    "kitty" # terminal emulator
+  ];
+
+  schoolPrograms = [
+    "school-packages"
+    "pdf-utilities"
+  ];
+
+  hyprDE = [
+    "wayland"
+    "wayland-utils" # grim + hyprland binds ()
+    "swayosd" # brightness and volume for wayland
+
+    "wofi" # application launcher
+    "mako" # notification daemon
+
+    "hyprland" # compositor / window server
+    "waybar" # bar
+  ];
+
+  secrets = [
+    "users/kai"
+  ];
+in {
+  # took this pattern, makes it easier to put non-home or system programs in one place
+  # https://github.com/minusfive/dot/blob/main/nix/users/minusfive/aarch64-darwin.nix
   imports =
-    [
-      # ./../../themes/kai-dark.nix
-      # ./../options-home.nix
-
-      ./../programs/neovim
-
-      ./../programs/shell/bash.nix
-      ./../programs/shell/shell-aliases.nix
-
-      ./../programs/shell/tmux.nix
-      ./../programs/shell/atuin.nix # command history
-      ./../programs/shell/zoxide.nix # cd replacment
-      ./../programs/shell/eza.nix # ls replacement
-      ./../programs/shell/direnv.nix
-
-      ./../programs/git.nix
-    ]
-    ++ lib.optionals
-    var.gui
-    [
-      ./../programs/nixcord.nix
-      ./../programs/obsidian.nix
-      ./../programs/vscode.nix
-      ./../programs/signal.nix
-
-      ./../programs/zen-browser.nix
-      ./../programs/okular.nix
-
-      ./../programs/hypr
-      ./../programs/kitty.nix
-      ./../programs/mako.nix
-      ./../programs/rofi.nix
-      ./../programs/wofi.nix
-      ./../programs/swayosd.nix
-      ./../programs/wayland-utils.nix
-
-      ./../programs/godot.nix
-
-      ./../programs/gtk.nix
-    ]
-    ++ lib.optionals
-    var.secrets
-    [
-      ./../../secrets/users/kai.nix
+    map (program: ../programs/${program}) programs
+    ++ map (program: ../programs/${program}) guiPrograms
+    ++ map (program: ../programs/${program}) schoolPrograms
+    ++ map (program: ../programs/${program}) hyprDE
+    ++ map (secret: ../secrets/${secret}.nix) secrets
+    ++ [
+      {_module.args = {inherit username;};}
+      inputs.home-manager.nixosModules.home-manager
     ];
 
-  home = {
-    inherit (var) username;
+  config = {
+    # inherit username;
+    users.users.${username} = {
+      name = username;
+      description = username;
 
-    stateVersion = "24.11";
+      isNormalUser = true;
+      useDefaultShell = true;
+      extraGroups = ["wheel" "networkmanager"];
+    };
+
+    home-manager = {
+      users.${username} = {
+        home.username = username;
+        home.stateVersion = "24.11";
+        programs.home-manager.enable = true;
+      };
+
+      useUserPackages = true;
+      useGlobalPkgs = true;
+      backupFileExtension = "hmbackup";
+    };
   };
-
-  # nixpkgs.config.allowUnfree = true;
-  programs.home-manager.enable = true;
 }
