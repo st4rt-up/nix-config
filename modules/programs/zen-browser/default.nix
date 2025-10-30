@@ -5,8 +5,9 @@
 }: {
   home-manager.users.${username} = {
     imports = [
-      inputs.zen-browser.homeModules.twilight-official
+      inputs.zen-browser.homeModules.beta
     ];
+
     stylix.targets.zen-browser = {
       enable = true;
       profileNames = ["default"];

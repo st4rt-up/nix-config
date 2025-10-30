@@ -2,6 +2,7 @@
   environment.systemPackages = with pkgs; [
     # ==== video + image processing
     yt-dlp
+    imagemagick
     ffmpeg
 
     # ==== cli rice
