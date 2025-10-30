@@ -29,10 +29,10 @@
         harpoon.enable = true; # turbo marks
       };
 
-      utility = {
-        motion.flash-nvim.enable = true; # turbo find / jump
-        surround.enable = true; # surround vim motions with brackets etc
-      };
+      # utility = {
+      # motion.flash-nvim.enable = true; # turbo find / jump
+      # surround.enable = true; # surround vim motions with brackets etc
+      # };
 
       ui = {
         illuminate.enable = true; # highlight every occurance of word under cursor
@@ -44,7 +44,6 @@
         colorizer = {
           # highlight colour codes
           enable = true;
-          setupOpts.filetypes."*" = {};
         };
 
         noice.enable = true; # visual overhaul

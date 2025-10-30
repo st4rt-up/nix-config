@@ -3,12 +3,13 @@
   pkgs,
   ...
 }: {
-  environment.systemPackages = [pkgs.tmux];
+  environment.systemPackages = with pkgs; [
+    zsh
+  ];
 
   home-manager.users.${username} = {
-    programs.tmux = {
+    programs.zsh = {
       enable = true;
-      clock24 = true;
     };
   };
 }

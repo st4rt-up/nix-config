@@ -8,5 +8,7 @@
         "--disable-up-arrow"
       ];
     };
+
+    programs.bash.enable = true;
   };
 }

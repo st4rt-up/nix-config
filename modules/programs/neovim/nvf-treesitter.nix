@@ -11,17 +11,25 @@
         highlight.enable = true;
 
         textobjects.enable = true;
-        # fold = true;
+        fold = true;
 
         grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+          nix
+
           c
           cpp
           java
-          latex
           rust
-          markdown
-          nix
           vhdl
+
+          markdown
+          latex
+
+          mermaid # flowchart markup lang
+        ];
+
+        indent.disable = [
+          "vhdl"
         ];
       };
     };

@@ -36,7 +36,7 @@
 
           lightbulb.enable = true;
           lspSignature.enable = true;
-          # trouble.enable = true;
+          trouble.enable = true;
         };
       };
     };
