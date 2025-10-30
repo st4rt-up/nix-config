@@ -1,19 +1,9 @@
-{hostname, ...}: let
-  username = "kai";
-in let
-  files-directory = "/home/${username}/files";
-  config-directory = "/home/${username}/files/dev-nix/nix-config";
-  #  syncthing-key-path = "/run/${username}/syncthing-laptop";
-in {
-  # set variables declared in /modules/core/config-host
+# ==== WSL-NIX HOST FILE
+{hostname, ...}: {
   config = {
     var = {
-      inherit
-        hostname
-        config-directory
-        files-directory
-        ;
-
+      # set variables declared in /modules/core/config-host
+      inherit hostname;
       gui = false;
       secrets = true;
 

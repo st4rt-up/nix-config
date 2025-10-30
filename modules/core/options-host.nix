@@ -46,24 +46,6 @@
         type = lib.types.bool;
         default = false;
       };
-
-      terminal = lib.mkOption {
-        type = lib.types.str;
-        default = "kitty";
-      };
-
-      # for use with wallpaper daemon
-      # relative path
-
-      wallpaper = lib.mkOption {
-        type = lib.types.str;
-        default = null;
-      };
-
-      var = lib.mkOption {
-        type = lib.types.attrs;
-        default = {};
-      };
     };
   };
 }

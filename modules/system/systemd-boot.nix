@@ -6,7 +6,7 @@
     };
   };
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.pkgs.linuxPackages_6_12;
     loader = {
       systemd-boot = {
         enable = true;

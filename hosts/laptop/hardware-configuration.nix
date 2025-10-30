@@ -24,11 +24,14 @@
       "nvidia"
       "nvidia_uvm"
       "nvidia_modeset"
+      "snd_hda_intel"
     ];
     extraModulePackages = [];
 
     kernelParams = [
       "8250.nr_uarts=0"
+      "snd_hda_intel.model=alc294-default"
+      "snd_hda_intel.power_save=0"
     ];
   };
 

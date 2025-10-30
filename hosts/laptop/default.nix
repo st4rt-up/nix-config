@@ -1,5 +1,4 @@
 {hostname, ...}: let
-  username = "kai";
   users = [
     "kai"
   ];
@@ -11,35 +10,24 @@
     "power-management"
     "greetd"
   ];
-in let
-  files-directory = "/home/${username}/files";
-  config-directory = "/home/${username}/files/dev-nix/nix-config";
-  syncthing-key-path = "/run/${username}/syncthing-laptop";
+
+  syncthing-key-path = "/run/syncthing-laptop";
 in {
   # set variables declared in /modules/core/config-host
   config = {
     var = {
-      inherit hostname config-directory files-directory;
-
-      terminal = "kitty";
+      inherit hostname;
       gui = true;
-
       secrets = true;
-
       timezone = "America/Toronto";
-
-      wallpaper = "${config-directory}/wallpaper/cherry-blossom.jpg";
     };
 
-    services.syncthing = {
-      key = "${syncthing-key-path}/key.pem";
-      cert = "${syncthing-key-path}/cert.pem";
-    };
+    # ==== SYNCTHING
+    services.syncthing.key = "${syncthing-key-path}/key.pem";
+    services.syncthing.cert = "${syncthing-key-path}/cert.pem";
+    sops.secrets."secrets/syncthing/laptop/key".path = "${syncthing-key-path}/key.pem";
+    sops.secrets."secrets/syncthing/laptop/cert".path = "${syncthing-key-path}/cert.pem";
 
-    sops.secrets = {
-      "secrets/syncthing/laptop/key".path = "${syncthing-key-path}/key.pem";
-      "secrets/syncthing/laptop/cert".path = "${syncthing-key-path}/cert.pem";
-    };
     system.stateVersion = "24.11";
   };
 

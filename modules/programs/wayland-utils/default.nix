@@ -15,6 +15,7 @@
       "CTRL, Print, exec, grimshot --notify savecopy area"
     ];
 
+    services.cliphist.enable = true;
     home.shellAliases = {
       "c" = "wl-copy";
       "v" = "wl-paste";

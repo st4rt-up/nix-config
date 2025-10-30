@@ -13,7 +13,9 @@
     "atuin" # command history (ctrl + r)
 
     "git" # version control
+    "jj"
     "extras-cli" # misc extras
+    "usb"
   ];
 
   guiPrograms = [
@@ -30,7 +32,14 @@
     "school-packages"
     "pdf-utilities"
   ];
+  niriDE = [
+    "niri"
 
+    "wofi"
+    "mako"
+
+    "waybar"
+  ];
   hyprDE = [
     "wayland"
     "wayland-utils" # grim + hyprland binds ()
@@ -54,9 +63,10 @@ in {
     ++ map (program: ../programs/${program}) guiPrograms
     ++ map (program: ../programs/${program}) schoolPrograms
     ++ map (program: ../programs/${program}) hyprDE
+    ++ map (program: ../programs/${program}) niriDE
     ++ map (secret: ../secrets/${secret}.nix) secrets
     ++ [
-      {_module.args = {inherit username;};}
+      {_module.args = {inherit username;};} # messy but it lets me do user specific config
       inputs.home-manager.nixosModules.home-manager
     ];
 
@@ -68,7 +78,13 @@ in {
 
       isNormalUser = true;
       useDefaultShell = true;
-      extraGroups = ["wheel" "networkmanager"];
+      extraGroups = ["wheel" "networkmanager" "audio"];
+    };
+
+    # options defined by me
+    var = {
+      files-directory = "/home/${username}/files";
+      config-directory = "/home/${username}/files/dev-nix/nix-config";
     };
 
     home-manager = {

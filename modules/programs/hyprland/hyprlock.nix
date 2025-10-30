@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (config.var) wallpaper; # TODO wallpaper shouldn't be in var
+  wallpaper = config.home-manager.users.${username}.home.homeDirectory + "/wallpaper/cherry-blossom.jpg";
 in {
   environment.systemPackages = with pkgs; [hyprlock];
   security.pam.services.hyprlock = {};

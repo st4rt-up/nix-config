@@ -3,7 +3,7 @@
   environment.systemPackages = with pkgs; [
     stm32cubemx
 
-    # libreoffice
+    libreoffice
     # quartus-prime-lite
     # too big for compter
 

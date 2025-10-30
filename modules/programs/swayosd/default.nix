@@ -14,7 +14,7 @@
 
     services.swayosd.enable = true;
 
-    wayland.windowManager.hyprland.settings.bind = [
+    wayland.windowManager.hyprland.settings.binde = [
       ", $raiseVolume, exec, swayosd-client --output-volume raise"
       ", $lowerVolume, exec, swayosd-client --output-volume lower"
 

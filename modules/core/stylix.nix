@@ -1,4 +1,8 @@
-{config, ...}: let
+{
+  config,
+  username,
+  ...
+}: let
   theme = config.theme;
 in {
   stylix = {

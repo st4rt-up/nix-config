@@ -44,7 +44,7 @@ in {
       '';
 
       settings = {
-        "$terminal" = var.terminal;
+        "$terminal" = "kitty";
         "$hyprcursor_theme" = "${theme.cursor.hyprcursor.name}";
 
         # autostart

@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (config.var) wallpaper;
+  wallpaper = config.home-manager.users.${username}.home.homeDirectory + "/wallpaper/cherry-blossom.jpg";
 in {
   home-manager.users.${username} = {
     home.packages = with pkgs; [hyprpaper];
