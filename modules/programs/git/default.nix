@@ -1,10 +1,14 @@
-{username, ...}: {
+{
+  username,
+  inputs,
+  ...
+}: {
   home-manager.users.${username} = {
     programs.git = {
       enable = true;
 
-      userName = "Kai R"; # replace with soft secret in flake
-      userEmail = "stfourrtup@gmail.com"; # replace with soft secret in flake
+      userName = inputs.nix-secrets.git.personal.name;
+      userEmail = inputs.nix-secrets.git.personal.email;
 
       extraConfig = {
         init.defaultBranch = "main";

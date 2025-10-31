@@ -4,29 +4,30 @@
   pkgs,
   ...
 }: let
-  background = config.stylix.base16Scheme.base00;
-  foreground = config.stylix.base16Scheme.base0B;
-  border = config.stylix.base16Scheme.base02;
-
-  inherit (config.lib.formats.rasi) mkLiteral;
+  inherit (config) theme;
+  background = theme.colour.base00;
+  foreground = theme.colour.base0B;
+  border = theme.colour.base02;
+  # inherit (config.lib.formats.rasi) mkLiteral;
 in {
+  environment.systemPackages = with pkgs; [rofi];
   home-manager.users.${username} = {
-    home.packages = with pkgs; [
-      rofi
+    stylix.targets.rofi.enable = false;
+    wayland.windowManager.hyprland.settings.bind = [
+      "$mainMod, space, exec, pkill wofi || wofi --show drun --sort-order=alphabetical "
     ];
 
-    stylix.targets.rofi.enable = false;
     programs.rofi = {
       enable = true;
-      package = pkgs.rofi;
+      ## package = pkgs.rofi;
+      terminal = pkgs.bash;
 
       location = "center";
-
       theme = {
         "*" = {
-          background-color = mkLiteral background;
-          foreground-color = mkLiteral foreground;
-          border-color = mkLiteral border;
+          background-color = "#${background}";
+          foreground-color = "#${foreground}";
+          border-color = "#${border}";
         };
       };
     };

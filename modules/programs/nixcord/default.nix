@@ -1,6 +1,7 @@
 {
   username,
   inputs,
+  pkgs,
   ...
 }: {
   home-manager.users.${username} = {
@@ -13,18 +14,19 @@
       vesktop.enable = true;
     };
 
-    # custom desktop shortcut to fix blurry wayland issues
-    xdg.desktopEntries.discord = {
-      name = "Discord";
-      exec = "discord --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto";
-      terminal = false;
-      categories = ["Chat"];
-      # mimeType = [];
-    };
-
     programs.nixcord = {
       enable = true;
 
+      discord = {
+        enable = true;
+        package = pkgs.discord.override {
+          commandLineArgs = [
+            "--enable-features=WaylandWindowDecorations"
+            "--ozone-platform-hint=auto"
+            "--wayland-text-input-version=3"
+          ];
+        };
+      };
       config = {
         # transparent = true;
         frameless = true;

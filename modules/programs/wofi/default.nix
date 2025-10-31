@@ -11,9 +11,9 @@
 in {
   home-manager.users.${username} = {
     stylix.targets.wofi.enable = false;
-    wayland.windowManager.hyprland.settings.bind = [
-      "$mainMod, space, exec, pkill wofi || wofi --show drun --sort-order=alphabetical "
-    ];
+    # wayland.windowManager.hyprland.settings.bind = [
+    #  "$mainMod, space, exec, pkill wofi || wofi --show drun --sort-order=alphabetical "
+    # ];
 
     home.packages = with pkgs; [wofi];
 

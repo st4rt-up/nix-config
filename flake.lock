@@ -677,10 +677,10 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1758774262,
-        "narHash": "sha256-9/1Lc7ZnSr79pE2GjJcZcFB1HJ2NVJF3h2CTUTVPu3c=",
+        "lastModified": 1761863733,
+        "narHash": "sha256-QSWwXrD9cTxikmt3DjtJ2sK8maWxE0FlVEbw6/NPIas=",
         "ref": "main",
-        "rev": "81636e220a010399105cbcf6a4cccd0904ab73fd",
+        "rev": "2a1ec570887fdea9c88777227ff981d541dabc64",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/st4rt-up/nix-secrets.git"
@@ -701,11 +701,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760689525,
-        "narHash": "sha256-Dl0jvgL5NjgCGkQ8PCLmGIisWcbFhGWPqKRyIGJ9uus=",
+        "lastModified": 1761841470,
+        "narHash": "sha256-mNDX9bn0X8Lx/ZWgdmplvhaLHne6tSXTqy72go5ixnQ=",
         "owner": "kaylorben",
         "repo": "nixcord",
-        "rev": "81d2f10a849c4312fefa0cf323dce0a1460dcbbe",
+        "rev": "30341a4bd5e8a1647218e952a26527851922eb47",
         "type": "github"
       },
       "original": {
@@ -736,11 +736,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1760580664,
-        "narHash": "sha256-/YdfibIrnqXAL8p5kqCU345mzpHoOtuVIkMiI2pF4Dc=",
+        "lastModified": 1761597516,
+        "narHash": "sha256-wxX7u6D2rpkJLWkZ2E932SIvDJW8+ON/0Yy8+a5vsDU=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "98ff3f9af2684f6136c24beef08f5e2033fc5389",
+        "rev": "daf6dc47aa4b44791372d6139ab7b25269184d55",
         "type": "github"
       },
       "original": {

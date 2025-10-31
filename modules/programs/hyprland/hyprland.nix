@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: let
-  inherit (config) var theme;
+  inherit (config) theme;
   hyprlandPackage = inputs.hyprland.packages.${pkgs.system}.hyprland;
   hyprlandPortalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
 in {
@@ -19,7 +19,6 @@ in {
     ];
 
   programs.hyprland.enable = true;
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   home-manager.users.${username} = {
     systemd.user.targets.hyprland-session.Unit.Wants = ["xdg-desktop-autostart.target"];
@@ -88,7 +87,7 @@ in {
         };
 
         decoration = {
-          rounding = theme.rounding;
+          inherit (theme) rounding;
           active_opacity = theme.active-opacity;
           inactive_opacity = theme.inactive-opacity;
 
