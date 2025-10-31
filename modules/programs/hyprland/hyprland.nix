@@ -19,7 +19,6 @@ in {
     ];
 
   programs.hyprland.enable = true;
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   home-manager.users.${username} = {
     systemd.user.targets.hyprland-session.Unit.Wants = ["xdg-desktop-autostart.target"];

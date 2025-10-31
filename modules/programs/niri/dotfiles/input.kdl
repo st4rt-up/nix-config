@@ -1,0 +1,21 @@
+input {
+  mod-key "Super"
+  focus-follows-mouse max-scroll-amount="10%"
+
+  keyboard {
+    xkb {
+      layout "us"
+      options "compose:ralt,ctrL:nocaps"
+    }
+  }
+
+  touchpad {
+    tap
+    natural-scroll
+    accel-profile "flat"
+  }
+
+  mouse {
+
+  }
+}

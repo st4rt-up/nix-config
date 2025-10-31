@@ -30,6 +30,11 @@
       };
 
       # === HELPER
+      
+      flake-path = lib.mkOption {
+        type = lib.types.str;
+        default = "~/files/dev-nix/nix-config";
+      };
 
       config-directory = lib.mkOption {
         type = lib.types.str;

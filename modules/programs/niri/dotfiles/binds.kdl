@@ -1,0 +1,17 @@
+binds {
+  Mod+Shift+R repeat=false cooldown-ms=500 { spawn "kitty"; }
+
+  Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+  Mod+WheelScrollUp   cooldown-ms=150 { focus-workspace-up; }
+  Mod+WheelScrollRight                { focus-column-right; }
+  Mod+WheelScrollLeft                 { focus-column-left; }
+
+  // Mod+TouchpadScrollDown {}
+  // Mod+TouchpadScrollUp {}
+
+  Mod+MouseMiddle { close-window; } 
+  Mod+Q { close-window; }
+
+  Mod+Escape { toggle-keyboard-shortcuts-inhibit; }
+  Mod+Shift+Q { quit; };
+}

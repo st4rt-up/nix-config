@@ -1,0 +1,17 @@
+// laptop
+output "eDP-1" {
+  mode "2880x1800@90"
+  scale 1.0
+
+  focus-at-startup 
+
+  // hot-corners {}
+
+  background-color "#272727"
+  backdrop-color "#001100"
+}
+
+// switch-events {
+  // lid-close {}
+  // lid-open {}
+// }
