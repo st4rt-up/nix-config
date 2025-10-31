@@ -1,6 +1,5 @@
 {
   nixpkgs,
-  sops-nix,
   self,
   nixos-wsl,
   ...
@@ -29,19 +28,12 @@
 in {
   laptop = mkHost {
     hostname = "laptop";
-    modules = [
-      inputs.stylix.nixosModules.stylix
-      sops-nix.nixosModules.sops
-    ];
   };
 
   wsl-nix = mkHost {
     hostname = "wsl-nix";
     modules = [
       nixos-wsl.nixosModules.default
-
-      inputs.stylix.nixosModules.stylix
-      sops-nix.nixosModules.sops
     ];
   };
 }

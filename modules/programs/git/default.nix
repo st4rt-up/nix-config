@@ -6,15 +6,52 @@
       userName = "Kai R"; # replace with soft secret in flake
       userEmail = "stfourrtup@gmail.com"; # replace with soft secret in flake
 
+      diff-so-fancy = {
+        enable = true;
+        markEmptyLines = false;
+        pagerOpts = ["--patch"];
+      };
+
       extraConfig = {
-        init.defaultBranch = "main";
+        #thanks "Configure Your Git" - codingjerk
+        # https://www.youtube.com/watch?v=G3NJzFX6XhY
+        core = {
+          compression = "9";
+          whitespace = "error";
+        };
+
+        advice = {
+          pushNonFastForward = false;
+          # statusHints = false;
+        };
+
+        status = {
+          branch = true;
+          showStash = true;
+          showUntrackedFiles = "all";
+        };
+
+        diff = {
+          context = 3;
+          renames = "copies";
+          interHunkContext = 10;
+        };
+
+        interactive = {
+          singlekey = true;
+        };
+
+        init = {
+          defaultBranch = "main";
+        };
       };
     };
 
     home.shellAliases = {
-      "ga" = "git add";
-      "gc" = "git commit -m";
-      "gs" = "git status";
+      "ga" = "git add --patch";
+      "gc" = "git commit";
+      "gcm" = "git commit -m";
+      "gs" = "git status;git log --oneline -4";
     };
 
     # add ssh identities, assuming they're here from sops-nix

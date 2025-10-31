@@ -3,6 +3,10 @@
   username,
   ...
 }: {
+  environment.sessionVariables = {
+    MOZ_USE_XINPUT2 = "1";
+  };
+
   home-manager.users.${username} = {
     imports = [
       inputs.zen-browser.homeModules.beta
@@ -21,23 +25,43 @@
           id = 0;
           name = "default";
           isDefault = true;
+
+          search = {
+            force = true;
+            default = "ddg";
+            privateDefault = "ddg";
+          };
         };
       };
 
       policies = {
-        DisableAppUpdate = true;
-        DisableTelemetry = true;
-        DontCheckDefaultBrowser = true;
+        # categories from nix wiki:
+        # https://wiki.nixos.org/wiki/Firefox
 
-        NoDefaultBookmarks = true;
+        # == updates and background services
+        AppAutoUpdate = false;
+        BackgroundAppUpdate = false;
+        DisableAppUpdate = true;
+
+        # == feature disabling
+        DisableFirefoxStudies = true;
+        DisablePocket = true;
+        DisableFirefoxAccounts = true;
+        DisableFirefoxScreenshots = true;
+        DisableForgetButton = true;
+        DisableMasterPasswordCreation = true;
+        DisableProfileImport = true;
+        DisableProfileRefresh = true;
+        DisableTelemetry = true;
 
         OfferToSaveLogins = false;
         AutofillAddressEnabled = false;
         AutofillCreditCardEnabled = false;
 
+        # qol and annoyances
+        DontCheckDefaultBrowser = true;
+        NoDefaultBookmarks = true;
         DisableFeedbackCommands = true;
-        DisableFirefoxStudies = true;
-        DisablePocket = true;
 
         EnableTrackingProtection = {
           Value = true;
@@ -46,7 +70,12 @@
           Fingerprinting = true;
         };
 
-        ExtensionSettings = with builtins; let
+        ExtensionSettings = let
+          # To add additional extensions, find it on addons.mozilla.org, find
+          # the short ID in the url (like https=//addons.mozilla.org/en-US/firefox/addon/!SHORT_ID!/)
+          # Then, download the XPI by filling it in to the install_url template, unzip it,
+          # run `jq .browser_specific_settings.gecko.id manifest.json` or
+          # `jq .applications.gecko.id manifest.json` to get the UUID
           extension = shortId: uuid: {
             name = uuid;
             value = {
@@ -55,7 +84,7 @@
             };
           };
         in
-          listToAttrs [
+          builtins.listToAttrs [
             (extension "ublock-origin" "uBlock0@raymondhill.net")
             (extension "bitwarden-password-manager" "{446900e4-71c2-419f-a6a7-df9c091e268b}")
             (extension "bonjourr-startpage" "{4f391a9e-8717-4ba6-a5b1-488a34931fcb}")
@@ -71,12 +100,6 @@
             (extension "dearrow" "deArrow@ajay.app")
             # (extension "2fas-two-factor-authentication" "admin@2fas.com")
           ];
-
-        # To add additional extensions, find it on addons.mozilla.org, find
-        # the short ID in the url (like https=//addons.mozilla.org/en-US/firefox/addon/!SHORT_ID!/)
-        # Then, download the XPI by filling it in to the install_url template, unzip it,
-        # run `jq .browser_specific_settings.gecko.id manifest.json` or
-        # `jq .applications.gecko.id manifest.json` to get the UUID
       };
     };
   };

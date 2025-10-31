@@ -7,6 +7,12 @@
       flags = [
         "--disable-up-arrow"
       ];
+
+      settings = {
+        auto_sync = "5m";
+        sync_address = "https://api.atuin.sh";
+        search_mode = "fuzzy";
+      };
     };
 
     programs.bash.enable = true;

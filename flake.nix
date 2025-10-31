@@ -8,7 +8,7 @@
   };
 
   inputs = {
-    # Nix official
+    # ==== Nix
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-24.11"; # update manually
@@ -17,6 +17,18 @@
     home-manager = {
       url = "github:nix-community/home-manager";
       # url = "github:0x006E/home-manager"; # fork
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
+    # index for comma
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
+    # nix options searcher
+    optnix = {
+      url = "github:water-sucks/optnix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -35,11 +47,6 @@
     nix-secrets = {
       url = "git+ssh://git@github.com/st4rt-up/nix-secrets.git?ref=main&shallow=1";
       inputs = {};
-    };
-
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # ==== theming / gui ====

@@ -5,7 +5,9 @@
 }: let
   inherit (inputs) nix-index-database;
 in {
-  imports = [nix-index-database.nixosModules.nix-index];
+  imports = [
+    nix-index-database.nixosModules.nix-index
+  ];
 
   nix = {
     settings = {
@@ -26,7 +28,7 @@ in {
       enable = true;
       clean.enable = true;
       clean.extraArgs = "--keep-since 4d --keep 3";
-      flake = config.var.config-directory;
+      flake = config.var.flake-path;
     };
 
     nix-index-database.comma.enable = true;

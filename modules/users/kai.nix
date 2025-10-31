@@ -10,6 +10,8 @@
 
     "zoxide" # cd replacment
     "eza" # ls replacement
+    "fzf" # fuzzy find
+    "yazi" # cli file manager
     "atuin" # command history (ctrl + r)
 
     "git" # version control
@@ -59,11 +61,13 @@ in {
   # took this pattern, makes it easier to put non-home or system programs in one place
   # https://github.com/minusfive/dot/blob/main/nix/users/minusfive/aarch64-darwin.nix
   imports =
-    map (program: ../programs/${program}) programs
-    ++ map (program: ../programs/${program}) guiPrograms
-    ++ map (program: ../programs/${program}) schoolPrograms
-    ++ map (program: ../programs/${program}) hyprDE
-    ++ map (program: ../programs/${program}) niriDE
+    builtins.concatMap (map (program: ../programs/${program})) [
+      programs
+      guiPrograms
+      schoolPrograms
+      hyprDE
+      niriDE
+    ]
     ++ map (secret: ../secrets/${secret}.nix) secrets
     ++ [
       {_module.args = {inherit username;};} # messy but it lets me do user specific config
@@ -78,7 +82,11 @@ in {
 
       isNormalUser = true;
       useDefaultShell = true;
-      extraGroups = ["wheel" "networkmanager" "audio"];
+      extraGroups = [
+        "wheel"
+        "networkmanager"
+        "audio"
+      ];
     };
 
     # options defined by me

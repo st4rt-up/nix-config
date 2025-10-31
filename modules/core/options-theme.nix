@@ -1,18 +1,13 @@
 {
+  inputs,
   lib,
-  config,
   pkgs,
   ...
 }: let
-  inherit
-    (lib)
-    mkEnableOption
-    mkOption
-    mkDefault
-    mkIf
-    types
-    ;
-in let
+  inherit (lib) mkOption types;
+  inherit (inputs) stylix;
+
+  # basic colours
   red = "dd3d43";
   orange = "ed9e45";
   yellow = "eacd45";
@@ -32,6 +27,9 @@ in let
   dark-gray = "2d2d2d";
   basically-black = "0e0e0e";
 in {
+  imports = [
+    stylix.nixosModules.stylix
+  ];
   options.theme = {
     colour = {
       primary = mkOption {
