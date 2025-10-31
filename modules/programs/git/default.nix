@@ -9,7 +9,7 @@
       diff-so-fancy = {
         enable = true;
         markEmptyLines = false;
-        pagerOpts = ["--patch"];
+        # pagerOpts = ["--patch"];
       };
 
       extraConfig = {
