@@ -19,13 +19,13 @@
       # url = "github:0x006E/home-manager"; # fork
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     # index for comma
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     # nix options searcher
     optnix = {
       url = "github:water-sucks/optnix";
@@ -52,6 +52,11 @@
     # ==== theming / gui ====
     hyprland = {
       url = "github:hyprwm/Hyprland?submodules=1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

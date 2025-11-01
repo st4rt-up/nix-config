@@ -1,4 +1,9 @@
-{hostname, ...}: let
+{
+  hostname,
+  lib,
+  ...
+}: let
+  # inherit (lib) mkForce;
   users = [
     "kai"
   ];
@@ -20,6 +25,7 @@ in {
       gui = true;
       secrets = true;
       timezone = "America/Toronto";
+      flake-path = "/home/kai/files/dev-nix/nix-config";
     };
 
     # ==== SYNCTHING

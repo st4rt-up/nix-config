@@ -1,54 +1,55 @@
-{lib, ...}: {
+{lib, ...}: let
+  inherit (lib) mkOption types;
+in {
   # thanks
   # https://www.reddit.com/r/NixOS/comments/1jkco6c/configurationwide_variables_in_nixos/
 
   options = {
     var = {
-      hostname = lib.mkOption {
-        type = lib.types.str;
+      hostname = mkOption {
+        type = types.str;
         default = "nixos";
       };
 
-      locale = lib.mkOption {
-        type = lib.types.str;
+      locale = mkOption {
+        type = types.str;
         default = "en_US.UTF-8";
       };
 
-      timezone = lib.mkOption {
-        type = lib.types.str;
+      timezone = mkOption {
+        type = types.str;
         default = "America/Toronto";
       };
 
-      shell = lib.mkOption {
-        type = lib.types.str;
+      shell = mkOption {
+        type = types.str;
         default = "bash";
       };
 
-      secrets = lib.mkOption {
-        type = lib.types.bool;
+      secrets = mkOption {
+        type = types.bool;
         default = false;
       };
 
       # === HELPER
-      
-      flake-path = lib.mkOption {
-        type = lib.types.str;
-        default = "~/files/dev-nix/nix-config";
+
+      flake-path = mkOption {
+        type = types.str;
       };
 
-      config-directory = lib.mkOption {
-        type = lib.types.str;
+      config-directory = mkOption {
+        type = types.str;
         default = "~/nix-config";
       };
 
-      files-directory = lib.mkOption {
-        type = lib.types.str;
+      files-directory = mkOption {
+        type = types.str;
         default = "~/files";
       };
       # === GUI SPECFIC
 
-      gui = lib.mkOption {
-        type = lib.types.bool;
+      gui = mkOption {
+        type = types.bool;
         default = false;
       };
     };

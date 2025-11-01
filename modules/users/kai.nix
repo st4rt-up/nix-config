@@ -57,11 +57,18 @@
   secrets = [
     "users/kai"
   ];
+
+  inherit (builtins) concatMap;
 in {
   # took this pattern, makes it easier to put non-home or system programs in one place
   # https://github.com/minusfive/dot/blob/main/nix/users/minusfive/aarch64-darwin.nix
+
+  #`` instead of importing with relative paths, I make the relative paths with a list and map
+  # the seperated lists just let me visually group packages together and I can turn off whole
+  # groups at once during testing
+
   imports =
-    builtins.concatMap (map (program: ../programs/${program})) [
+    concatMap (map (program: ../programs/${program})) [
       programs
       guiPrograms
       schoolPrograms
