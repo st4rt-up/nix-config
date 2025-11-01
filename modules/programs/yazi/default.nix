@@ -12,9 +12,9 @@ in {
 
   home-manager.users.${username} = {
     home.file = {
-      # ".config/yazi.toml".source = outOfStore programPath + "yazi.toml";
-      ".config/keymap.toml".source = outOfStore configPath + "keymap.toml";
-      # ".config/theme.toml".source = outOfStore programPath + "theme.toml";
+      # ".config/yazi/yazi.toml".source = outOfStore configPath + "yazi.toml";
+      ".config/yazi/keymap.toml".source = outOfStore configPath + "keymap.toml";
+      # ".config/yazi.theme.toml".source = outOfStore configPath + "theme.toml";
     };
   };
 }

@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  wallpaper = config.home-manager.users.${username}.home.homeDirectory + "/wallpaper/cherry-blossom.jpg";
+  wallpaper = config.var.flake-path + "/wallpaper/cherry-blossom.jpg";
 in {
   environment.systemPackages = with pkgs; [hyprlock];
   security.pam.services.hyprlock = {};
