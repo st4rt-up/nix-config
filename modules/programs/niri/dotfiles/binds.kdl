@@ -1,5 +1,5 @@
 binds {
-  Mod+Shift+R repeat=false cooldown-ms=500 { spawn "kitty"; }
+  Mod+Shift+R hotkey-overlay-title="Launch terminal: kitty" repeat=false cooldown-ms=500 { spawn "kitty"; }
   // Mod+Space { spawn "wofi"; }
 
   // Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
@@ -17,6 +17,8 @@ binds {
 
   Mod+WheelScrollRight   { focus-column-right; }
   Mod+WheelScrollLeft    { focus-column-left; }
+  Mod+Shift+WheelScrollDown      { focus-column-right; }
+  Mod+Shift+WheelScrollUp        { focus-column-left; }
 
   // ==== monitor navigation
   Mod+Ctrl+Left  { focus-monitor-left; }
@@ -38,6 +40,11 @@ binds {
   Mod+Shift+K     { move-window-up; }
   Mod+Shift+L     { move-column-right; }
 
+  Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+  Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+  Mod+Ctrl+WheelScrollRight { move-column-right; }
+  Mod+Ctrl+WheelScrollLeft  { move-column-left; }
+
   // ==== workspace navigation
   Mod+1 { focus-workspace 1; }
   Mod+2 { focus-workspace 2; }
@@ -49,11 +56,16 @@ binds {
   Mod+8 { focus-workspace 8; }
   Mod+9 { focus-workspace 9; }
 
+  Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+  Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+
   Mod+Page_Down      { focus-workspace-down; }
   Mod+Page_Up        { focus-workspace-up; }
   Mod+D              { focus-workspace-down; }
   Mod+U              { focus-workspace-up; }
   
+  Mod+O repeat=false { toggle-overview; }
+
   // ==== move windows (between workspaces)
   Mod+Shift+1 { move-column-to-workspace 1; }
   Mod+Shift+2 { move-column-to-workspace 2; }
@@ -65,6 +77,12 @@ binds {
   Mod+Shift+8 { move-column-to-workspace 8; }
   Mod+Shift+9 { move-column-to-workspace 9; }
 
+  Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+  Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+  
+
+  Mod+Shift+U { move-column-to-workspace-up; }
+  Mod+Shift+D { move-column-to-workspace-down; }
   // ==== window / column management 
   Mod+Minus { set-column-width "-10%"; }
   Mod+Equal { set-column-width "+10%"; }
@@ -80,12 +98,13 @@ binds {
   Mod+Shift+F { fullscreen-window; }
 
   Mod+MouseMiddle { close-window; } 
-  Mod+Q { close-window; }
+  Mod+Q repeat=false { close-window; }
 
   Mod+V       { toggle-window-floating; }
   Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
-  // ==== escape hatches
+  // ==== escape hatches   
+  Mod+Shift+Slash { show-hotkey-overlay; }
   Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
   Mod+Shift+Q { quit; };
 }

@@ -1,0 +1,21 @@
+spawn-at-startup "swayosd-server"
+binds {
+  // ==== change vol by 5 (default)
+  XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "raise"; }
+  XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "lower"; }
+  // ==== change vol by 10 (shift) 
+  Shift+XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "+10"; }
+  Shift+XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "-10"; }
+  // ==== change vol by 1 (ctrl)
+  Ctrl+XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "+1"; }
+  Ctrl+XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "-1"; }
+  // ==== change microphone by 5 (ctrl+shift)
+  Ctrl+Shift+XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--input-volume" "raise"; }
+  Ctrl+Shift+XF86AudioLowerVolume { spawn "swayosd-client" "--input-volume" "lower"; }
+  // ==== mute toggles
+  XF86AudioMute        allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
+  XF86AudioMicMute     allow-when-locked=true { spawn "swayosd-client" "--input-volume" "mute-toggle"; }
+  // ==== brightness
+  XF86MonBrightnessUp allow-when-locked=true { spawn "swayosd-client" "--brightness" "raise"; }
+  XF86MonBrightnessDown allow-when-locked=true { spawn "swayosd-client" "--brightness" "lower"; }
+}

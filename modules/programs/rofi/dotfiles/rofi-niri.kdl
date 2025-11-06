@@ -1,4 +1,4 @@
 binds {
   // add description and all that later
-  Mod+Space { spawn-sh "pkill rofi || rofi -show drun"; }
+  Mod+Space hotkey-overlay-title="Application launcher: rofi" { spawn-sh "pkill rofi || rofi -show drun"; }
 }

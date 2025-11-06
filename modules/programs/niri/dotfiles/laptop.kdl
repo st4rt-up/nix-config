@@ -1,4 +1,7 @@
 // laptop
+
+prefer-no-csd
+
 output "eDP-1" {
   mode "2880x1800@90"
   scale 2.0

@@ -1,1 +1,1 @@
-spawn-sh-at-startup "awww-daemon"
+spawn-at-startup "awww-daemon"
