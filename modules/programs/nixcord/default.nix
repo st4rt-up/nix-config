@@ -1,27 +1,37 @@
 {
   username,
+  pkgs,
   inputs,
   ...
-}: {
+}: let
+  inherit (builtins) concatStringsSep;
+  args = [
+    "--enable-features=WaylandWindowDecorations"
+    "--ozone-platform-hint=auto"
+  ];
+in {
+  environment.systemPackages = [
+    (pkgs.symlinkJoin {
+      name = "discord";
+      buildInputs = [pkgs.makeWrapper];
+      paths = [pkgs.discord];
+      postBuild = ''
+        wrapProgram $out/bin/discord \
+          --append-flags "${concatStringsSep " " args}" \
+      '';
+    })
+  ];
+
   home-manager.users.${username} = {
-    imports = [
-      inputs.nixcord.homeModules.nixcord
-    ];
+    imports = [inputs.nixcord.homeModules.nixcord];
+
     stylix.targets = {
-      nixcord.enable = true;
-      vencord.enable = true;
-      vesktop.enable = true;
+      nixcord.enable = false;
+      vencord.enable = false;
+      vesktop.enable = false;
     };
 
     # custom desktop shortcut to fix blurry wayland issues
-    xdg.desktopEntries.discord = {
-      name = "Discord";
-      exec = "discord --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto";
-      terminal = false;
-      categories = ["Chat"];
-      # mimeType = [];
-    };
-
     programs.nixcord = {
       enable = true;
 
@@ -30,7 +40,7 @@
         frameless = true;
 
         plugins = {
-          # new features
+          # ==== new features
           betterGifPicker.enable = true;
           nsfwGateBypass.enable = true;
           # emoteCloner.enable = true;
@@ -56,7 +66,7 @@
           voiceMessages.enable = true;
           volumeBooster.enable = true;
 
-          # fix annoyances
+          # ==== fix annoyances
           alwaysTrust.enable = true;
           clearURLs.enable = true;
           dearrow = {
@@ -71,7 +81,7 @@
           voiceChatDoubleClick.enable = true;
           youtubeAdblock.enable = true;
 
-          # ui
+          # ==== ui
           # accountPanelServerProfile.enable = true;
           blurNSFW.enable = true;
           callTimer.enable = true;
@@ -94,14 +104,14 @@
           # whoReacted.enable = true;
 
           # input qol
-          # betterFolders = {
-          #   enable = true;
-
-          #   closeAllFolders = true;
-          #   closeAllHomeButton = true;
-          #   closeOthers = true;
-          #   forceOpen = true;
-          # };
+          #          betterFolders = {
+          #            enable = true;
+          #
+          #            closeAllFolders = true;
+          #            closeAllHomeButton = true;
+          #            closeOthers = true;
+          #            forceOpen = true;
+          #          };
           betterSettings = {
             enable = true;
             disableFade = true;
@@ -114,7 +124,7 @@
           readAllNotificationsButton.enable = true;
           revealAllSpoilers.enable = true;
 
-          # fixes
+          # ==== fixes
           crashHandler = {
             enable = true;
             attemptToPreventCrashes = true;
@@ -122,7 +132,7 @@
           validUser.enable = true;
           # webScreenShareFixes.enable = true;
 
-          # fun
+          # ==== fun
           moreKaomoji.enable = true;
           # moyai.enable = true;
         };
