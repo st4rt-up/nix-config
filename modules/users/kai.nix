@@ -42,16 +42,15 @@
     "niri"
     "swayosd"
 
-    "wofi"
+    "rofi" # application launcher
     "mako"
 
+    "awww"
     "waybar"
   ];
   testing = [
-    "rofi" # application launcher
     "jj" # version control
     "wbg"
-    "awww"
     "atuin" # command history (ctrl + r)
   ];
   hyprDE = [

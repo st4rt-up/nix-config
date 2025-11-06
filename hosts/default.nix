@@ -19,7 +19,6 @@
 
       modules =
         [
-          # {_module.args = {inherit inputs system flake;};}
           ./../modules/core
           ./${hostname}
         ]

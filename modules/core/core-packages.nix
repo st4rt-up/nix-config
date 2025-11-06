@@ -16,8 +16,6 @@
     ripgrep # rust grep
     fd # rust find
 
-    yazi # tui file browser
-
     # info and profiling
     xorg.xrandr # display info
     btop # task manager
@@ -28,9 +26,5 @@
     ## drive tools
     # smartmontools
     # e2fsprogs
-
-    # libgpod # ipod tools
-    # clementine
-    # rhythmbox
   ];
 }

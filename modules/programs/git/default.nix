@@ -1,16 +1,16 @@
 {username, ...}: {
   home-manager.users.${username} = {
+    programs.diff-so-fancy = {
+      enable = true;
+      enableGitIntegration = true;
+      markEmptyLines = false;
+      # pagerOpts = ["--patch"];
+    };
     programs.git = {
       enable = true;
 
       userName = "Kai R"; # replace with soft secret in flake
       userEmail = "stfourrtup@gmail.com"; # replace with soft secret in flake
-
-      diff-so-fancy = {
-        enable = true;
-        markEmptyLines = false;
-        # pagerOpts = ["--patch"];
-      };
 
       extraConfig = {
         #thanks "Configure Your Git" - codingjerk

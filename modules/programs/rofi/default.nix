@@ -6,7 +6,7 @@
   ...
 }: let
   inherit (builtins) listToAttrs concatStringsSep;
-  inherit (lib) optionalAttrs;
+  inherit (lib) mkIf;
   # inherit (config.home-manager.users.${username}.lib.formats.rasi) mkLiteral;
 
   outOfStore = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
@@ -37,7 +37,7 @@ in {
       // {
         "rofi/config.rasi".text = concatStringsSep "\n" (map (file: "@import \"${file}\"") configFiles);
       }
-      // optionalAttrs config.programs.niri.enable
+      // mkIf config.programs.niri.enable
       {
         "niri/config.kdl".text = "include \"${niri-config}\"";
         "niri/${niri-config}".source = outOfStore configPath + "/${niri-config}";

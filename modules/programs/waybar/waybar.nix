@@ -5,7 +5,7 @@
   ...
 }: let
   # inherit (builtins) listToAttrs concatStringsSep;
-  inherit (lib) optionalAttrs;
+  inherit (lib) mkIf;
   inherit (config) theme;
   outOfStore = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
   configPath = config.var.flake-path + "/modules/programs/waybar/dotfiles";
@@ -20,7 +20,7 @@ in {
       {
         # "waybar/config.jsonc".source = concatStringsSep "\n" (map (file: "@import \"${file}\"") configFiles);
       }
-      // optionalAttrs config.programs.niri.enable
+      // mkIf config.programs.niri.enable
       {
         "niri/config.kdl".text = "include \"${niri-config}\"";
         "niri/${niri-config}".source = outOfStore configPath + "/${niri-config}";

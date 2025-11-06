@@ -25,7 +25,7 @@
       lora
 
       # other
-      noto-fonts-emoji
+      noto-fonts-color-emoji
 
       #jp
       ipafont
