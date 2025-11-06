@@ -12,12 +12,12 @@
     "eza" # ls replacement
     "fzf" # fuzzy find
     "yazi" # cli file manager
-    "atuin" # command history (ctrl + r)
 
     "git" # version control
-    "jj"
     "extras-cli" # misc extras
     "usb"
+
+    "optnix"
   ];
 
   guiPrograms = [
@@ -28,6 +28,7 @@
     "okular" # pdf reader
 
     "kitty" # terminal emulator
+    "gtk"
   ];
 
   schoolPrograms = [
@@ -35,12 +36,23 @@
     "pdf-utilities"
   ];
   niriDE = [
+    "wayland"
+    "wayland-utils"
+
     "niri"
+    "swayosd"
 
     "wofi"
     "mako"
 
     "waybar"
+  ];
+  testing = [
+    "rofi" # application launcher
+    "jj" # version control
+    "wbg"
+    "awww"
+    "atuin" # command history (ctrl + r)
   ];
   hyprDE = [
     "wayland"
@@ -51,6 +63,10 @@
     "mako" # notification daemon
 
     "hyprland" # compositor / window server
+    "hyprpaper"
+    "hypridle"
+    "hyprlock"
+
     "waybar" # bar
   ];
 
@@ -58,12 +74,14 @@
     "users/kai"
   ];
 
+  # miscPackages = with pkgs; [];
+
   inherit (builtins) concatMap;
 in {
   # took this pattern, makes it easier to put non-home or system programs in one place
   # https://github.com/minusfive/dot/blob/main/nix/users/minusfive/aarch64-darwin.nix
 
-  #`` instead of importing with relative paths, I make the relative paths with a list and map
+  # instead of importing with relative paths, I make the relative paths with a list and map
   # the seperated lists just let me visually group packages together and I can turn off whole
   # groups at once during testing
 
@@ -72,12 +90,18 @@ in {
       programs
       guiPrograms
       schoolPrograms
-      hyprDE
+      # hyprDE
       niriDE
+      testing
     ]
     ++ map (secret: ../secrets/${secret}.nix) secrets
     ++ [
-      {_module.args = {inherit username;};} # messy but it lets me do user specific config
+      {
+        # messy but it lets me do user specific config
+        _module.args = {inherit username;};
+
+        # environment.systemPackages = miscPackages;
+      }
       inputs.home-manager.nixosModules.home-manager
     ];
 
@@ -88,7 +112,7 @@ in {
       description = username;
 
       isNormalUser = true;
-      useDefaultShell = true;
+      # useDefaultShell = true;
       extraGroups = [
         "wheel"
         "networkmanager"
@@ -97,6 +121,7 @@ in {
     };
 
     # options defined by me
+    # defined in core/options-host.nix
     var = {
       files-directory = "/home/${username}/files";
       config-directory = "/home/${username}/files/dev-nix/nix-config";

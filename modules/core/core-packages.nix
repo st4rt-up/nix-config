@@ -20,7 +20,7 @@
 
     # info and profiling
     xorg.xrandr # display info
-    htop # task manager
+    btop # task manager
 
     # terminal img view
     timg
