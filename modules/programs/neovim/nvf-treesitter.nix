@@ -22,6 +22,7 @@
           rust
           vhdl
 
+          json
           markdown
           latex
 

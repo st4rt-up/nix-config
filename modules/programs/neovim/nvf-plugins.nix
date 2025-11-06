@@ -2,7 +2,7 @@
   home-manager.users.${username} = {
     programs.nvf.settings.vim = {
       autocomplete.nvim-cmp = {
-        enable = true;
+        enable = false;
         setupOpts = {
           completion.completeopt = "menu,menuone,noselect,fuzzy";
         };
