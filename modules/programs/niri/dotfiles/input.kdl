@@ -5,7 +5,7 @@ input {
   keyboard {
     xkb {
       layout "us"
-      options "compose:ralt,ctrL:nocaps"
+      options "ctrl:nocaps"
     }
   }
 

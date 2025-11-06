@@ -8,7 +8,28 @@ output "eDP-1" {
   // hot-corners {}
 
   background-color "#272727"
-  backdrop-color "#001100"
+  backdrop-color "#5a5a57"
+}
+
+layout {
+  preset-column-widths {
+      proportion 0.33333
+      proportion 0.5
+      proportion 0.66667
+      proportion 1.0
+  }
+
+  focus-ring {
+    // active-color "#ffbf85"
+    active-color "#aaccFF"
+    // active-gradient from="#ffbf85" to="#aaccFF" angle=135
+}
+}
+
+
+window-rule {
+    geometry-corner-radius 8
+    clip-to-geometry true
 }
 
 // switch-events {

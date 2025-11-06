@@ -8,7 +8,7 @@
 }: let
   # ==== helper functions
   inherit (builtins) listToAttrs concatStringsSep;
-  inherit (lib) mergeAttrs mkForce;
+  inherit (lib) mkForce;
   outOfStore = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
   configPath = config.var.flake-path + "/modules/programs/niri/dotfiles";
 
@@ -30,11 +30,14 @@ in {
   programs.niri.package = pkgs.niri-unstable;
   # ====
 
-  # disable some defaults
+  # disable defaults
   services.gnome.gnome-keyring.enable = mkForce false;
 
   programs.niri.enable = true;
-  environment.systemPackages = with pkgs; [niri];
+  environment.systemPackages = with pkgs; [
+    niri
+    xwayland-satellite
+  ];
 
   home-manager.users.${username} = {
     # ==== home level config
@@ -46,17 +49,14 @@ in {
     # symlink config files in ./<configPath>
     # this pattern lets me hot reload files outside of the nix store
     xdg.configFile =
-      (mergeAttrs (listToAttrs (map (file: {
+      listToAttrs (map (file: {
           name = "niri/${file}.kdl";
-          value = {source = outOfStore configPath + "/${file}.kdl";};
+          value.source = outOfStore configPath + "/${file}.kdl";
         })
-        configFiles)))
-      {
+        configFiles)
+      // {
         # create a .config.kdl that imports them based off of <configFiles> list above
-        "niri/config.kdl" = {
-          # target = "niri/config.kdl";
-          text = concatStringsSep "\n" (map (file: "include \"${file}.kdl\"") configFiles);
-        };
+        "niri/config.kdl".text = concatStringsSep "\n" (map (file: "include \"${file}.kdl\"") configFiles);
       };
   };
 }
