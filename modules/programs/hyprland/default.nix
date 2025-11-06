@@ -3,11 +3,6 @@
 _: {
   imports = [
     ./hyprland.nix
-
     ./hyprland-binds.nix
-
-    ./hyprpaper.nix
-    ./hypridle.nix
-    ./hyprlock.nix
   ];
 }
