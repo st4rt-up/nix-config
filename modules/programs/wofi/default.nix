@@ -30,15 +30,20 @@ in {
         insensitive = true;
       };
 
-      style = ''
+      style = let
+        bg = toString theme.colour.background;
+        bg-alt = toString theme.colour.background-alt;
+        font = toString theme.fonts.monospace.name;
+        font-size = toString theme.fonts.sizes.desktop;
+      in ''
 
-        @define-color background #${toString theme.colour.background};
-        @define-color background-alt #${toString theme.colour.background-alt};
-        @define-color border #${toString theme.colour.background};
+        @define-color background #${bg};
+        @define-color background-alt #${bg-alt};
+        @define-color border #${bg};
 
         * {
-          font-family: ${theme.fonts.monospace.name};
-          font-size: ${toString theme.fonts.sizes.desktop}px;
+          font-family: ${font};
+          font-size: ${font-size}px;
         }
 
         window {

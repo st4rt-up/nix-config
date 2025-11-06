@@ -2,33 +2,47 @@
   username,
   config,
   pkgs,
+  lib,
   ...
 }: let
-  background = config.stylix.base16Scheme.base00;
-  foreground = config.stylix.base16Scheme.base0B;
-  border = config.stylix.base16Scheme.base02;
+  inherit (builtins) listToAttrs concatStringsSep;
+  inherit (lib) optionalAttrs;
+  # inherit (config.home-manager.users.${username}.lib.formats.rasi) mkLiteral;
 
-  inherit (config.lib.formats.rasi) mkLiteral;
+  outOfStore = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
+  configPath = config.var.flake-path + "/modules/programs/rofi/dotfiles";
+  # home = config.home-manager.users.${username};
+
+  configFiles = [
+    "configuration"
+    "binds"
+  ];
+
+  niri-config = "rofi-niri.kdl";
 in {
+  environment.systemPackages = with pkgs; [rofi];
   home-manager.users.${username} = {
-    home.packages = with pkgs; [
-      rofi
-    ];
-
-    stylix.targets.rofi.enable = false;
     programs.rofi = {
       enable = true;
       package = pkgs.rofi;
-
-      location = "center";
-
-      theme = {
-        "*" = {
-          background-color = mkLiteral background;
-          foreground-color = mkLiteral foreground;
-          border-color = mkLiteral border;
-        };
-      };
     };
+
+    # similar pattern to my niri config, more notes there
+    xdg.configFile =
+      listToAttrs (map (file: {
+          name = "rofi/${file}.rasi";
+          value.source = outOfStore configPath + "/${file}.rasi";
+        })
+        configFiles)
+      // {
+        "rofi/config.rasi".text = concatStringsSep "\n" (map (file: "@import \"${file}\"") configFiles);
+      }
+      // optionalAttrs config.programs.niri.enable
+      {
+        "niri/config.kdl".text = "include \"${niri-config}\"";
+        "niri/${niri-config}".source = outOfStore configPath + "/${niri-config}";
+      };
+
+    # stylix.targets.rofi.enable = false;
   };
 }

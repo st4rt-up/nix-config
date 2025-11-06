@@ -1,0 +1,4 @@
+binds {
+  // add description and all that later
+  Mod+Space { spawn-sh "pkill rofi || rofi -show drun"; }
+}
