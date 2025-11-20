@@ -6,7 +6,7 @@
   ...
 }: let
   inherit (lib) mkIf;
-  outOfStore = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
+  link = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
   configPath = config.var.flake-path + "/modules/programs/swayosd/dotfiles";
 
   niri-config = "swayosd-niri.kdl";
@@ -21,7 +21,7 @@ in {
       mkIf config.programs.niri.enable
       {
         "niri/config.kdl".text = "include \"${niri-config}\"";
-        "niri/${niri-config}".source = outOfStore configPath + "/${niri-config}";
+        "niri/${niri-config}".source = link configPath + "/${niri-config}";
       };
 
     # ==== hyprland binds

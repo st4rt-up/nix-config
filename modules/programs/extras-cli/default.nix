@@ -4,6 +4,7 @@
     yt-dlp
     imagemagick
     ffmpeg
+    resvg
 
     # ==== cli rice
     fastfetch # fetch

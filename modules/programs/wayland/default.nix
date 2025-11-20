@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
+    wayland
+  ];
+
   hardware = {
     graphics = {
       enable = true;
@@ -11,6 +15,7 @@
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
+      xdg-desktop-portal
       xdg-desktop-portal-wlr
       xdg-desktop-portal-gtk
     ];

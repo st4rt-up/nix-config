@@ -1,6 +1,5 @@
 _: {
-  environment.variables.NEWT_COLORS = 
-  ''
+  environment.variables.NEWT_COLORS = ''
     root=#FFFFFF,#000000
     border=#FF00FF,#000000
     window=#000000,#000000
@@ -23,6 +22,7 @@ _: {
   '';
 
   theme = {
+    enableStylix = true;
     colour = let
       olivia-pink = "f5bcad";
       black = "171717";
