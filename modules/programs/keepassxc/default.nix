@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  outOfStore = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
+  link = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
   configPath = config.var.flake-path + "/modules/programs/keepassxc/dotfiles";
 in {
   home-manager.users.${username} = {
@@ -14,7 +14,7 @@ in {
     xdg.autostart.enable = true;
 
     xdg.configFile = {
-      "keepassxc/keepassxc.ini".source = outOfStore configPath + "/keepassxc.ini";
+      "keepassxc/keepassxc.ini".source = link configPath + "/keepassxc.ini";
     };
   };
 }
