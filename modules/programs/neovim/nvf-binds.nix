@@ -14,15 +14,21 @@
     keymaps = [
       {
         key = "B";
-        mode = "n";
+        mode = ["n" "x" "v"];
         silent = true;
         action = "^";
       }
       {
         key = "E";
-        mode = "n";
+        mode = ["n" "x" "v"];
         silent = true;
         action = "$";
+      }
+      {
+        key = "<C-h>";
+        mode = ["n" "x" "v"];
+        silent = true;
+        action = "<C-w>j";
       }
     ];
   };

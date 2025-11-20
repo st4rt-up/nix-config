@@ -1,16 +1,23 @@
 {username, ...}: {
   home-manager.users.${username} = {
     programs.nvf.settings.vim = {
-      autocomplete.nvim-cmp = {
-        enable = false;
+      autocomplete.blink-cmp = {
+        enable = true;
+
         setupOpts = {
-          completion.completeopt = "menu,menuone,noselect,fuzzy";
+          signature.enabled = true;
+          completion.list.selection.auto_insert = false;
+          completion.list.selection.preselect = false;
         };
       };
 
-      # dashboard.alpha = {
+      # dashboard.alpha = { # overrides some important binds
       # enable = true; # greeter
       # };
+
+      formatter = {
+        conform-nvim.enable = true;
+      };
 
       visuals = {
         nvim-cursorline.enable = true; # underline word under cursor
@@ -37,13 +44,13 @@
       ui = {
         illuminate.enable = true; # highlight every occurance of word under cursor
         borders.enable = true;
-        fastaction.enable = true;
+        fastaction.enable = true; # codeactions
 
         nvim-highlight-colors.enable = true;
 
         colorizer = {
           # highlight colour codes
-          enable = true;
+          enable = false;
         };
 
         noice.enable = true; # visual overhaul
@@ -62,10 +69,8 @@
 
       debugger.nvim-dap = {
         enable = true;
-        ui = {
-          enable = true;
-          autoStart = true;
-        };
+        ui.enable = true;
+        ui.autoStart = true;
       };
     };
   };

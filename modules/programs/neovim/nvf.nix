@@ -33,9 +33,10 @@
         lsp = {
           enable = true;
           formatOnSave = true;
+          lspconfig.enable = true;
 
           lightbulb.enable = true;
-          lspSignature.enable = true;
+          # lspSignature.enable = true;
           trouble.enable = true;
         };
       };

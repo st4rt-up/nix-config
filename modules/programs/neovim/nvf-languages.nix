@@ -12,6 +12,8 @@
             enable = true;
             extraDiagnostics.enable = true;
             treesitter.enable = true;
+            format.enable = true;
+            format.type = "alejandra";
 
             lsp = {
               enable = true;
@@ -66,6 +68,15 @@
           vhdl-ls = {
             cmd = ["vhdl_ls"];
             filetypes = ["vhdl" "vhd"];
+          };
+
+          asm-lsp = {
+            cmd = ["asm-lsp"];
+            filetypes = [
+              "asm"
+              "s"
+              "S"
+            ];
           };
         };
       };
