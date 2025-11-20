@@ -7,9 +7,10 @@
   ...
 }: let
   # ==== helper functions
-  inherit (builtins) listToAttrs concatStringsSep;
-  inherit (lib) mkForce;
-  outOfStore = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
+  inherit (builtins) concatStringsSep;
+  inherit (lib) mergeAttrsList mkForce ;
+
+  link = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
   configPath = config.var.flake-path + "/modules/programs/niri/dotfiles";
 
   # config file in .config is dynamically created and then files in this directory are
@@ -35,7 +36,8 @@ in {
 
   programs.niri.enable = true;
   environment.systemPackages = with pkgs; [
-    # niri
+    # niri-unstable from flake is being used right now
+    # niri 
     xwayland-satellite
   ];
 
@@ -45,18 +47,15 @@ in {
     programs.niri.config = null;
     programs.niriswitcher.enable = true;
 
-    # i feel like this is a little hacky?
-    # symlink config files in ./<configPath>
-    # this pattern lets me hot reload files outside of the nix store
     xdg.configFile =
-      listToAttrs (map (file: {
-          name = "niri/${file}.kdl";
-          value.source = outOfStore configPath + "/${file}.kdl";
-        })
-        configFiles)
+      mergeAttrsList (map (file: {"niri/${file}.kdl".source = link configPath + "/${file}.kdl";}) configFiles)
       // {
-        # create a .config.kdl that imports them based off of <configFiles> list above
-        "niri/config.kdl".text = concatStringsSep "\n" (map (file: "include \"${file}.kdl\"") configFiles);
+      # https://blog.daniel-beskin.com/2025-10-18-symlinking-home-manager
+
+      # create a .config.kdl that imports them based off of <configFiles> list above
+      "niri/config.kdl".text =
+        concatStringsSep "\n"
+        (map (file: "include \"${file}.kdl\"") configFiles);
       };
   };
 }

@@ -1,19 +1,22 @@
 {
   username,
   config,
+  lib,
   pkgs,
   ...
 }: let
-  inherit (builtins) listToAttrs concatStringsSep;
+  inherit (builtins) concatStringsSep;
+  inherit (lib) mergeAttrsList;
 
+  link = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
   configPath = config.var.flake-path + "/modules/programs/tmux/dotfiles";
   symlinkPath = "~/.config/tmux";
   rootConfig = "config.common";
-  outOfStore = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
 
   configFiles = [
     "tmux"
   ];
+
 in {
   environment.systemPackages = with pkgs; [tmux];
 
@@ -37,16 +40,12 @@ in {
 
   home-manager.users.${username} = {
     xdg.configFile =
-      listToAttrs (map (file: {
-          name = "tmux/${file}.common";
-          value.source = outOfStore configPath + "/${file}.common";
-        })
-        configFiles)
+      mergeAttrsList (map (file: {"tmux/${file}.common".source = link configPath + "/${file}.common";}) configFiles)
       // {
-        "tmux/${rootConfig}".text = concatStringsSep "\n" (
-          map (file: "source-file ~/.config/tmux/${file}.common")
-          configFiles
-        );
-      };
+      "tmux/${rootConfig}".text = concatStringsSep "\n" (
+        map (file: "source-file ${symlinkPath}/${file}.common")
+        configFiles
+      );
+    };
   };
 }
