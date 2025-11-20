@@ -1,10 +1,9 @@
 {
   description = "hello world";
 
-  # nixConfig = {};
-
   outputs = inputs @ {...}: {
     nixosConfigurations = import ./hosts inputs;
+    devShells = import ./modules/devshells inputs;
   };
 
   inputs = {
