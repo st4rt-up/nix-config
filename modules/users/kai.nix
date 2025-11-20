@@ -41,6 +41,7 @@
 
     "niri"
     "swayosd"
+    "swayidle"
 
     "rofi" # application launcher
     "mako"
@@ -52,6 +53,7 @@
     "jj" # version control
     "wbg"
     "atuin" # command history (ctrl + r)
+    "keepassxc"
   ];
   hyprDE = [
     "wayland"
@@ -70,7 +72,8 @@
   ];
 
   secrets = [
-    "users/kai"
+    "users/kai/github"
+    # "users/kai/keepass"
   ];
 
   # miscPackages = with pkgs; [];

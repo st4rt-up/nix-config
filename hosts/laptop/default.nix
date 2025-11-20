@@ -1,9 +1,5 @@
-{
-  hostname,
-  lib,
-  ...
-}: let
-  # inherit (lib) mkForce;
+# called from /modules/hosts/default.nix
+{hostname, ...}: let
   users = [
     "kai"
   ];
@@ -18,8 +14,8 @@
 
   syncthing-key-path = "/run/syncthing-laptop";
 in {
-  # set variables declared in /modules/core/config-host
   config = {
+    # set variables declared in /modules/core/config-host
     var = {
       inherit hostname;
       gui = true;
@@ -29,6 +25,7 @@ in {
     };
 
     # ==== SYNCTHING
+    # set device specific syncthing locations
     services.syncthing.key = "${syncthing-key-path}/key.pem";
     services.syncthing.cert = "${syncthing-key-path}/cert.pem";
     sops.secrets."secrets/syncthing/laptop/key".path = "${syncthing-key-path}/key.pem";

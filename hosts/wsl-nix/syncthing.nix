@@ -31,7 +31,6 @@ in {
 
       devices = {
         "pixel-7-phone".id = inputs.nix-secrets.syncthing.devices.pixel-7-phone.id;
-        "samsung-s6-tablet".id = inputs.nix-secrets.syncthing.devices.samsung-s6-tablet.id;
         "pc".id = inputs.nix-secrets.syncthing.devices.pc.id;
       };
 
@@ -42,7 +41,6 @@ in {
           path = "${files}/school";
           devices = [
             "pixel-7-phone"
-            "samsung-s6-tablet"
             "pc"
           ];
           ignorePerms = false;

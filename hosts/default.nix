@@ -1,3 +1,6 @@
+# pattern inspired by sioodmy,
+# https://github.com/sioodmy/dotfiles/blob/main/hosts/default.nix
+# allows for easy
 {
   nixpkgs,
   self,
@@ -25,9 +28,7 @@
         ++ modules;
     };
 in {
-  laptop = mkHost {
-    hostname = "laptop";
-  };
+  laptop = mkHost {hostname = "laptop";};
 
   wsl-nix = mkHost {
     hostname = "wsl-nix";
