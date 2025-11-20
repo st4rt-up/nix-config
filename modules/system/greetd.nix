@@ -1,10 +1,12 @@
 {
   username,
   pkgs,
+  # config,
   ...
 }: let
   tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
-  session = "${pkgs.hyprland}/bin/Hyprland";
+  # session = "${pkgs.hyprland}/bin/Hyprland";
+  session = "niri-session";
 in {
   environment.systemPackages = [pkgs.tuigreet];
 

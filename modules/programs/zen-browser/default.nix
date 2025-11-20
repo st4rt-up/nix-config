@@ -1,44 +1,44 @@
 {
   inputs,
+  # config,
   pkgs,
   lib,
   username,
   ...
 }: let
-  # inherit (builtins) elem;
-  # inherit (config.lib) getName;
-  addonsPkgs = import inputs.nixpkgs-unstable 
-    { inherit (pkgs) system;
-      config.allowUnfree = true;
-    };
+  addonsPkgs = import inputs.nixpkgs-unstable {
+    inherit (pkgs) system;
+    config.allowUnfree = true;
+  };
+
+  inherit (builtins) elem;
+  inherit (lib) getName;
+  # configPath = config.var.flake-path + "/modules/programs/zen-browser/dotfiles";
+  # outOfStore = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
 in {
   environment.sessionVariables = {
     MOZ_USE_XINPUT2 = "1";
   };
 
-  #  nixpkgs.config.allowUnfreePredicate = pkg:
-  #    builtins.elem (lib.getName pkg) [
-  #      "improved-tube"
-  #    ];
-
   nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
+    elem (getName pkg) [
       "improved-tube"
     ];
 
   home-manager.users.${username} = {
-    imports = [
-      inputs.zen-browser.homeModules.beta
-    ];
+    imports = [inputs.zen-browser.homeModules.beta];
 
     stylix.targets.zen-browser = {
-      enable = true;
+      enable = false;
       profileNames = ["default"];
     };
 
+    # keep keyboard shortcuts between versions
+    # home.file.".zen/default/zen-keyboard-shortcuts.json".source = outOfStore configPath + "zen-keyboard-shortcuts.json";
+
     programs.zen-browser = {
       enable = true;
-
+      nativeMessagingHosts = [pkgs.keepassxc];
       profiles = {
         default = {
           id = 0;
@@ -51,15 +51,14 @@ in {
             privateDefault = "ddg";
           };
 
-          extensions.packages = with 
-            addonsPkgs.callPackage 
-            inputs.firefox-addons {}; 
-          [
+          extensions.packages = with addonsPkgs.callPackage
+          inputs.firefox-addons {}; [
             ublock-origin
             clearurls
             don-t-fuck-with-paste
             istilldontcareaboutcookies
             bitwarden
+            keepassxc-browser
 
             bonjourr-startpage
 

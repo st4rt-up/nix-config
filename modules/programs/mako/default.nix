@@ -1,10 +1,12 @@
 {
   username,
   config,
+  pkgs,
   ...
 }: let
   inherit (config) theme;
 in {
+  environment.systemPackages = with pkgs; [libnotify];
   home-manager.users.${username} = {
     stylix.targets.mako.enable = false;
     services.mako = {

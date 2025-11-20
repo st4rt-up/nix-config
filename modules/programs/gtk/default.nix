@@ -16,7 +16,6 @@ in {
 
   stylix.targets = {
     qt.enable = false;
-    gtk.enable = false;
   };
 
   qt = {

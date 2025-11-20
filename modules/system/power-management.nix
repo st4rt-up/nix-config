@@ -1,6 +1,6 @@
 {
   pkgs,
-  lib,
+  # lib,
   ...
 }: {
   environment.systemPackages = with pkgs; [powertop];
@@ -39,6 +39,7 @@
         HandleLidSwitch = "suspend";
         HandleLidSwitchExternalPower = "lock";
         HandleLidSwitchDocked = "ignore";
+        KillUserProcesses = false;
       };
     };
   };

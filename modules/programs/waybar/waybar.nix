@@ -1,33 +1,33 @@
 {
   username,
   config,
-  lib,
+  # lib,
   ...
 }: let
   # inherit (builtins) listToAttrs concatStringsSep;
-  inherit (lib) mkIf;
+  # inherit (lib) mkIf;
   inherit (config) theme;
-  outOfStore = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
-  configPath = config.var.flake-path + "/modules/programs/waybar/dotfiles";
+  # outOfStore = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
+  # configPath = config.var.flake-path + "/modules/programs/waybar/dotfiles";
   # configFiles = [];
-
-  niri-config = "wayland-niri.kdl";
+  # niri-config = "wayland-niri.kdl";
 in {
   home-manager.users.${username} = {
     wayland.windowManager.hyprland.settings.exec-once = ["waybar"];
 
-    xdg.configFile =
-      {
-        # "waybar/config.jsonc".source = concatStringsSep "\n" (map (file: "@import \"${file}\"") configFiles);
-      }
-      // mkIf config.programs.niri.enable
-      {
-        "niri/config.kdl".text = "include \"${niri-config}\"";
-        "niri/${niri-config}".source = outOfStore configPath + "/${niri-config}";
-      };
+    #    xdg.configFile =
+    #      {
+    #        "waybar/config.jsonc".source = concatStringsSep "\n" (map (file: "@import \"${file}\"") configFiles);
+    #      }
+    #      // mkIf config.programs.niri.enable
+    #      {
+    #        "niri/config.kdl".text = "include \"${niri-config}\"";
+    #        "niri/${niri-config}".source = outOfStore configPath + "/${niri-config}";
+    #      };
 
     programs.waybar = {
       enable = true;
+      systemd.enable = true;
 
       settings.mainBar = {
         layer = "top";
