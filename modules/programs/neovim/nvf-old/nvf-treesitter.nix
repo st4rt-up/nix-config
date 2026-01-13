@@ -14,23 +14,13 @@
         fold = true;
 
         grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
-          nix
-
-          c
-          cpp
-          java
           rust
-          vhdl
 
           json
           markdown
           latex
 
           mermaid # flowchart markup lang
-        ];
-
-        indent.disable = [
-          "vhdl"
         ];
       };
     };
