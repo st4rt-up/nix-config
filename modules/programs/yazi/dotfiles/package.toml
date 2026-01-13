@@ -12,3 +12,8 @@ hash = "e2336631865c0f90276dcbc553d532fc"
 use = "yazi-rs/flavors:dracula"
 rev = "f6b425a"
 hash = "c5e49b9e877ca29a3622ec2e35af0b2a"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-macchiato"
+rev = "3edeb49"
+hash = "4127d9d6c96862ed96a7a64b3973a5af"
