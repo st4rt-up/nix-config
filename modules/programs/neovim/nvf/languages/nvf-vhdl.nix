@@ -10,8 +10,8 @@
         filetypes = ["vhdl" "vhd"];
       };
 
-      treesitter.indent.disable = ["vhdl"];
-      treesitter.grammars = [pkgs.vimPlugins.nvim-treesitter.builtGrammars.vhdl];
+      # treesitter.indent.disable = ["vhdl"];
+      treesitter.grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [vhdl];
     };
   };
 }

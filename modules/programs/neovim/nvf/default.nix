@@ -6,11 +6,13 @@
   langs = [
     "assembly"
     "c-cpp"
+    "flutter"
     "java"
     "markup"
     "nix"
     "python"
     "rust"
+    "sql"
     "vhdl"
   ];
 in {
@@ -19,6 +21,7 @@ in {
     map (lang: ./languages/nvf-${lang}.nix) langs
     ++ [
       inputs.nvf.nixosModules.default
+      ./nvf-binds.nix
     ];
 
   home-manager.users.${username} = {
@@ -58,7 +61,7 @@ in {
           enable = true;
           highlight.enable = true;
 
-          textobjects.enable = true;
+          # textobjects.enable = true; # broken
           fold = true; # I don't really use this ...?
         };
 

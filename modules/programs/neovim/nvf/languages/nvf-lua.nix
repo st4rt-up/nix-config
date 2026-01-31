@@ -5,9 +5,10 @@
 }: {
   home-manager.users.${username} = {
     programs.nvf.settings.vim = {
-      languages.python.enable = true;
+      languages.lua.enable = true;
+
       treesitter.grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
-        python
+        lua
       ];
     };
   };

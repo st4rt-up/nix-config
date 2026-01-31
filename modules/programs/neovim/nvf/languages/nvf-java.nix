@@ -11,7 +11,7 @@
         treesitter.enable = true;
       };
 
-      treesitter.grammars = [pkgs.vimPlugins.nvim-treesitter.builtGrammars.java];
+      treesitter.grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [java];
     };
   };
 }

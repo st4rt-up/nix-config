@@ -1,6 +1,6 @@
 {
   username,
-  # pkgs,
+  pkgs,
   ...
 }: {
   home-manager.users.${username} = {
@@ -12,7 +12,7 @@
         };
       };
 
-      # treesitter.grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [ ];
+      treesitter.grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [];
     };
   };
 }

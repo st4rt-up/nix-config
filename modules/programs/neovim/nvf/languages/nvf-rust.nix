@@ -10,7 +10,9 @@
         # crates.enable = true;
       };
 
-      treesitter.grammars = [pkgs.vimPlugins.nvim-treesitter.builtGrammars.rust];
+      treesitter.grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+        rust
+      ];
     };
   };
 }
