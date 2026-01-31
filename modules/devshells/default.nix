@@ -1,9 +1,7 @@
-{
-  inputs,
-  lib,
-  ...
-}: let
-  inherit (lib) optional;
+{nixpkgs, ...}
+#@ inputs
+: let
+  inherit (nixpkgs.lib) optional;
   supportedSystems = [
     "x86_64-linux"
     "aarch64-linux"
@@ -11,11 +9,14 @@
     "aarch64-darwin"
   ];
   forEachSupportedSystem = f:
-    inputs.nixpkgs.lib.genAttrs supportedSystems
-    (system: f {pkgs = import inputs.nixpkgs {inherit system;};});
+    nixpkgs.lib.genAttrs supportedSystems
+    (system:
+      f {
+        pkgs = import nixpkgs {inherit system;};
+      });
 in
   forEachSupportedSystem ({pkgs}: {
-    default = pkgs.mkShellOverride {} {
+    default = pkgs.mkShell {
       # env = {};
       # inputsFrom = [];
       # shellHook = '' '';
@@ -24,6 +25,6 @@ in
           just
           nh
         ]
-        ++ optional (system != "aarch64-darwin") [];
+        ++ optional (stdenv.hostPlatform.system != "aarch64-darwin") [];
     };
   })
