@@ -18,9 +18,10 @@ in {
 
         background-color = "#${theme.colour.base00}";
         border-color = "#${theme.colour.base0D}";
-        border-radius = theme.rounding;
 
-        padding = "${toString theme.gaps-in}";
+        border-radius = theme.widgets.rounding;
+
+        padding = "${toString theme.widgets.padding}";
       };
     };
   };

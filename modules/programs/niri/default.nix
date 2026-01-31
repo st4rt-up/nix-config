@@ -8,7 +8,7 @@
 }: let
   # ==== helper functions
   inherit (builtins) concatStringsSep;
-  inherit (lib) mergeAttrsList mkForce ;
+  inherit (lib) mergeAttrsList mkForce;
 
   link = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
   configPath = config.var.flake-path + "/modules/programs/niri/dotfiles";
@@ -37,8 +37,10 @@ in {
   programs.niri.enable = true;
   environment.systemPackages = with pkgs; [
     # niri-unstable from flake is being used right now
-    # niri 
+    # niri
+    wmctrl
     xwayland-satellite
+    nautilus
   ];
 
   home-manager.users.${username} = {
@@ -50,12 +52,12 @@ in {
     xdg.configFile =
       mergeAttrsList (map (file: {"niri/${file}.kdl".source = link configPath + "/${file}.kdl";}) configFiles)
       // {
-      # https://blog.daniel-beskin.com/2025-10-18-symlinking-home-manager
+        # https://blog.daniel-beskin.com/2025-10-18-symlinking-home-manager
 
-      # create a .config.kdl that imports them based off of <configFiles> list above
-      "niri/config.kdl".text =
-        concatStringsSep "\n"
-        (map (file: "include \"${file}.kdl\"") configFiles);
+        # create a .config.kdl that imports them based off of <configFiles> list above
+        "niri/config.kdl".text =
+          concatStringsSep "\n"
+          (map (file: "include \"${file}.kdl\"") configFiles);
       };
   };
 }

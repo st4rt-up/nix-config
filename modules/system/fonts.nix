@@ -20,7 +20,6 @@
       ia-writer-duospace
       ia-writer-quattro
 
-      manrope
       # serifs
       lora
 

@@ -60,13 +60,23 @@ _: {
       base0F = olivia-dark-2; # dark-olivia-pink candidate 1
     };
 
-    gaps-in = 5;
-    gaps-out = 9;
+    window-manager = {
+      gaps-in = 5;
+      gaps-out = 9;
 
-    blur = false;
+      blur = false;
 
-    active-opacity = 0.97;
-    inactive-opacity = 0.90;
+      active-opacity = 0.97;
+      inactive-opacity = 0.90;
+    };
+
+    bar = {
+      position = "bottom";
+      height = 40;
+      spacing = 5;
+    };
+
+    # widgets = {};
 
     fonts.sizes.terminal = 9;
   };

@@ -10,9 +10,10 @@
   # configPath = config.var.flake-path + "/modules/programs/optnix/dotfiles";
   # outOfStore = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
   optnixLib = inputs.optnix.mkLib pkgs;
+  optnixPkg = inputs.optnix.packages.${pkgs.stdenv.hostPlatform.system}.optnix;
 in {
   imports = [inputs.optnix.nixosModules.optnix];
-  environment.systemPackages = [inputs.optnix.packages.${pkgs.system}.optnix];
+  environment.systemPackages = [optnixPkg];
 
   programs.optnix = {
     enable = true;
@@ -33,6 +34,7 @@ in {
 
     programs.optnix = {
       enable = true;
+      package = optnixPkg;
 
       settings.scopes.home-manager = {
         description = "config for ${username}, home level";

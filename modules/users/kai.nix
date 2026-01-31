@@ -19,7 +19,6 @@
 
     "optnix"
   ];
-
   guiPrograms = [
     "nixcord" # declarative vencord
     "zen-browser" # firefox fork
@@ -29,8 +28,10 @@
 
     "kitty" # terminal emulator
     "gtk"
-  ];
+    "keepassxc"
 
+    "chromium"
+  ];
   schoolPrograms = [
     "school-packages"
     "pdf-utilities"
@@ -50,10 +51,14 @@
     "waybar"
   ];
   testing = [
-    "jj" # version control
-    "wbg"
-    "atuin" # command history (ctrl + r)
-    "keepassxc"
+    "waydroid"
+    # "jj" # version control
+    # "atuin" # command history (ctrl + r)
+
+    # "discordo" # didn't work (doesn't take token)
+    # "impala" # didn't connect to eduroam
+    # "vscode" # couldn't open folders
+    # "thunar"
   ];
   hyprDE = [
     "wayland"
@@ -70,7 +75,6 @@
 
     "waybar" # bar
   ];
-
   secrets = [
     "users/kai/github"
     # "users/kai/keepass"

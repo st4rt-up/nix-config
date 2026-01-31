@@ -6,29 +6,29 @@
 }: let
   inherit (config) theme;
   theme-name = "rose-pine-gtk";
-  theme-package = pkgs.rose-pine-gtk-theme;
 in {
   environment.systemPackages = with pkgs; [
     rose-pine-cursor
     rose-pine-hyprcursor
     rose-pine-gtk-theme
+    rose-pine-icon-theme
+    papirus-icon-theme
+    dconf-editor
   ];
 
   stylix.targets = {
     qt.enable = false;
   };
 
-  qt = {
-    enable = true;
-    platformTheme = "gtk2";
-  };
+  qt.enable = true;
+  qt.platformTheme = "gtk2";
 
   # ==== HOME LEVEL BELOW HERE
   home-manager.users.${username} = {
     stylix.targets = {
       qt.enable = false;
       kde.enable = false;
-      gtk.enable = true;
+      gtk.enable = false;
     };
 
     gtk = {
@@ -38,16 +38,7 @@ in {
         inherit (theme.cursor) size;
       };
 
-      #      theme = {
-      #        name = theme-name;
-      #        package = theme-package;
-      #      };
-
-      iconTheme = {
-        name = "rose-pine-icons";
-        package = theme-package;
-      };
-
+      iconTheme.name = "oomox-rose-pine-dawn";
       gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
       gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
     };
@@ -55,17 +46,13 @@ in {
     qt = {
       enable = true;
       platformTheme.name = "gtk";
-      style = {
-        name = theme-name;
-        package = theme-package;
-      };
+      style.name = theme-name;
     };
 
     home.pointerCursor = {
       gtk.enable = true;
-
-      inherit (theme.cursor.xcursor) package name;
       inherit (theme.cursor) size;
+      inherit (theme.cursor.xcursor) package name;
     };
   };
 }

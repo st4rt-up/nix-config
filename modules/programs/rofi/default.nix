@@ -14,11 +14,16 @@
   configFiles = [
     "configuration"
     "binds"
+    "laptop"
   ];
 
   niri-config = "rofi-niri.kdl";
 in {
-  environment.systemPackages = with pkgs; [rofi];
+  environment.systemPackages = with pkgs; [
+    rofi
+    rofi-calc
+    qalculate-qt
+  ];
   home-manager.users.${username} = {
     stylix.targets.rofi.enable = false;
     programs.rofi = {

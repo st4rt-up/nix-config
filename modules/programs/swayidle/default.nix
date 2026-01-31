@@ -52,20 +52,11 @@ in {
         }
       ];
 
-      events = [
-        {
-          event = "before-sleep";
-          command = display-off;
-        }
-        {
-          event = "after-resume";
-          command = display-on;
-        }
-        {
-          event = "unlock";
-          command = display-on;
-        }
-      ];
+      events = {
+        before-sleep = display-off;
+        after-resume = display-on;
+        unlock = display-on;
+      };
     };
   };
 }

@@ -1,8 +1,12 @@
-{username, ...}: {
+{
+  username,
+  # pkgs,
+  ...
+}: {
   home-manager.users.${username} = {
     programs.firefox = {
       enable = true;
-      # package = inputs.zen-browser.packages."${system}".default;
+      # package = inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default;
 
       profiles.${username} = {
         id = 0;
