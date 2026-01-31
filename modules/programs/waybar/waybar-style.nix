@@ -4,7 +4,6 @@
   ...
 }: let
   inherit (config) theme;
-in let
   # accent = theme.colour.base0D;
   # background = theme.colour.base00;
   # background-alt = theme.colour.base01;
@@ -16,6 +15,9 @@ in let
   font = theme.fonts.monospace.name;
   # rounding = theme.rounding;
   font-size = config.stylix.fonts.sizes.desktop;
+
+  padding-out = toString (theme.bar.spacing * 2);
+  padding-in = toString theme.bar.spacing;
 in {
   home-manager.users.${username} = {
     # maybe make this imported in style ... ?
@@ -27,8 +29,8 @@ in {
       }
 
       #network, #battery {
-        padding-left: ${toString theme.gaps-out}px;
-        padding-right: ${toString theme.gaps-in}px;
+        padding-left: ${padding-in}px;
+        padding-right: ${padding-out}px;
       }
 
       #battery.plugged, #battery.charging {
@@ -44,11 +46,11 @@ in {
       }
 
       #clock {
-        margin-right: ${toString theme.gaps-out}px;
+        margin-right: ${padding-out}px;
       }
 
       #window {
-        margin-left: ${toString theme.gaps-out}px;
+        margin-left: ${padding-out}px;
       }
 
       #wireplumber.muted {

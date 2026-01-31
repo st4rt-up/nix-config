@@ -31,10 +31,14 @@ in {
 
       settings.mainBar = {
         layer = "top";
-        inherit (theme.bar) position height;
+        inherit
+          (theme.bar)
+          position
+          height
+          spacing
+          ;
         # margin-left = theme.gaps-out;
         # margin-right = theme.gaps-out;
-        spacing = theme.gaps-in;
 
         modules-left = [
           "hyprland/window"
@@ -51,6 +55,7 @@ in {
           "wireplumber"
           "battery"
           "clock"
+          "calendar"
         ];
       };
     };

@@ -2,10 +2,12 @@
   inputs,
   lib,
   pkgs,
+  config,
   ...
 }: let
   inherit (lib) mkOption types;
   inherit (inputs) stylix;
+  inherit (types) str int float bool package;
 
   # basic colours
   red = "dd3d43";
@@ -26,343 +28,143 @@
   gray = "5f5f5f";
   dark-gray = "2d2d2d";
   basically-black = "0e0e0e";
+
+  # this just lets me see more options at once
+  # I need to find a better way to do this
+  mkOpt = type: default:
+    mkOption {
+      inherit type default;
+    };
+
+  mkOptDesc = type: default: description:
+    mkOption {
+      inherit
+        type
+        default
+        description
+        ;
+    };
 in {
-  imports = [
-    stylix.nixosModules.stylix
-  ];
+  imports = [stylix.nixosModules.stylix];
   options.theme = {
-    colour = {
-      primary = mkOption {
-        type = types.str;
-        default = sky-blue;
-      };
-      accent = mkOption {
-        type = types.str;
-        default = red;
+    colour =
+      {
+        primary = mkOpt str sky-blue;
+        accent = mkOpt str red;
+        background = mkOpt str "191724";
+        background-alt = mkOpt str "191724";
+
+        # default is rose pine
+        # https://github.com/edunfelt/base16-rose-pine-scheme/blob/main/rose-pine.yaml
+        base00 = mkOptDesc str "191724" "base16: Default background colour";
+        base01 = mkOptDesc str "1f1d2e" "base16: Lighter background (status bars, line number, folding marks)";
+        base02 = mkOptDesc str "26233a" "base16: Selection background";
+        base03 = mkOptDesc str "6e6a86" "base16: Comments, invisibles, line highlighting";
+        base04 = mkOptDesc str "908caa" "base16: Dark foreground (for status bars)";
+        base05 = mkOptDesc str "e0def4" "base16: Default foreground, caret, delimiters, operators";
+        base06 = mkOptDesc str "e0def4" "base16: Light foreground";
+        base07 = mkOptDesc str "524f67" "base16: Light background";
+        base08 = mkOptDesc str "eb6f92" "base16: Variables, XML tags, markup link text, markup lists, diff deleted";
+        base09 = mkOptDesc str "f6c177" "base16: Integers, boolean, constants, XML attributes, Markup link uri";
+        base0A = mkOptDesc str "ebbcba" "base16: Classes, markup bold, search text background";
+        base0B = mkOptDesc str "31748f" "base16: Strings, inherited class, Markup code, diff inserted";
+        base0C = mkOptDesc str "9ccfd8" "base16: Support, Regex, escape characters, Markup quotes";
+        base0D = mkOptDesc str "c4a7e7" "base16: Functions, methods, attribute IDs, headings";
+        base0E = mkOptDesc str "f6c177" "base16: Keywords, storage, selector, Markup italic, diff changed";
+        base0F = mkOptDesc str "524f67" "base16: Deprecated, opening/closing embedded language tags";
+      }
+      // {
+        # ==== colours for use in waybar config, etc
+        # light-red = mkOpt str red;
+        red = mkOpt str red;
+        orange = mkOpt str orange;
+        yellow = mkOpt str yellow;
+        light-green = mkOpt str lime;
+        green = mkOpt str green;
+        light-blue = mkOpt str sky-blue;
+        blue = mkOpt str blue;
+        dark-blue = mkOpt str indigo;
+        light-purple = mkOpt str lilac;
+        purple = mkOpt str purple;
+        pink = mkOpt str pink;
+
+        # ==== gray values
+        white = mkOpt str white;
+        light-gray = mkOpt str light-gray;
+        gray = mkOpt str gray;
+        dark-gray = mkOpt str dark-gray;
+        black = mkOpt str basically-black;
       };
 
-      background = mkOption {
-        type = types.str;
-        default = "191724";
-      };
+    polarity = mkOpt str "dark";
 
-      background-alt = mkOption {
-        type = types.str;
-        default = "191724";
-      };
+    window-manager = {
+      blur = mkOpt bool true;
+      monitor-scaling = mkOpt float 2.0;
 
-      # default is rose pine
-      # https://github.com/edunfelt/base16-rose-pine-scheme/blob/main/rose-pine.yaml
+      rounding = mkOpt int 8;
+      gaps-in = mkOpt int 6;
+      gaps-out = mkOpt int (6 * 2);
 
-      base00 = mkOption {
-        type = types.str;
-        default = "191724";
-      };
-      base01 = mkOption {
-        type = types.str;
-        default = "1f1d2e";
-      };
-      base02 = mkOption {
-        type = types.str;
-        default = "26233a";
-      };
-      base03 = mkOption {
-        type = types.str;
-        default = "6e6a86";
-      };
-
-      base04 = mkOption {
-        type = types.str;
-        default = "908caa";
-      };
-      base05 = mkOption {
-        type = types.str;
-        default = "e0def4";
-      };
-      base06 = mkOption {
-        type = types.str;
-        default = "e0def4";
-      };
-      base07 = mkOption {
-        type = types.str;
-        default = "524f67";
-      };
-
-      base08 = mkOption {
-        type = types.str;
-        default = "eb6f92";
-      };
-      base09 = mkOption {
-        type = types.str;
-        default = "f6c177";
-      };
-      base0A = mkOption {
-        type = types.str;
-        default = "ebbcba";
-      };
-      base0B = mkOption {
-        type = types.str;
-        default = "31748f";
-      };
-      base0C = mkOption {
-        type = types.str;
-        default = "9ccfd8";
-      };
-      base0D = mkOption {
-        type = types.str;
-        default = "c4a7e7";
-      };
-      base0E = mkOption {
-        type = types.str;
-        default = "f6c177";
-      };
-      base0F = mkOption {
-        type = types.str;
-        default = "524f67";
-      };
-
-      # ==== colours for use in waybar config, etc
-
-      red = mkOption {
-        type = types.str;
-        default = red;
-      };
-      orange = mkOption {
-        type = types.str;
-        default = orange;
-      };
-      yellow = mkOption {
-        type = types.str;
-        default = yellow;
-      };
-      light-green = mkOption {
-        type = types.str;
-        default = lime;
-      };
-      green = mkOption {
-        type = types.str;
-        default = green;
-      };
-      light-blue = mkOption {
-        type = types.str;
-        default = sky-blue;
-      };
-      blue = mkOption {
-        type = types.str;
-        default = blue;
-      };
-      dark-blue = mkOption {
-        type = types.str;
-        default = indigo;
-      };
-      light-purple = mkOption {
-        type = types.str;
-        default = lilac;
-      };
-      purple = mkOption {
-        type = types.str;
-        default = purple;
-      };
-      pink = mkOption {
-        type = types.str;
-        default = pink;
-      };
-
-      # ==== gray values
-
-      white = mkOption {
-        type = types.str;
-        default = white;
-      };
-      light-gray = mkOption {
-        type = types.str;
-        default = light-gray;
-      };
-      gray = mkOption {
-        type = types.str;
-        default = gray;
-      };
-      dark-gray = mkOption {
-        type = types.str;
-        default = dark-gray;
-      };
-      black = mkOption {
-        type = types.str;
-        default = basically-black;
-      };
+      active-opacity = mkOpt float 0.92;
+      inactive-opacity = mkOpt float 0.75;
+      border-size = mkOpt int 2;
     };
 
-    polarity = mkOption {
-      type = types.str;
-      default = "dark";
-    };
-
-    rounding = mkOption {
-      type = types.int;
-      default = 8;
-    };
-    gaps-in = mkOption {
-      type = types.int;
-      default = 6;
-    };
-    gaps-out = mkOption {
-      type = types.int;
-      default = 6 * 2;
-    };
-    active-opacity = mkOption {
-      type = types.float;
-      default = 0.92;
-    };
-    inactive-opacity = mkOption {
-      type = types.float;
-      default = 0.75;
-    };
-    blur = mkOption {
-      type = types.bool;
-      default = true;
-    };
-    border-size = mkOption {
-      type = types.int;
-      default = 2;
-    };
+    # application-launcher = {};
 
     cursor = {
-      size = mkOption {
-        type = types.int;
-        default = 28;
-      };
+      size = mkOpt int 28;
 
       hyprcursor = {
-        name = mkOption {
-          type = types.str;
-          default = "rose-pine-hyprcursor";
-        };
-        # package = mkOption {
-        #   type = types.package;
-        #   default = pkgs.rose-pine-cursor;
-        # };
+        name = mkOpt str "rose-pine-hyprcursor";
+        package = mkOpt package pkgs.rose-pine-cursor;
       };
-      xcursor = {
-        name = mkOption {
-          type = types.str;
-          default = "BreezeX-RosePine-Linux";
-        };
-        package = mkOption {
-          type = types.package;
-          default = pkgs.rose-pine-cursor;
-        };
-      };
-    };
-    cursor-size = mkOption {
-      type = types.int;
-      default = 28;
-    };
 
-    monitor-scaling = mkOption {
-      type = types.float;
-      default = 2.0;
+      xcursor = {
+        name = mkOpt str "BreezeX-RosePine-Linux";
+        package = mkOpt package pkgs.rose-pine-cursor;
+      };
     };
 
     bar = {
-      position = mkOption {
-        type = types.str;
-        default = "bottom";
-      };
-      height = mkOption {
-        type = types.int;
-        default = 40;
-      };
-      transparent = mkOption {
-        type = types.bool;
-        default = false;
-      };
-      transparent-buttons = mkOption {
-        type = types.bool;
-        default = false;
-      };
-      floating = mkOption {
-        type = types.bool;
-        default = false;
-      };
+      position = mkOpt str "bottom";
+      height = mkOpt int 40;
+      transparent = mkOpt bool false;
+      transparent-buttons = mkOpt bool false;
+      floating = mkOpt bool false;
+
+      spacing = mkOpt int 5;
+    };
+
+    widgets = {
+      rounding = mkOpt int config.theme.window-manager.rounding;
+      padding = mkOpt int 5;
     };
 
     fonts = {
-      monospace = {
-        name = mkOption {
-          type = types.str;
-          default = "iMWritingMono Nerd Font Propo";
-        };
+      monospace.name = mkOpt str "iMWritingMono Nerd Font Propo";
+      monospace.package = mkOpt package pkgs.nerd-fonts.im-writing;
 
-        package = mkOption {
-          type = types.package;
-          default = pkgs.nerd-fonts.im-writing;
-        };
-      };
+      sansSerif.name = mkOpt str "Atkinson Hyperlegible";
+      sansSerif.package = mkOpt package pkgs.atkinson-hyperlegible;
 
-      sansSerif = {
-        name = mkOption {
-          type = types.str;
-          default = "Atkinson Hyperlegible";
-        };
+      serif.name = mkOpt str "iMWritingMono Nerd Font Propo";
+      serif.package = mkOpt package pkgs.nerd-fonts.im-writing;
 
-        package = mkOption {
-          type = types.package;
-          default = pkgs.atkinson-hyperlegible;
-        };
-      };
-
-      serif = {
-        name = mkOption {
-          type = types.str;
-          default = "iMWritingMono Nerd Font Propo";
-        };
-
-        package = mkOption {
-          type = types.package;
-          default = pkgs.nerd-fonts.im-writing;
-        };
-      };
-
-      emoji = {
-        name = mkOption {
-          type = types.str;
-          default = "Noto Color Emoji";
-        };
-
-        package = mkOption {
-          type = types.package;
-          default = pkgs.noto-fonts-color-emoji;
-        };
-      };
+      emoji.name = mkOpt str "Noto Color Emoji";
+      emoji.package = mkOpt package pkgs.noto-fonts-color-emoji;
 
       sizes = {
-        applications = mkOption {
-          type = types.int;
-          default = 11;
-        };
-
-        desktop = mkOption {
-          type = types.int;
-          default = 16;
-        };
-
-        popups = mkOption {
-          type = types.int;
-          default = 11;
-        };
-
-        terminal = mkOption {
-          type = types.int;
-          default = 11;
-        };
+        applications = mkOpt int 11;
+        desktop = mkOpt int 16;
+        popups = mkOpt int 11;
+        terminal = mkOpt int 11;
       };
     };
 
-    enableStylix = mkOption {
-      type = types.bool;
-      default = true;
-    };
-  };
+    enableStylix = mkOpt bool true;
 
-  # create enable option in theme for stylix
+    # create enable option in theme for stylix
+  };
 }

@@ -5,9 +5,13 @@
   pkgs,
   ...
 }: let
-  inherit (config) var theme;
-  hyprlandPackage = inputs.hyprland.packages.${pkgs.system}.hyprland;
-  hyprlandPortalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+  inherit
+    (config)
+    #var
+    theme
+    ;
+  hyprlandPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+  hyprlandPortalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
 in {
   environment.systemPackages = with pkgs;
     [
@@ -15,7 +19,7 @@ in {
       hyprpolkitagent
     ]
     ++ [
-      inputs.rose-pine-hyprcursor.packages.${system}.default
+      inputs.rose-pine-hyprcursor.packages.${stdenv.hostPlatform.system}.default
     ];
 
   programs.hyprland.enable = true;

@@ -13,7 +13,7 @@
   niri-config = "awww-niri.kdl";
 in {
   environment.systemPackages = [
-    inputs.awww.packages.${pkgs.system}.awww
+    inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
   ];
 
   home-manager.users.${username} = {
