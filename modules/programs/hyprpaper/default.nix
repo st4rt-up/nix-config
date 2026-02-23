@@ -1,3 +1,4 @@
+# currently requires home-manager
 {
   config,
   username,
