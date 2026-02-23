@@ -1,6 +1,6 @@
 {
   inputs,
-  config,
+  # config,
   pkgs,
   lib,
   username,
@@ -13,13 +13,11 @@
 
   inherit (builtins) elem;
   inherit (lib) getName;
-  link = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
-  configPath = config.var.flake-path + "/modules/programs/zen-browser/dotfiles";
+  # link = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
+  # configPath = config.var.flake-path + "/modules/programs/zen-browser/dotfiles";
 in {
   environment.sessionVariables = {MOZ_USE_XINPUT2 = "1";};
-  environment.systemPackages = with pkgs; [
-    brotab
-  ];
+  # environment.systemPackages = with pkgs; [ brotab ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:
     elem (getName pkg) [
@@ -27,16 +25,11 @@ in {
     ];
 
   home-manager.users.${username} = {
-    imports = [inputs.zen-browser.homeModules.beta];
+    imports = [inputs.zen-browser.homeModules.twilight];
 
     stylix.targets.zen-browser = {
       enable = false;
       profileNames = ["default"];
-    };
-
-    xdg.configFile = {
-      # ==== brotab (control firefox with cli for rofi integration)
-      "brotab/rofi-dispatcher.py".source = link configPath + "/brotab/rofi-dispatcher.py";
     };
 
     # keep keyboard shortcuts between versions
@@ -47,7 +40,7 @@ in {
       enable = true;
       nativeMessagingHosts = [
         pkgs.keepassxc
-        pkgs.brotab
+        # pkgs.brotab
       ];
       profiles = {
         default = {
@@ -70,7 +63,7 @@ in {
             "81fcd6b3-f014-4796-988f-6c3cb3874db8" # zen context menu
           ];
 
-          keyboardShortcutsVersion = 13;
+          keyboardShortcutsVersion = 14;
           keyboardShortcuts = [
             {
               id = "key_newNavigatorTab";
@@ -83,7 +76,7 @@ in {
             } # new window
             {
               id = "key_close";
-              key = "w";
+              key = "q";
               modifiers = {control = true;};
             }
             {

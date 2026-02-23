@@ -25,10 +25,12 @@
 
     "obsidian" # markdown note taking
     "okular" # pdf reader
+    "thunar" # file manager
 
     "kitty" # terminal emulator
     "gtk"
     "keepassxc"
+    "signal"
 
     "chromium"
   ];

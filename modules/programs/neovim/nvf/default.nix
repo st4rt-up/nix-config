@@ -99,7 +99,7 @@ in {
         };
 
         formatter.conform-nvim.enable = true;
-        navigation.harpoon.enable = true; # turbo marks
+        # navigation.harpoon.enable = true; # turbo marks
         notify.nvim-notify.enable = true; # pop up notifications (top right)
 
         binds.whichKey.enable = true; # keyboard binds popup

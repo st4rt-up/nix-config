@@ -16,7 +16,6 @@
   configFiles = [
     "tmux"
   ];
-
 in {
   environment.systemPackages = with pkgs; [tmux];
 
@@ -27,11 +26,21 @@ in {
     plugins = with pkgs.tmuxPlugins; [
       vim-tmux-navigator
       sensible
+      resurrect
+      continuum
     ];
 
     extraConfig = ''
       set -g base-index 1
       set -g pane-base-index 1
+
+      set -g @resurrect-strategy-vim 'session'
+      set -g @resurrect-strategy-nvim 'session'
+      set -g @resurrect-capture-pane-contents 'on'
+
+      set -g @continuum-restore 'on'
+      set -g @continuum-boot 'on'
+      set -g @continuum-save-interval
 
       bind r source-file ${symlinkPath}/${rootConfig}
       source-file ${symlinkPath}/${rootConfig}
@@ -42,10 +51,10 @@ in {
     xdg.configFile =
       mergeAttrsList (map (file: {"tmux/${file}.common".source = link configPath + "/${file}.common";}) configFiles)
       // {
-      "tmux/${rootConfig}".text = concatStringsSep "\n" (
-        map (file: "source-file ${symlinkPath}/${file}.common")
-        configFiles
-      );
-    };
+        "tmux/${rootConfig}".text = concatStringsSep "\n" (
+          map (file: "source-file ${symlinkPath}/${file}.common")
+          configFiles
+        );
+      };
   };
 }

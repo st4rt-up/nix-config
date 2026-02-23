@@ -50,11 +50,13 @@ layout {
 
 
 window-rule {
+    open-maximized-to-edges false;
     geometry-corner-radius 8
     clip-to-geometry true
 }
 
-// switch-events {
-  // lid-close {}
-  // lid-open {}
-// }
+window-rule {
+  match app-id=r#"obsidian"#
+  match app-id=r#"okular"#
+  scroll-factor 0.5
+}
