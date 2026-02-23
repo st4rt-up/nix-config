@@ -7,7 +7,15 @@
 }: let
   inherit (lib) mkOption types;
   inherit (inputs) stylix;
-  inherit (types) str int float bool package;
+  inherit
+    (types)
+    str
+    int
+    float
+    bool
+    # attrs
+    package
+    ;
 
   # basic colours
   red = "dd3d43";
@@ -46,6 +54,7 @@
     };
 in {
   imports = [stylix.nixosModules.stylix];
+
   options.theme = {
     colour =
       {
@@ -140,6 +149,13 @@ in {
     widgets = {
       rounding = mkOpt int config.theme.window-manager.rounding;
       padding = mkOpt int 5;
+
+      border-size = mkOpt int 5;
+
+      notification = {
+        height = mkOpt int 200;
+        width = mkOpt int 800;
+      };
     };
 
     fonts = {

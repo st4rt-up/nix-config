@@ -17,7 +17,7 @@
     fd # rust find
 
     # info and profiling
-    xorg.xrandr # display info
+    xrandr # display info
     btop # task manager
 
     # terminal img view

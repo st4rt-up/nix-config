@@ -1,3 +1,4 @@
+# currently requires home-manager
 {
   username,
   config,
@@ -14,14 +15,13 @@ in {
       settings = {
         default-timeout = 5 * 1000;
 
-        font = "${theme.fonts.sansSerif.name} 11";
+        font = "${theme.fonts.serif.name} 9";
 
-        background-color = "#${theme.colour.base00}";
-        border-color = "#${theme.colour.base0D}";
-
+        background-color = "#${theme.colour.base01}";
+        border-color = "#${theme.colour.base00}";
+        inherit (theme.widgets) border-size;
         border-radius = theme.widgets.rounding;
-
-        padding = "${toString theme.widgets.padding}";
+        inherit (theme.widgets) padding;
       };
     };
   };
