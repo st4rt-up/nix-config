@@ -6,7 +6,8 @@
   - core (nixos specific configuration)
   - programs (notes below)
   - system (configuration normally involved with hardware goes here)
-  - themes (will get to restructuring soon)
+  - themes
+  - theming 
   - users (notes below)
 - wallpaper
 

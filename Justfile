@@ -1,7 +1,7 @@
 default: build
 test:
   git add . -N
-  nh os test --verbose --show-trace
+  nh os test && notify-send "nix test" "Finished building. Configuration switched"
 build:
   git add . -N
   nh os build --verbose --show-trace

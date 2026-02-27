@@ -1,21 +1,12 @@
 {
-  inputs,
-  lib,
-  pkgs,
+  # inputs,
   config,
+  pkgs,
+  lib,
   ...
 }: let
   inherit (lib) mkOption types;
-  inherit (inputs) stylix;
-  inherit
-    (types)
-    str
-    int
-    float
-    bool
-    # attrs
-    package
-    ;
+  inherit (types) str int ints float bool package enum;
 
   # basic colours
   red = "dd3d43";
@@ -53,30 +44,37 @@
         ;
     };
 in {
-  imports = [stylix.nixosModules.stylix];
-
   options.theme = {
+    # enable = mkEnableOption "Theming";
     colour =
       {
         primary = mkOpt str sky-blue;
         accent = mkOpt str red;
-        background = mkOpt str "191724";
+        background = mkOpt str "191724"; #191724
         background-alt = mkOpt str "191724";
+        foreground = mkOpt str "e0def4";
 
         # default is rose pine
         # https://github.com/edunfelt/base16-rose-pine-scheme/blob/main/rose-pine.yaml
+        # #191724 #1f1d2e #26233a #6e6a86
+        # #908caa #e0def4 #e0def4 #524f67
+        # #eb6f92 #f6c177 #ebbcba #31748f
+        # #9ccfd8 #c4a7e7 #f6c177 #524f67
         base00 = mkOptDesc str "191724" "base16: Default background colour";
         base01 = mkOptDesc str "1f1d2e" "base16: Lighter background (status bars, line number, folding marks)";
         base02 = mkOptDesc str "26233a" "base16: Selection background";
         base03 = mkOptDesc str "6e6a86" "base16: Comments, invisibles, line highlighting";
+
         base04 = mkOptDesc str "908caa" "base16: Dark foreground (for status bars)";
         base05 = mkOptDesc str "e0def4" "base16: Default foreground, caret, delimiters, operators";
         base06 = mkOptDesc str "e0def4" "base16: Light foreground";
         base07 = mkOptDesc str "524f67" "base16: Light background";
+
         base08 = mkOptDesc str "eb6f92" "base16: Variables, XML tags, markup link text, markup lists, diff deleted";
         base09 = mkOptDesc str "f6c177" "base16: Integers, boolean, constants, XML attributes, Markup link uri";
         base0A = mkOptDesc str "ebbcba" "base16: Classes, markup bold, search text background";
         base0B = mkOptDesc str "31748f" "base16: Strings, inherited class, Markup code, diff inserted";
+
         base0C = mkOptDesc str "9ccfd8" "base16: Support, Regex, escape characters, Markup quotes";
         base0D = mkOptDesc str "c4a7e7" "base16: Functions, methods, attribute IDs, headings";
         base0E = mkOptDesc str "f6c177" "base16: Keywords, storage, selector, Markup italic, diff changed";
@@ -105,56 +103,73 @@ in {
         black = mkOpt str basically-black;
       };
 
-    polarity = mkOpt str "dark";
+    polarity = mkOpt (enum ["light" "dark" "either"]) "dark";
 
     window-manager = {
-      blur = mkOpt bool true;
+      # blur.radius = mkOpt float 1.0;
+      blur.enable = mkOpt bool false;
+      shadow.radius = mkOpt float 1.0;
+      shadow.enable = mkOpt bool true;
+      animations = mkOpt bool true;
       monitor-scaling = mkOpt float 2.0;
-
       rounding = mkOpt int 8;
-      gaps-in = mkOpt int 6;
-      gaps-out = mkOpt int (6 * 2);
 
-      active-opacity = mkOpt float 0.92;
-      inactive-opacity = mkOpt float 0.75;
-      border-size = mkOpt int 2;
+      gaps.inside = mkOpt int 6;
+      gaps.outside = mkOpt int (6 * 2);
+
+      opacity.active = mkOpt float 1.0;
+      opacity.inactive = mkOpt float 1.0;
+
+      border = {
+        size = mkOpt int 2;
+        colour.active = mkOpt str config.theme.colour.primary;
+        colour.inactive = mkOpt str config.theme.colour.background-alt;
+      };
     };
 
     # application-launcher = {};
 
     cursor = {
       size = mkOpt int 28;
-
-      hyprcursor = {
-        name = mkOpt str "rose-pine-hyprcursor";
-        package = mkOpt package pkgs.rose-pine-cursor;
-      };
-
-      xcursor = {
-        name = mkOpt str "BreezeX-RosePine-Linux";
-        package = mkOpt package pkgs.rose-pine-cursor;
-      };
+      hyprcursor.name = mkOpt str "rose-pine-hyprcursor";
+      hyprcursor.package = mkOpt package pkgs.rose-pine-cursor;
+      xcursor.name = mkOpt str "BreezeX-RosePine-Linux";
+      xcursor.package = mkOpt package pkgs.rose-pine-cursor;
     };
 
     bar = {
-      position = mkOpt str "bottom";
+      position = mkOpt (enum ["left" "right" "top" "bottom"]) "bottom";
       height = mkOpt int 40;
       transparent = mkOpt bool false;
       transparent-buttons = mkOpt bool false;
       floating = mkOpt bool false;
-
       spacing = mkOpt int 5;
+    };
+
+    launcher = {
+      font = {
+        name = mkOpt str config.theme.fonts.monospace.name;
+        package = mkOpt package config.theme.fonts.serif.package;
+        size = mkOpt int config.theme.fonts.sizes.popups;
+      };
     };
 
     widgets = {
       rounding = mkOpt int config.theme.window-manager.rounding;
       padding = mkOpt int 5;
 
-      border-size = mkOpt int 5;
+      border.size = mkOpt int 5;
 
       notification = {
-        height = mkOpt int 200;
-        width = mkOpt int 800;
+        width = mkOpt int 300;
+        height = mkOpt int 100;
+        font = {
+          name = mkOpt str config.theme.fonts.serif.name;
+          package = mkOpt package config.theme.fonts.serif.package;
+          size = mkOpt int config.theme.fonts.sizes.popups;
+        };
+        icon.size = mkOpt int 48;
+        icon.location = mkOpt (enum ["left" "right" "top" "bottom"]) "left";
       };
     };
 
@@ -172,15 +187,13 @@ in {
       emoji.package = mkOpt package pkgs.noto-fonts-color-emoji;
 
       sizes = {
-        applications = mkOpt int 11;
-        desktop = mkOpt int 16;
-        popups = mkOpt int 11;
-        terminal = mkOpt int 11;
+        applications = mkOpt (ints.between 2 100) 11;
+        desktop = mkOpt (ints.between 2 100) 16;
+        popups = mkOpt (ints.between 2 100) 10;
+        terminal = mkOpt (ints.between 2 100) 10;
       };
     };
 
     enableStylix = mkOpt bool true;
-
-    # create enable option in theme for stylix
   };
 }

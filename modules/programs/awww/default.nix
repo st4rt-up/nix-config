@@ -10,7 +10,7 @@
   inherit (lib) mkIf;
 
   outOfStore = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
-  configPath = config.var.flake-path + "/modules/programs/awww/dotfiles";
+  configPath = config.var.path.flake + "/modules/programs/awww/dotfiles";
   niri-config = "awww-niri.kdl";
 in {
   environment.systemPackages = [

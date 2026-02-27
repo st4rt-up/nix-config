@@ -1,26 +1,17 @@
 {
   config,
+  lib,
   username,
   inputs,
   pkgs,
   ...
 }: let
-  inherit
-    (config)
-    #var
-    theme
-    ;
-  hyprlandPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-  hyprlandPortalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  inherit (config) theme;
+  inherit (lib) mkDefault;
 in {
   environment.systemPackages = with pkgs;
-    [
-      wayland
-      hyprpolkitagent
-    ]
-    ++ [
-      inputs.rose-pine-hyprcursor.packages.${stdenv.hostPlatform.system}.default
-    ];
+    [wayland hyprpolkitagent]
+    ++ [inputs.rose-pine-hyprcursor.packages.${stdenv.hostPlatform.system}.default];
 
   programs.hyprland.enable = true;
 
@@ -31,14 +22,11 @@ in {
     wayland.windowManager.hyprland = {
       enable = true;
       xwayland.enable = true;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
 
-      package = hyprlandPackage;
-      portalPackage = hyprlandPortalPackage;
-
-      systemd = {
-        enable = true;
-        variables = ["-all"];
-      };
+      systemd.enable = true;
+      systemd.variables = ["-all"];
 
       extraConfig = ''
         xwayland {
@@ -52,7 +40,7 @@ in {
 
         # autostart
         exec-once = [
-          "hyprctl setcursor $hyprcursor_theme ${toString theme.cursor-size}"
+          "hyprctl setcursor $hyprcursor_theme ${toString theme.size}"
           "$terminal"
         ];
 
@@ -62,11 +50,11 @@ in {
           "MOZ_ENABLE_WAYLAND, 1" # for firefox to run on wayland
           "MOZ_WEBRENDER, 1" # for firefox to run on wayland
           "HYPRCURSOR_THEME, $hyprcursor_theme"
-          "HYPRCURSOR_SIZE, ${toString theme.cursor-size}"
+          "HYPRCURSOR_SIZE, ${toString theme.cursor.size}"
           "XCURSOR_THEME, ${toString theme.cursor.xcursor.name}"
-          "XCURSOR_SIZE, ${toString theme.cursor-size}"
+          "XCURSOR_SIZE, ${toString theme.cursor.size}"
           "QT_AUTO_SCREEN_SCALE_FACTOR, 1"
-          "QT_CURSOR_SIZE, ${toString theme.cursor-size}"
+          "QT_CURSOR_SIZE, ${toString theme.cursor.size}"
           # "GDK_SCALE, 2"
         ];
 
@@ -86,27 +74,20 @@ in {
         monitor = ",preferred,auto,${toString theme.monitor-scaling}";
 
         general = {
-          gaps_in = theme.gaps-in;
-          gaps_out = theme.gaps-out;
+          gaps_in = theme.window-manager.gaps.inside;
+          gaps_out = theme.window-manager.gaps.outside;
         };
 
         decoration = {
-          rounding = theme.rounding;
-          active_opacity = theme.active-opacity;
-          inactive_opacity = theme.inactive-opacity;
+          rounding = mkDefault theme.window-manager.rounding;
+          active_opacity = mkDefault theme.window-manager.opacity.active;
+          inactive_opacity = mkDefault theme.window-manager.opacity.inactive;
 
-          blur = {
-            enabled = theme.blur;
-          };
-
-          shadow = {
-            enabled = false; # TODO add this to options-theme
-          };
+          blur.enabled = theme.window-manager.blur;
+          shadow.enabled = mkDefault theme.window-manager.shadow;
         };
 
-        misc = {
-          vfr = true;
-        };
+        misc.vfr = true;
 
         animations = {
           enabled = false;

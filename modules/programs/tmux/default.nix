@@ -9,7 +9,7 @@
   inherit (lib) mergeAttrsList;
 
   link = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
-  configPath = config.var.flake-path + "/modules/programs/tmux/dotfiles";
+  configPath = config.var.path.flake + "/modules/programs/tmux/dotfiles";
   symlinkPath = "~/.config/tmux";
   rootConfig = "config.common";
 

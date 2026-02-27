@@ -7,7 +7,7 @@
 }: let
   inherit (lib) mkIf;
   link = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
-  configPath = config.var.flake-path + "/modules/programs/swayosd/dotfiles";
+  configPath = config.var.path.flake + "/modules/programs/swayosd/dotfiles";
 
   niri-config = "swayosd-niri.kdl";
 in {

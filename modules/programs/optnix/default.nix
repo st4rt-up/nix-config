@@ -7,7 +7,7 @@
   options,
   ...
 }: let
-  # configPath = config.var.flake-path + "/modules/programs/optnix/dotfiles";
+  # configPath = config.var.path.flake + "/modules/programs/optnix/dotfiles";
   # outOfStore = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
   optnixLib = inputs.optnix.mkLib pkgs;
   optnixPkg = inputs.optnix.packages.${pkgs.stdenv.hostPlatform.system}.optnix;

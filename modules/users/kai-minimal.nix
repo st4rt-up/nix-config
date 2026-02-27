@@ -14,69 +14,8 @@
     "yazi" # cli file manager
 
     "git" # version control
-    "fastfetch"
-    "extras-cli" # misc extras
-    "usb"
 
-    "optnix"
-  ];
-  guiPrograms = [
-    "nixcord" # declarative vencord
-    "zen-browser" # firefox fork
-
-    "obsidian" # markdown note taking
-    "okular" # pdf reader
-    "thunar" # file manager
-
-    "kitty" # terminal emulator
-    "keepassxc"
-    "signal"
-
-    "chromium"
-  ];
-  schoolPrograms = [
-    "school-packages"
     "pdf-utilities"
-  ];
-  niriDE = [
-    "wayland"
-    "wayland-utils"
-
-    "niri"
-    "swayosd"
-    "swayidle"
-
-    "rofi" # application launcher
-    "mako"
-
-    "awww"
-    "waybar"
-  ];
-  testing = [
-    "waydroid"
-    "theming-tools"
-    # "jj" # version control
-    # "atuin" # command history (ctrl + r)
-
-    # "discordo" # didn't work (doesn't take token)
-    # "impala" # didn't connect to eduroam
-    # "vscode" # couldn't open folders
-    # "thunar"
-  ];
-  hyprDE = [
-    "wayland"
-    "wayland-utils" # grim + hyprland binds ()
-    "swayosd" # brightness and volume for wayland
-
-    "wofi" # application launcher
-    "mako" # notification daemon
-
-    "hyprland" # compositor / window server
-    "hyprpaper"
-    "hypridle"
-    "hyprlock"
-
-    "waybar" # bar
   ];
   secrets = [
     "users/kai/github"
@@ -97,19 +36,12 @@ in {
   imports =
     concatMap (map (program: ../programs/${program})) [
       programs
-      guiPrograms
-      schoolPrograms
-      # hyprDE
-      niriDE
-      testing
     ]
     ++ map (secret: ../secrets/${secret}.nix) secrets
     ++ [
       {
         # messy but it lets me do user specific config
         _module.args = {inherit username;};
-
-        # environment.systemPackages = miscPackages;
       }
       inputs.home-manager.nixosModules.home-manager
     ];
@@ -121,11 +53,9 @@ in {
       description = username;
 
       isNormalUser = true;
-      # useDefaultShell = true;
       extraGroups = [
         "wheel"
         "networkmanager"
-        "audio"
       ];
     };
 
@@ -136,6 +66,7 @@ in {
       config = "/home/${username}/files/dev-nix/nix-config";
     };
 
+    # move off of home-manager one day
     home-manager = {
       users.${username} = {
         home.username = username;

@@ -8,7 +8,7 @@
   # inherit (lib) mkIf;
   inherit (config) theme;
   # outOfStore = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
-  # configPath = config.var.flake-path + "/modules/programs/waybar/dotfiles";
+  # configPath = config.var.path.flake + "/modules/programs/waybar/dotfiles";
   # configFiles = [];
   # niri-config = "wayland-niri.kdl";
 in {

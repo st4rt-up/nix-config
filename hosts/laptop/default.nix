@@ -21,7 +21,7 @@ in {
       gui = true;
       secrets = true;
       timezone = "America/Toronto";
-      flake-path = "/home/kai/files/dev-nix/nix-config";
+      path.flake = "/home/kai/files/dev-nix/nix-config";
     };
 
     # ==== SYNCTHING
@@ -36,7 +36,8 @@ in {
 
   imports =
     [
-      ./../../modules/themes/kai-dark.nix
+      ./../../modules/theming
+      ./../../modules/theming/themes/kai-dark
 
       ./hardware-configuration.nix
       ./syncthing.nix

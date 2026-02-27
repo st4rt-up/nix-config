@@ -5,7 +5,7 @@
   ...
 }: let
   link = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
-  configPath = config.var.flake-path + "/modules/programs/keepassxc/dotfiles";
+  configPath = config.var.path.flake + "/modules/programs/keepassxc/dotfiles";
 in {
   home-manager.users.${username} = {
     programs.keepassxc = {

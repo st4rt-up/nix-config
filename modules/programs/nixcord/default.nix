@@ -25,13 +25,6 @@ in {
   home-manager.users.${username} = {
     imports = [inputs.nixcord.homeModules.nixcord];
 
-    stylix.targets = {
-      nixcord.enable = false;
-      vencord.enable = false;
-      vesktop.enable = false;
-    };
-
-    # custom desktop shortcut to fix blurry wayland issues
     programs.nixcord = {
       enable = true;
 

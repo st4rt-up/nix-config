@@ -13,8 +13,7 @@
   # charged-color = theme.colour.base0B;
 
   font = theme.fonts.monospace.name;
-  # rounding = theme.rounding;
-  font-size = config.stylix.fonts.sizes.desktop;
+  font-size = theme.fonts.sizes.desktop;
 
   padding-out = toString (theme.bar.spacing * 2);
   padding-in = toString theme.bar.spacing;

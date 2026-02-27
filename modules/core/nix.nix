@@ -27,7 +27,7 @@ in {
       enable = true;
       clean.enable = true;
       clean.extraArgs = "--keep-since 4d --keep 3";
-      flake = config.var.flake-path;
+      inherit (config.var.path) flake;
     };
 
     nix-index-database.comma.enable = true;

@@ -8,10 +8,6 @@
   ];
 
   home-manager.users.${username} = {
-    stylix.targets = {
-      kde.enable = false;
-    };
-
     xdg.mimeApps = {
       enable = true;
 

@@ -12,7 +12,7 @@
   inherit (lib) mergeAttrsList mkForce;
 
   link = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
-  configPath = config.var.flake-path + "/modules/programs/niri/dotfiles";
+  configPath = config.var.path.flake + "/modules/programs/niri/dotfiles";
 
   # config file in .config is dynamically created and then files in this directory are
   # symlinked and mutable and can be hot reloaded

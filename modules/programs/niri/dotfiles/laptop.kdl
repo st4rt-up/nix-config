@@ -45,7 +45,7 @@ layout {
     // active-color "#ffbf85"
     active-color "#aaccFF"
     // active-gradient from="#ffbf85" to="#aaccFF" angle=135
-}
+  }
 }
 
 
@@ -58,5 +58,5 @@ window-rule {
 window-rule {
   match app-id=r#"obsidian"#
   match app-id=r#"okular"#
-  scroll-factor 0.5
+  scroll-factor 0.3
 }

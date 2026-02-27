@@ -14,7 +14,7 @@
   inherit (builtins) elem;
   inherit (lib) getName;
   # link = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
-  # configPath = config.var.flake-path + "/modules/programs/zen-browser/dotfiles";
+  # configPath = config.var.path.flake + "/modules/programs/zen-browser/dotfiles";
 in {
   environment.sessionVariables = {MOZ_USE_XINPUT2 = "1";};
   # environment.systemPackages = with pkgs; [ brotab ];
@@ -26,11 +26,6 @@ in {
 
   home-manager.users.${username} = {
     imports = [inputs.zen-browser.homeModules.twilight];
-
-    stylix.targets.zen-browser = {
-      enable = false;
-      profileNames = ["default"];
-    };
 
     # keep keyboard shortcuts between versions
     # doesn't work

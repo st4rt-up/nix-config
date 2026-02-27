@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: let
-  wallpaper = config.var.flake-path + "/wallpaper/cherry-blossom.jpg";
+  wallpaper = config.var.path.flake + "/wallpaper/cherry-blossom.jpg";
 in {
   home-manager.users.${username} = {
     home.packages = with pkgs; [hyprpaper];

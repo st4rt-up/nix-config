@@ -19,7 +19,8 @@
       allModes = {mode = ["n" "x" "v"];};
       insertMode = {mode = "i";};
 
-      noWait = {nowait = true;};
+      # noWait = {nowait = true;};
+      # unbind = key: (mkBind key "" {});
       mkBind = key: action: {
         mode ? ["n"],
         silent ? true,
@@ -32,8 +33,8 @@
       (mkBind "B" "^" allModes)
       (mkBind "E" "$" allModes)
 
-      (mkBind "oo" "o<Esc>" noWait)
-      (mkBind "OO" "O<Esc>" noWait)
+      # (mkBind "oo" "o<Esc>" noWait)
+      # (mkBind "OO" "O<Esc>" noWait)
       (mkBind "n" "nzzzv" {})
       (mkBind "N" "Nzzzv" {})
       (mkBind "<C-d>" "<C-d>zz" {})

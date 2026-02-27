@@ -6,7 +6,7 @@
   lib,
   ...
 }: let
-  files = config.var.files-directory;
+  inherit (config.var.path) files;
 in {
   environment.systemPackages = [pkgs.syncthing];
 

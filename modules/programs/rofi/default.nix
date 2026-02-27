@@ -9,7 +9,7 @@
   inherit (lib) mergeAttrsList optionalAttrs;
 
   link = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
-  configPath = config.var.flake-path + "/modules/programs/rofi/dotfiles";
+  configPath = config.var.path.flake + "/modules/programs/rofi/dotfiles";
 
   configFiles = [
     "configuration"
@@ -25,7 +25,6 @@ in {
     qalculate-qt
   ];
   home-manager.users.${username} = {
-    stylix.targets.rofi.enable = false;
     programs.rofi = {
       enable = true;
       package = pkgs.rofi;
