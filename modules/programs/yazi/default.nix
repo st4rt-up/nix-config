@@ -1,17 +1,18 @@
 {
   username,
   config,
+  pkgs,
   ...
-}: {
-  programs.yazi = {
-    enable = true;
+}: let
+  configPath = config.var.path.flake + "/modules/programs/yazi/dotfiles";
+  outOfStore = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
+in {
+  environment.systemPackages = with pkgs; [yazi];
+  environment.sessionVariables = {
+    YAZI_CONFIG_HOME = "~/.config/yazi";
   };
 
   home-manager.users.${username} = {
-    home.file = {
-      ".config/yazi" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/yazi";
-      };
-    };
+    xdg.configFile."yazi".source = outOfStore configPath;
   };
 }

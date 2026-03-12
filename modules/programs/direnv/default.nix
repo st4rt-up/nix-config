@@ -1,3 +1,4 @@
+# currently requires home-manager
 {username, ...}: {
   home-manager.users.${username} = {
     programs.direnv = {

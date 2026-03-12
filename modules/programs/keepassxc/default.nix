@@ -1,0 +1,21 @@
+# currently requires home-manager
+{
+  username,
+  config,
+  ...
+}: let
+  link = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
+  configPath = config.var.path.flake + "/modules/programs/keepassxc/dotfiles";
+in {
+  home-manager.users.${username} = {
+    programs.keepassxc = {
+      enable = true;
+      autostart = true;
+    };
+    xdg.autostart.enable = true;
+
+    xdg.configFile = {
+      "keepassxc/keepassxc.ini".source = link configPath + "/keepassxc.ini";
+    };
+  };
+}

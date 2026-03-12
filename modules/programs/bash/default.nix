@@ -1,3 +1,4 @@
+# currently requires home-manager
 {
   username,
   config,
@@ -8,12 +9,6 @@ in {
   home-manager.users.${username} = {
     programs.bash = {
       enable = true;
-
-      shellAliases = {
-        "nixedit" = "cd ${homeDirectory} && sudo nvim";
-      };
     };
-
-    stylix.targets.yazi.enable = false;
   };
 }

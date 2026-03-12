@@ -1,33 +1,65 @@
 {
   username,
+  config,
+  lib,
   pkgs,
   ...
-}: {
-  environment.systemPackages = with pkgs; [
-    swayosd
-  ];
+}: let
+  inherit (lib) mkIf;
+  link = config.home-manager.users.${username}.lib.file.mkOutOfStoreSymlink;
+  configPath = config.var.path.flake + "/modules/programs/swayosd/dotfiles";
+
+  niri-config = "swayosd-niri.kdl";
+in {
+  environment.systemPackages = with pkgs; [swayosd];
+  services.udev.packages = with pkgs; [swayosd];
+
+  systemd.services.swayosd-libinput-backend = {
+    description = "SwayOSD LibInput backend for listening to certain keys like CapsLock, ScrollLock, VolumeUp, etc.";
+    documentation = ["https://github.com/ErikReider/SwayOSD"];
+    wantedBy = ["graphical.target"];
+    partOf = ["graphical.target"];
+    after = ["graphical.target"];
+
+    serviceConfig = {
+      Type = "dbus";
+      BusName = "org.erikreider.swayosd";
+      ExecStart = "${pkgs.swayosd}/bin/swayosd-libinput-backend";
+      Restart = "on-failure";
+    };
+  };
 
   home-manager.users.${username} = {
-    wayland.windowManager.hyprland.settings = {
-      exec-once = ["swayosd-server"];
-    };
-
     services.swayosd.enable = true;
 
-    wayland.windowManager.hyprland.settings.binde = [
-      ", $raiseVolume, exec, swayosd-client --output-volume raise"
-      ", $lowerVolume, exec, swayosd-client --output-volume lower"
+    xdg.configFile =
+      # ==== niri binds
+      mkIf config.programs.niri.enable
+      {
+        "niri/config.kdl".text = "include \"${niri-config}\"";
+        "niri/${niri-config}".source = link configPath + "/${niri-config}";
+      };
 
-      "SHIFT, $raiseVolume, exec, swayosd-client --output-volume +10"
-      "SHIFT, $lowerVolume, exec, swayosd-client --output-volume -10"
+    # ==== hyprland binds
+    wayland.windowManager.hyprland.settings =
+      mkIf config.programs.hyprland.enable
+      {
+        exec-once = ["swayosd-server"];
+        binde = [
+          ", $raiseVolume, exec, swayosd-client --output-volume raise"
+          ", $lowerVolume, exec, swayosd-client --output-volume lower"
 
-      "CTRL, $raiseVolume, exec, swayosd-client --output-volume +1"
-      "CTRL, $lowerVolume, exec, swayosd-client --output-volume -1"
+          "SHIFT, $raiseVolume, exec, swayosd-client --output-volume +10"
+          "SHIFT, $lowerVolume, exec, swayosd-client --output-volume -10"
 
-      ", $muteVolume, exec, swayosd-client --output-volume mute-toggle"
+          "CTRL, $raiseVolume, exec, swayosd-client --output-volume +1"
+          "CTRL, $lowerVolume, exec, swayosd-client --output-volume -1"
 
-      ", $raiseBrightness, exec, swayosd-client --brightness raise"
-      ", $lowerBrightness, exec, swayosd-client --brightness lower"
-    ];
+          ", $muteVolume, exec, swayosd-client --output-volume mute-toggle"
+
+          ", $raiseBrightness, exec, swayosd-client --brightness raise"
+          ", $lowerBrightness, exec, swayosd-client --brightness lower"
+        ];
+      };
   };
 }

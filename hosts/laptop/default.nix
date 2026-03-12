@@ -1,3 +1,4 @@
+# called from /modules/hosts/default.nix
 {hostname, ...}: let
   users = [
     "kai"
@@ -13,16 +14,18 @@
 
   syncthing-key-path = "/run/syncthing-laptop";
 in {
-  # set variables declared in /modules/core/config-host
   config = {
+    # set variables declared in /modules/core/config-host
     var = {
       inherit hostname;
       gui = true;
       secrets = true;
       timezone = "America/Toronto";
+      path.flake = "/home/kai/files/dev-nix/nix-config";
     };
 
     # ==== SYNCTHING
+    # set device specific syncthing locations
     services.syncthing.key = "${syncthing-key-path}/key.pem";
     services.syncthing.cert = "${syncthing-key-path}/cert.pem";
     sops.secrets."secrets/syncthing/laptop/key".path = "${syncthing-key-path}/key.pem";
@@ -33,7 +36,8 @@ in {
 
   imports =
     [
-      ./../../modules/themes/kai-dark.nix
+      ./../../modules/theming
+      ./../../modules/theming/themes/kai-dark
 
       ./hardware-configuration.nix
       ./syncthing.nix

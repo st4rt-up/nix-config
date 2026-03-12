@@ -4,7 +4,6 @@
   ...
 }: let
   inherit (config) theme;
-in let
   # accent = theme.colour.base0D;
   # background = theme.colour.base00;
   # background-alt = theme.colour.base01;
@@ -14,21 +13,30 @@ in let
   # charged-color = theme.colour.base0B;
 
   font = theme.fonts.monospace.name;
-  # rounding = theme.rounding;
-  font-size = config.stylix.fonts.sizes.desktop;
+  font-size = theme.fonts.sizes.desktop;
+
+  padding-out = toString (theme.bar.spacing * 2);
+  padding-in = toString theme.bar.spacing;
 in {
   home-manager.users.${username} = {
     # maybe make this imported in style ... ?
     programs.waybar.style = ''
+      :root {
+        --font: "${font}";
+        --font-size: ${toString font-size}px;
+        --padding-in: ${toString theme.bar.spacing}px;
+        --padding-out: ${toString (theme.bar.spacing * 2)}px;
+      }
+
       * {
-        font-family: "${font}";
+        font-family: var(--font);
         font-weight: 500;
-        font-size: ${toString font-size}px;
+        font-size: var(--font-size);
       }
 
       #network, #battery {
-        padding-left: ${toString theme.gaps-out}px;
-        padding-right: ${toString theme.gaps-in}px;
+        padding-left: ${padding-in}px;
+        padding-right: ${padding-out}px;
       }
 
       #battery.plugged, #battery.charging {
@@ -44,11 +52,11 @@ in {
       }
 
       #clock {
-        margin-right: ${toString theme.gaps-out}px;
+        margin-right: ${padding-out}px;
       }
 
       #window {
-        margin-left: ${toString theme.gaps-out}px;
+        margin-left: ${padding-out}px;
       }
 
       #wireplumber.muted {

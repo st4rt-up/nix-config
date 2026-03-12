@@ -1,6 +1,8 @@
+# pattern inspired by sioodmy,
+# https://github.com/sioodmy/dotfiles/blob/main/hosts/default.nix
+# allows for easy
 {
   nixpkgs,
-  sops-nix,
   self,
   nixos-wsl,
   ...
@@ -20,28 +22,18 @@
 
       modules =
         [
-          # {_module.args = {inherit inputs system flake;};}
           ./../modules/core
           ./${hostname}
         ]
         ++ modules;
     };
 in {
-  laptop = mkHost {
-    hostname = "laptop";
-    modules = [
-      inputs.stylix.nixosModules.stylix
-      sops-nix.nixosModules.sops
-    ];
-  };
+  laptop = mkHost {hostname = "laptop";};
 
   wsl-nix = mkHost {
     hostname = "wsl-nix";
     modules = [
       nixos-wsl.nixosModules.default
-
-      inputs.stylix.nixosModules.stylix
-      sops-nix.nixosModules.sops
     ];
   };
 }

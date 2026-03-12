@@ -3,70 +3,90 @@
 
   programs = [
     "bash" # terminal
-    "shell-aliases"
     "neovim" # editor
     "tmux" # juiced terminal
     "direnv" # venv for directories
 
     "zoxide" # cd replacment
     "eza" # ls replacement
-    "atuin" # command history (ctrl + r)
+    "fzf" # fuzzy find
+    "yazi" # cli file manager
 
     "git" # version control
-    "jj"
-    "extras-cli" # misc extras
+    "fastfetch"
     "usb"
-  ];
 
+    "optnix"
+  ];
   guiPrograms = [
     "nixcord" # declarative vencord
     "zen-browser" # firefox fork
 
     "obsidian" # markdown note taking
     "okular" # pdf reader
+    "thunar" # file manager
 
     "kitty" # terminal emulator
-  ];
+    "keepassxc" # password manager
+    "signal" # messenger
 
-  schoolPrograms = [
-    "school-packages"
-    "pdf-utilities"
+    "chromium" # other web browser for debug
+  ];
+  miscPkg = [
+    "app-calc"
+    "app-gimp"
+    "app-libreoffice"
+    "cli-rice"
+    "tools-imgvid"
+    "tools-pdf"
+    "tools-disk"
   ];
   niriDE = [
-    "niri"
+    "wayland"
+    "wayland-utils"
 
-    "wofi"
+    "niri"
+    "swayosd" # volume and brightness display
+    "swayidle" # idle daemon
+
+    "rofi" # application launcher
+    "rofi-power-menu"
     "mako"
 
-    "waybar"
+    "awww" # wallpaper manager
+    "waybar" # status bar
   ];
-  hyprDE = [
-    "wayland"
-    "wayland-utils" # grim + hyprland binds ()
-    "swayosd" # brightness and volume for wayland
-
-    "wofi" # application launcher
-    "mako" # notification daemon
-
-    "hyprland" # compositor / window server
-    "waybar" # bar
-  ];
-
+  # testing = [ ];
   secrets = [
-    "users/kai"
+    "users/kai/github"
+    # "users/kai/keepass" # commented out because keyfile is not stored on machine
   ];
+
+  # miscPackages = with pkgs; [];
+
+  inherit (builtins) concatMap;
 in {
   # took this pattern, makes it easier to put non-home or system programs in one place
   # https://github.com/minusfive/dot/blob/main/nix/users/minusfive/aarch64-darwin.nix
+
+  # instead of importing with relative paths, I make the relative paths with a list and map
+  # the seperated lists just let me visually group packages together and I can turn off whole
+  # groups at once during testing
+
   imports =
-    map (program: ../programs/${program}) programs
-    ++ map (program: ../programs/${program}) guiPrograms
-    ++ map (program: ../programs/${program}) schoolPrograms
-    ++ map (program: ../programs/${program}) hyprDE
-    ++ map (program: ../programs/${program}) niriDE
+    concatMap (map (program: ../programs/${program})) [
+      programs
+      guiPrograms
+      niriDE
+      # testing
+    ]
     ++ map (secret: ../secrets/${secret}.nix) secrets
+    ++ map (p: ../programs/no-config-packages/${p}.nix) miscPkg
     ++ [
-      {_module.args = {inherit username;};} # messy but it lets me do user specific config
+      {
+        # messy but it lets me do user specific config
+        _module.args = {inherit username;};
+      }
       inputs.home-manager.nixosModules.home-manager
     ];
 
@@ -77,14 +97,18 @@ in {
       description = username;
 
       isNormalUser = true;
-      useDefaultShell = true;
-      extraGroups = ["wheel" "networkmanager" "audio"];
+      extraGroups = [
+        "wheel"
+        "networkmanager"
+        "audio"
+      ];
     };
 
     # options defined by me
-    var = {
-      files-directory = "/home/${username}/files";
-      config-directory = "/home/${username}/files/dev-nix/nix-config";
+    # defined in core/options-host.nix
+    var.path = {
+      files = "/home/${username}/files";
+      config = "/home/${username}/files/dev-nix/nix-config";
     };
 
     home-manager = {

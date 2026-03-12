@@ -1,0 +1,67 @@
+// laptop
+
+prefer-no-csd
+
+output "eDP-1" {
+  mode "2880x1800@90"
+  scale 1.8
+
+  focus-at-startup 
+
+  // hot-corners {}
+
+  background-color "#272727"
+  backdrop-color "#5a5a57"
+}
+
+input {
+  // warp-mouse-to-focus mode="center-xy"
+  focus-follows-mouse max-scroll-amount="30%"
+  
+  // workspace-auto-back-and-forth
+
+  touchpad {
+    tap
+    // click-method
+
+    drag true
+    natural-scroll
+
+    accel-profile "flat"
+    accel-speed 0.05 // -1 to 1
+    scroll-factor 0.3 // 0 to 1
+  }
+
+  trackball {
+    accel-profile "flat"
+    accel-speed 0.2 // -1 to 1
+  }
+}
+
+layout {
+  preset-column-widths {
+      proportion 0.33333
+      proportion 0.5
+      proportion 0.66667
+      proportion 1.0
+  }
+
+  focus-ring {
+    // active-color "#ffbf85"
+    active-color "#aaccFF"
+    // active-gradient from="#ffbf85" to="#aaccFF" angle=135
+  }
+}
+
+
+window-rule {
+    open-maximized-to-edges false;
+    geometry-corner-radius 1
+    clip-to-geometry true
+}
+
+window-rule {
+  match app-id=r#"obsidian"#
+  match app-id=r#"okular"#
+  scroll-factor 0.3
+}

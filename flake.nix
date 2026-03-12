@@ -1,14 +1,13 @@
 {
   description = "hello world";
 
-  # nixConfig = {};
-
-  outputs = inputs @ {...}: {
+  outputs = inputs: {
     nixosConfigurations = import ./hosts inputs;
+    devShells = import ./modules/devshells inputs;
   };
 
   inputs = {
-    # Nix official
+    # ==== Nix
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-24.11"; # update manually
@@ -17,6 +16,18 @@
     home-manager = {
       url = "github:nix-community/home-manager";
       # url = "github:0x006E/home-manager"; # fork
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # index for comma
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # nix options searcher
+    optnix = {
+      url = "github:water-sucks/optnix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -37,14 +48,16 @@
       inputs = {};
     };
 
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
+    # ==== theming / gui ====
+    # dynamic wayland compositor
+    hyprland = {
+      url = "github:hyprwm/Hyprland?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # ==== theming / gui ====
-    hyprland = {
-      url = "github:hyprwm/Hyprland?submodules=1";
+    # scrolling wayland compositor
+    niri = {
+      url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -53,14 +66,27 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # colours and general themeing
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # wallpaper daemon
+    awww = {
+      url = "git+https://codeberg.org/LGFae/awww";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # ==== apps ====
     zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
+      url = "github:0xc000022070/zen-browser-flake/beta";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.home-manager.follows = "home-manager";
+    };
+
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

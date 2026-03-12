@@ -1,19 +1,34 @@
 {
   username,
+  pkgs,
   inputs,
   pkgs,
   ...
-}: {
-  home-manager.users.${username} = {
-    imports = [
-      inputs.nixcord.homeModules.nixcord
-    ];
-    stylix.targets = {
-      nixcord.enable = true;
-      vencord.enable = true;
-      vesktop.enable = true;
-    };
+}: let
+  inherit (builtins) concatStringsSep;
+  args = [
+    "--enable-features=WaylandWindowDecorations"
+    "--ozone-platform-hint=auto"
+  ];
+in {
+  environment.systemPackages = [
+    (pkgs.symlinkJoin {
+      name = "discord";
+      buildInputs = [pkgs.makeWrapper];
+      paths = [pkgs.discord];
+      postBuild = ''
+        wrapProgram $out/bin/discord \
+          --append-flags "${concatStringsSep " " args}" \
+      '';
+    })
+  ];
 
+<<<<<<< HEAD
+=======
+  home-manager.users.${username} = {
+    imports = [inputs.nixcord.homeModules.nixcord];
+
+>>>>>>> niri-and-dotfiles-rework
     programs.nixcord = {
       enable = true;
 
@@ -32,22 +47,14 @@
         frameless = true;
 
         plugins = {
-          # new features
+          # ==== new features
           betterGifPicker.enable = true;
-          nsfwGateBypass.enable = true;
-          # emoteCloner.enable = true;
           fakeNitro.enable = true;
           favoriteEmojiFirst.enable = true;
           favoriteGifSearch.enable = true;
           messageLogger.enable = true;
-          silentTyping = {
-            enable = true;
-            showIcon = true;
-          };
-          spotifyControls = {
-            enable = true;
-            hoverControls = true;
-          };
+          silentTyping.enable = true;
+          spotifyControls.enable = true;
           spotifyCrack = {
             enable = true;
             noSpotifyAutoPause = true;
@@ -58,9 +65,9 @@
           voiceMessages.enable = true;
           volumeBooster.enable = true;
 
-          # fix annoyances
+          # ==== fix annoyances
           alwaysTrust.enable = true;
-          clearURLs.enable = true;
+          ClearURLs.enable = true;
           dearrow = {
             enable = true;
             hideButton = true;
@@ -73,37 +80,30 @@
           voiceChatDoubleClick.enable = true;
           youtubeAdblock.enable = true;
 
-          # ui
-          # accountPanelServerProfile.enable = true;
-          blurNSFW.enable = true;
+          # ==== ui
+          BlurNSFW.enable = true;
           callTimer.enable = true;
           forceOwnerCrown.enable = true;
-          # friendsSince.enable = true;
           memberCount.enable = true;
           noUnblockToJump.enable = true;
           platformIndicators.enable = true;
-          # relationshipNotifier.enable = true;
           replyTimestamp.enable = true;
           sendTimestamps.enable = true;
           serverInfo.enable = true;
           serverListIndicators.enable = true;
-          # shikiCodeblocks.enable = true;
-          # showConnections.enable = true;
-          # themeAttributes.enable = true;
           typingIndicator.enable = true;
           typingTweaks.enable = true;
           userVoiceShow.enable = true;
-          # whoReacted.enable = true;
 
           # input qol
-          # betterFolders = {
-          #   enable = true;
-
-          #   closeAllFolders = true;
-          #   closeAllHomeButton = true;
-          #   closeOthers = true;
-          #   forceOpen = true;
-          # };
+          #          betterFolders = {
+          #            enable = true;
+          #
+          #            closeAllFolders = true;
+          #            closeAllHomeButton = true;
+          #            closeOthers = true;
+          #            forceOpen = true;
+          #          };
           betterSettings = {
             enable = true;
             disableFade = true;
@@ -116,17 +116,12 @@
           readAllNotificationsButton.enable = true;
           revealAllSpoilers.enable = true;
 
-          # fixes
+          # ==== fixes
           crashHandler = {
             enable = true;
             attemptToPreventCrashes = true;
           };
           validUser.enable = true;
-          # webScreenShareFixes.enable = true;
-
-          # fun
-          moreKaomoji.enable = true;
-          # moyai.enable = true;
         };
       };
 
