@@ -1,17 +1,8 @@
-<<<<<<< HEAD
-{
-  inputs,
-  system,
-  ...
-}: {
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
-=======
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     wayland
   ];
 
->>>>>>> niri-and-dotfiles-rework
   hardware = {
     graphics = {
       enable = true;

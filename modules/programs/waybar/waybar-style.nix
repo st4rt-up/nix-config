@@ -13,7 +13,7 @@
   # charged-color = theme.colour.base0B;
 
   font = theme.fonts.monospace.name;
-  font-size = theme.fonts.sizes.desktop;
+  font-size = toString theme.fonts.sizes.desktop;
 
   padding-out = toString (theme.bar.spacing * 2);
   padding-in = toString theme.bar.spacing;
@@ -21,17 +21,11 @@ in {
   home-manager.users.${username} = {
     # maybe make this imported in style ... ?
     programs.waybar.style = ''
-      :root {
-        --font: "${font}";
-        --font-size: ${toString font-size}px;
-        --padding-in: ${toString theme.bar.spacing}px;
-        --padding-out: ${toString (theme.bar.spacing * 2)}px;
-      }
 
       * {
-        font-family: var(--font);
+        font-family: ${font};
         font-weight: 500;
-        font-size: var(--font-size);
+        font-size: ${font-size}px;
       }
 
       #network, #battery {

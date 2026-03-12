@@ -27,8 +27,8 @@ in {
   config = mkIf config.home-manager.users.${username}.programs.waybar.enable {
     home-manager.users.${username} = {
       xdg.configFile = {
-        "waybar/config.jsonc".source = link pkgs.writeText "./y.txt" ''
-          :root {
+        "waybar/config.jsonc".source = link pkgs.writeText "./config.jsonc" ''
+          * {
             --font: "${theme.bar.font.name}";
             --font-size: ${toString theme.bar.font.size}px;
             --padding-in: ${toString theme.waybar.padding-in}px;

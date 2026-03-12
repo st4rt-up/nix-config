@@ -6,19 +6,6 @@
   lib,
   pkgs,
   ...
-<<<<<<< HEAD
-}: {
-  environment.systemPackages = with pkgs; [
-    niri
-    xwayland-satellite
-  ];
-
-  programs.niri.enable = true;
-  services.gnome.gcr-ssh-agent.enable = false;
-
-  home-manager.users.${username} = {
-    xdg.configFile."niri/config.kdl".source = ./config.kdl;
-=======
 }: let
   # ==== helper functions
   inherit (builtins) concatStringsSep;
@@ -61,7 +48,6 @@ in {
     # ==== home level config
     # stops the home-manager modules from making its own config
     programs.niri.config = null;
->>>>>>> niri-and-dotfiles-rework
     programs.niriswitcher.enable = true;
 
     xdg.configFile =

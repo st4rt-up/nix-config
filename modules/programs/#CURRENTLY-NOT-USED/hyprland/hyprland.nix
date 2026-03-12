@@ -7,12 +7,7 @@
   ...
 }: let
   inherit (config) theme;
-<<<<<<< HEAD:modules/programs/hyprland/hyprland.nix
-  hyprlandPackage = inputs.hyprland.packages.${pkgs.system}.hyprland;
-  hyprlandPortalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
-=======
   inherit (lib) mkDefault;
->>>>>>> niri-and-dotfiles-rework:modules/programs/#CURRENTLY-NOT-USED/hyprland/hyprland.nix
 in {
   environment.systemPackages = with pkgs;
     [wayland hyprpolkitagent]
@@ -84,15 +79,9 @@ in {
         };
 
         decoration = {
-<<<<<<< HEAD:modules/programs/hyprland/hyprland.nix
-          inherit (theme) rounding;
-          active_opacity = theme.active-opacity;
-          inactive_opacity = theme.inactive-opacity;
-=======
           rounding = mkDefault theme.window-manager.rounding;
           active_opacity = mkDefault theme.window-manager.opacity.active;
           inactive_opacity = mkDefault theme.window-manager.opacity.inactive;
->>>>>>> niri-and-dotfiles-rework:modules/programs/#CURRENTLY-NOT-USED/hyprland/hyprland.nix
 
           blur.enabled = theme.window-manager.blur;
           shadow.enabled = mkDefault theme.window-manager.shadow;

@@ -48,7 +48,7 @@ in {
             ])
         );
         "tmux/plugins.common".text = ''
-          # GENERATED FILE, DO NOT EDIT
+          # GENERATED FILE, from system nix flake
           set -g @resurrect-strategy-vim 'session'
           set -g @resurrect-strategy-nvim 'session'
           # set -g @resurrect-capture-pane-contents 'on'
@@ -58,8 +58,7 @@ in {
           set -g @continuum-restore 'on'
         '';
         "tmux/reload.common".text = ''
-          # GENERATED FILE, DO NOT EDIT
-          # YOUR EDITS WILL BE OVERWRITTEN
+          # GENERATED FILE, from system nix flake
           bind r source-file ${symlinkPath}/${rootConfig} \; display "Config reloaded"
         '';
       };

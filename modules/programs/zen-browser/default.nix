@@ -15,7 +15,6 @@
     programs.zen-browser = {
       enable = true;
       nativeMessagingHosts = [pkgs.keepassxc];
-      suppressXdgMigrationWarning = true;
       profiles = {
         default = {
           id = 0;

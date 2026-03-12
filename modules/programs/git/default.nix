@@ -4,20 +4,6 @@
   ...
 }: {
   home-manager.users.${username} = {
-<<<<<<< HEAD
-    programs.git = {
-      enable = true;
-
-      userName = inputs.nix-secrets.git.personal.name;
-      userEmail = inputs.nix-secrets.git.personal.email;
-
-      extraConfig = {
-        init.defaultBranch = "main";
-      };
-    };
-
-=======
->>>>>>> niri-and-dotfiles-rework
     home.shellAliases = {
       "ga" = "git add --patch";
       "gc" = "git commit";

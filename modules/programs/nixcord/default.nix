@@ -1,34 +1,12 @@
 {
   username,
-  pkgs,
   inputs,
   pkgs,
   ...
-}: let
-  inherit (builtins) concatStringsSep;
-  args = [
-    "--enable-features=WaylandWindowDecorations"
-    "--ozone-platform-hint=auto"
-  ];
-in {
-  environment.systemPackages = [
-    (pkgs.symlinkJoin {
-      name = "discord";
-      buildInputs = [pkgs.makeWrapper];
-      paths = [pkgs.discord];
-      postBuild = ''
-        wrapProgram $out/bin/discord \
-          --append-flags "${concatStringsSep " " args}" \
-      '';
-    })
-  ];
-
-<<<<<<< HEAD
-=======
+}: {
   home-manager.users.${username} = {
     imports = [inputs.nixcord.homeModules.nixcord];
 
->>>>>>> niri-and-dotfiles-rework
     programs.nixcord = {
       enable = true;
 
