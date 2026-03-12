@@ -21,10 +21,17 @@ in {
   home-manager.users.${username} = {
     # maybe make this imported in style ... ?
     programs.waybar.style = ''
+      :root {
+        --font: "${font}";
+        --font-size: ${toString font-size}px;
+        --padding-in: ${toString theme.bar.spacing}px;
+        --padding-out: ${toString (theme.bar.spacing * 2)}px;
+      }
+
       * {
-        font-family: "${font}";
+        font-family: var(--font);
         font-weight: 500;
-        font-size: ${toString font-size}px;
+        font-size: var(--font-size);
       }
 
       #network, #battery {

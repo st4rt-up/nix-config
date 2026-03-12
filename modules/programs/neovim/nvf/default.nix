@@ -44,7 +44,7 @@ in {
           softtabstop = 2;
           shiftwidth = 2;
           expandtab = true;
-          smartindent = true;
+          # smartindent = true;
 
           mouse = "";
           wrap = false;
@@ -55,6 +55,16 @@ in {
           enable = true;
           config.virtual_text = true;
           # nvim-lint.enable = true;
+        };
+
+        utility = {
+          yazi-nvim = {
+            enable = true;
+            setupOpts.open_for_directories = true;
+          };
+          direnv = {
+            enable = true;
+          };
         };
 
         treesitter = {
@@ -110,14 +120,21 @@ in {
           icons.enable = true;
         };
 
+        session = {
+          nvim-session-manager = {
+            enable = true;
+            setupOpts.autoload_mode = "CurrentDir";
+          };
+        };
+
         visuals = {
           nvim-cursorline.enable = true; # underline word under cursor
           cinnamon-nvim.enable = true; # smooth scrolling
           fidget-nvim.enable = true; # notifications (bottom right)
+          indent-blankline.enable = true; # shows levels of indentation
 
           # should be self explanatory
           nvim-web-devicons.enable = true;
-          indent-blankline.enable = true;
           highlight-undo.enable = true;
         };
 

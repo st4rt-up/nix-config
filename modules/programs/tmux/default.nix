@@ -31,18 +31,6 @@ in {
     ];
 
     extraConfig = ''
-      set -g base-index 1
-      set -g pane-base-index 1
-
-      set -g @resurrect-strategy-vim 'session'
-      set -g @resurrect-strategy-nvim 'session'
-      set -g @resurrect-capture-pane-contents 'on'
-
-      set -g @continuum-restore 'on'
-      set -g @continuum-boot 'on'
-      set -g @continuum-save-interval
-
-      bind r source-file ${symlinkPath}/${rootConfig}
       source-file ${symlinkPath}/${rootConfig}
     '';
   };
@@ -53,8 +41,27 @@ in {
       // {
         "tmux/${rootConfig}".text = concatStringsSep "\n" (
           map (file: "source-file ${symlinkPath}/${file}.common")
-          configFiles
+          (configFiles
+            ++ [
+              "plugins"
+              "reload"
+            ])
         );
+        "tmux/plugins.common".text = ''
+          # GENERATED FILE, DO NOT EDIT
+          set -g @resurrect-strategy-vim 'session'
+          set -g @resurrect-strategy-nvim 'session'
+          # set -g @resurrect-capture-pane-contents 'on'
+
+          set -g @continuum-boot 'on'
+          set -g @continuum-save-interval '10';
+          set -g @continuum-restore 'on'
+        '';
+        "tmux/reload.common".text = ''
+          # GENERATED FILE, DO NOT EDIT
+          # YOUR EDITS WILL BE OVERWRITTEN
+          bind r source-file ${symlinkPath}/${rootConfig} \; display "Config reloaded"
+        '';
       };
   };
 }

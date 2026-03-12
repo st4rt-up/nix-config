@@ -73,7 +73,8 @@ window {
   padding: 1%; 
   border: 5px;
   border-color: #171717FF;
-  // width: 25%;
+  width: 60%;
+  height: 80%;
 }
 
 overlay {

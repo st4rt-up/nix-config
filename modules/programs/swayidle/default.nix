@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  idle-screen-dim = 30;
+  idle-screen-dim = 3 * 60;
   idle-screen-off = 10 * 60; # completely turn off screen
   idle-sleep = idle-screen-off + 30; # suspend
   warning = 30; # notifcation before screen turns off

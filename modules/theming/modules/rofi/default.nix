@@ -36,13 +36,12 @@ in {
             lightbg: #${theme.colour.background-alt}FF;
             foreground: #${theme.colour.foreground}FF;
             background: #${theme.colour.background-alt}FF;
-
             font: "${theme.launcher.font.name} ${toString theme.launcher.font.size}";
           }
 
           window {
-            location: "${theme.rofi.location}";
-            anchor: "${theme.rofi.anchor}";
+            location: ${theme.rofi.location};
+            anchor: ${theme.rofi.anchor};
           }
         '');
       };

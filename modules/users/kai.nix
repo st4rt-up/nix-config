@@ -3,7 +3,6 @@
 
   programs = [
     "bash" # terminal
-    "shell-aliases"
     "neovim" # editor
     "tmux" # juiced terminal
     "direnv" # venv for directories
@@ -15,7 +14,6 @@
 
     "git" # version control
     "fastfetch"
-    "extras-cli" # misc extras
     "usb"
 
     "optnix"
@@ -29,58 +27,39 @@
     "thunar" # file manager
 
     "kitty" # terminal emulator
-    "keepassxc"
-    "signal"
+    "keepassxc" # password manager
+    "signal" # messenger
 
-    "chromium"
+    "chromium" # other web browser for debug
   ];
-  schoolPrograms = [
-    "school-packages"
-    "pdf-utilities"
+  miscPkg = [
+    "app-calc"
+    "app-gimp"
+    "app-libreoffice"
+    "cli-rice"
+    "tools-imgvid"
+    "tools-pdf"
+    "tools-disk"
   ];
   niriDE = [
     "wayland"
     "wayland-utils"
 
     "niri"
-    "swayosd"
-    "swayidle"
+    "swayosd" # volume and brightness display
+    "swayidle" # idle daemon
 
     "rofi" # application launcher
+    "rofi-power-menu"
     "mako"
 
-    "awww"
-    "waybar"
+    "awww" # wallpaper manager
+    "waybar" # status bar
   ];
-  testing = [
-    "waydroid"
-    "theming-tools"
-    # "jj" # version control
-    # "atuin" # command history (ctrl + r)
-
-    # "discordo" # didn't work (doesn't take token)
-    # "impala" # didn't connect to eduroam
-    # "vscode" # couldn't open folders
-    # "thunar"
-  ];
-  hyprDE = [
-    "wayland"
-    "wayland-utils" # grim + hyprland binds ()
-    "swayosd" # brightness and volume for wayland
-
-    "wofi" # application launcher
-    "mako" # notification daemon
-
-    "hyprland" # compositor / window server
-    "hyprpaper"
-    "hypridle"
-    "hyprlock"
-
-    "waybar" # bar
-  ];
+  # testing = [ ];
   secrets = [
     "users/kai/github"
-    # "users/kai/keepass"
+    # "users/kai/keepass" # commented out because keyfile is not stored on machine
   ];
 
   # miscPackages = with pkgs; [];
@@ -98,18 +77,15 @@ in {
     concatMap (map (program: ../programs/${program})) [
       programs
       guiPrograms
-      schoolPrograms
-      # hyprDE
       niriDE
-      testing
+      # testing
     ]
     ++ map (secret: ../secrets/${secret}.nix) secrets
+    ++ map (p: ../programs/no-config-packages/${p}.nix) miscPkg
     ++ [
       {
         # messy but it lets me do user specific config
         _module.args = {inherit username;};
-
-        # environment.systemPackages = miscPackages;
       }
       inputs.home-manager.nixosModules.home-manager
     ];
@@ -121,7 +97,6 @@ in {
       description = username;
 
       isNormalUser = true;
-      # useDefaultShell = true;
       extraGroups = [
         "wheel"
         "networkmanager"

@@ -67,12 +67,16 @@ in {
             }
           }
 
-          window-rule {
+          window-rule { // rounding
+            geometry-corner-radius ${toString theme.window-manager.rounding}
+          }
+
+          window-rule { // active opacity
             match is-active=true
             opacity ${toString theme.window-manager.opacity.active}
           }
 
-          window-rule {
+          window-rule { // inactive opacity
             match is-active=false
             opacity ${toString theme.window-manager.opacity.inactive}
           }

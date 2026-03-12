@@ -9,6 +9,7 @@ _: let
 
     "mako"
     "rofi"
+    "rofi-power-menu"
     "kitty"
     "niri"
   ];

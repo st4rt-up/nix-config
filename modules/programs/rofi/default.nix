@@ -21,8 +21,6 @@
 in {
   environment.systemPackages = with pkgs; [
     rofi
-    rofi-calc
-    qalculate-qt
   ];
   home-manager.users.${username} = {
     programs.rofi = {

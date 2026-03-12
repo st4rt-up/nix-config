@@ -17,8 +17,8 @@ in {
   config = mkIf config.theme.mako.enable {
     home-manager.users.${username} = {
       programs.kitty.settings = {
-        font_size = theme.fonts.sizes.terminal;
-        font_family = theme.fonts.monospace.name;
+        font_size = theme.terminal.font.size;
+        font_family = theme.terminal.font.name;
 
         background_opacity = mkForce (toString theme.window-manager.opacity.active);
         background_blur =

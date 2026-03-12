@@ -112,7 +112,7 @@ in {
       shadow.enable = mkOpt bool true;
       animations = mkOpt bool true;
       monitor-scaling = mkOpt float 2.0;
-      rounding = mkOpt int 8;
+      rounding = mkOpt int 0;
 
       gaps.inside = mkOpt int 6;
       gaps.outside = mkOpt int (6 * 2);
@@ -144,12 +144,17 @@ in {
       transparent-buttons = mkOpt bool false;
       floating = mkOpt bool false;
       spacing = mkOpt int 5;
+      font = {
+        name = mkOpt str config.theme.fonts.monospace.name;
+        package = mkOpt package config.theme.fonts.monospace.package;
+        size = mkOpt int config.theme.fonts.sizes.desktop;
+      };
     };
 
     launcher = {
       font = {
         name = mkOpt str config.theme.fonts.monospace.name;
-        package = mkOpt package config.theme.fonts.serif.package;
+        package = mkOpt package config.theme.fonts.monospace.package;
         size = mkOpt int config.theme.fonts.sizes.popups;
       };
     };
@@ -173,6 +178,22 @@ in {
       };
     };
 
+    terminal = {
+      font = {
+        name = mkOpt str config.theme.fonts.monospace.name;
+        package = mkOpt package config.theme.fonts.monospace.package;
+        size = mkOpt (ints.between 2 100) 10;
+      };
+    };
+
+    applications = {
+      font = {
+        name = mkOpt str config.theme.fonts.sansSerif.name;
+        package = mkOpt package config.theme.fonts.sansSerif.package;
+        size = mkOpt (ints.between 2 100) 11;
+      };
+    };
+
     fonts = {
       monospace.name = mkOpt str "iMWritingMono Nerd Font Propo";
       monospace.package = mkOpt package pkgs.nerd-fonts.im-writing;
@@ -190,7 +211,7 @@ in {
         applications = mkOpt (ints.between 2 100) 11;
         desktop = mkOpt (ints.between 2 100) 16;
         popups = mkOpt (ints.between 2 100) 10;
-        terminal = mkOpt (ints.between 2 100) 10;
+        terminal = mkOpt (ints.between 2 100) config.theme.terminal.font.size;
       };
     };
 

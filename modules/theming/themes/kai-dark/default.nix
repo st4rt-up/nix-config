@@ -4,7 +4,7 @@ _: let
   gray-1 = "272727"; #272727
   gray-2 = "333333"; #333333
   yellow = "ffcd7a"; #ffcd7a
-  pink = "eb6f92"; #eb6f92
+  pink = "eb4f92"; #eb4f92
   purple = "c5a7e7"; #c5a7e7
   light-blue = "9fd4ff"; #9fd4ff
   teal-blue = "3a94b7"; #3a94b7
@@ -22,7 +22,7 @@ in {
       background-alt = gray-1;
       foreground = not-quite-white;
 
-      inherit purple pink;
+      inherit purple pink yellow;
 
       base00 = black; # #171717 default bg
       base01 = gray-1; #272727 alternate bg
@@ -32,8 +32,8 @@ in {
       base05 = not-quite-white; #dccdca default text
       base06 = "d6d6d6"; #d6d6d6
       base07 = "7c6f6a"; #7c6f6a
-      base08 = pink; #eb6f92 error
-      base09 = "d76562"; #d76562 urgent
+      base08 = pink; #eb4f92 error
+      base09 = "e07065"; #e07065 urgent
       base0A = purple; #c5a7e7 warning
       base0B = teal-blue; #3a94b7
       base0C = light-blue; #9fd4ff
@@ -45,7 +45,7 @@ in {
     window-manager = {
       blur.enable = false;
       shadow.enable = true;
-      border.size = 8;
+      border.size = 6;
       border.colour.active = light-blue;
       gaps.inside = 12;
       gaps.outside = 9;
@@ -56,27 +56,33 @@ in {
     widgets = {
       rounding = 0;
       padding = 10;
-      border.size = 8;
+      border.size = 3;
       notification.font.size = 9;
     };
 
     bar = {
       position = "bottom";
       height = 40;
-      spacing = 5;
+      # spacing = 5;
     };
 
-    launcher.font.size = 10;
-
-    fonts.sizes.terminal = 9;
+    launcher.font.size = 11;
+    terminal.font.size = 9;
 
     niri = {
       enable = true;
       focus-ring = true;
       border = false;
     };
+
     kitty.enable = true;
     mako.enable = true;
     rofi.enable = true;
+    rofi-power-menu = {
+      enable = true;
+      offset.vertical = -2;
+      offset.horizontal = -2;
+      font.size = 12;
+    };
   };
 }
