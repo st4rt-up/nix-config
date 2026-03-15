@@ -22,6 +22,13 @@ in {
       rofi-power-menu
     ];
 
+    services.logind.settings.Login = {
+      HandlePowerKey = "ignore";
+      HandleSuspendKey = "ignore";
+      HandleHibernateKey = "ignore";
+      HandleRebootKey = "ignore";
+    };
+
     home-manager.users.${username} = {
       programs.rofi.enable = true;
 
