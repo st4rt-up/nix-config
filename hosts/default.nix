@@ -29,6 +29,7 @@
     };
 in {
   laptop = mkHost {hostname = "laptop";};
+  verbena-pc = mkHost {hostname = "verbena-pc";};
 
   wsl-nix = mkHost {
     hostname = "wsl-nix";

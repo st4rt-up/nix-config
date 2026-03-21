@@ -17,6 +17,7 @@
     "usb"
 
     "optnix"
+    "minecraft"
   ];
   guiPrograms = [
     "nixcord" # declarative vencord

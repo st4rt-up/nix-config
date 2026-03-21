@@ -880,13 +880,13 @@
         "rev": "ae823b5900856fe4196edaf808e338a394e794ca",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@github.com/st4rt-up/nix-secrets.git"
+        "url": "ssh://git@github.com/st4rt-up/nix-secrets"
       },
       "original": {
         "ref": "main",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@github.com/st4rt-up/nix-secrets.git"
+        "url": "ssh://git@github.com/st4rt-up/nix-secrets"
       }
     },
     "nixcord": {

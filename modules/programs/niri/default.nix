@@ -21,7 +21,7 @@
 
     "binds"
     "input"
-    # "output"
+    "output"
 
     "laptop"
   ];

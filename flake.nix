@@ -44,7 +44,7 @@
     };
 
     nix-secrets = {
-      url = "git+ssh://git@github.com/st4rt-up/nix-secrets.git?ref=main&shallow=1";
+      url = "git+ssh://git@github.com/st4rt-up/nix-secrets?ref=main&shallow=1";
       inputs = {};
     };
 

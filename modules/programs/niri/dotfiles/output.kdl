@@ -1,0 +1,17 @@
+output "DP-1" { // left monitor
+  focus-at-startup
+  mode "1920x1080"
+  scale 1.0
+}
+
+output "DP-3" { // right monitor
+  mode "1920x1080"
+  scale 1.0
+}
+
+input {
+  mouse {
+    accel-profile "flat"
+    accel-speed 0.1
+  }
+}
