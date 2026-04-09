@@ -18,7 +18,7 @@ in {
         cfg = let
           optionType = mkOption {
             type = submodule {
-              freeformType = lazyAttrsOf anything;
+              freeformType = lazyAttrsOf unspecified;
             };
           };
         in

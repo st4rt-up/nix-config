@@ -14,6 +14,9 @@
       inputs.nixos-hardware.nixosModules.framework-13-7040-amd
     ];
 
+    programs.nh.flake = "/home/kai/files/dev-nix/nix-config/";
+    networking.networkmanager.enable = true; # safeguard
+
     environment.systemPackages = with pkgs; [
       fw-fanctrl
     ];
