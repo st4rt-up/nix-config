@@ -1,0 +1,75 @@
+{
+  inputs,
+  username,
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  inherit (config.var.path) files;
+in {
+  environment.systemPackages = [pkgs.syncthing];
+
+  systemd.services.syncthing-init = {
+    wantedBy = lib.mkForce ["graphical.target"];
+    after = ["graphical.target"];
+  };
+
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+
+    user = username;
+    overrideDevices = true;
+    overrideFolders = true;
+
+    group = "users";
+    # extraFlags = ["--no-default-folder"];
+
+    dataDir = "${files}/share/syncthing";
+    configDir = "/home/${username}/.config/syncthing";
+
+    settings = {
+      # gui = {
+      #   user = "${username}";
+      #   password = #implement later;
+      # };
+
+      devices = {
+        "pixel-7-phone".id = inputs.nix-secrets.syncthing.devices.pixel-7-phone.id;
+        "pc".id = inputs.nix-secrets.syncthing.devices.pc.id;
+      };
+
+      folders = {
+        #   "notes" = {};
+        "school" = {
+          inherit (inputs.nix-secrets.syncthing.folders.school) id;
+          path = "${files}/school";
+          devices = [
+            "pixel-7-phone"
+            "pc"
+          ];
+          ignorePerms = false;
+        };
+
+        "notes" = {
+          inherit (inputs.nix-secrets.syncthing.folders.notes) id;
+          path = "${files}/notes";
+          devices = [
+            "pixel-7-phone"
+            "pc"
+          ];
+        };
+
+        "share" = {
+          inherit (inputs.nix-secrets.syncthing.folders.share) id;
+          path = "${files}/share";
+          devices = [
+            "pixel-7-phone"
+            "pc"
+          ];
+        };
+      };
+    };
+  };
+}

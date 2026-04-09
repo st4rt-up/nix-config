@@ -1,10 +1,12 @@
 {
   description = "hello world";
 
-  outputs = inputs: {
-    nixosConfigurations = import ./hosts inputs;
-    devShells = import ./modules/devshells inputs;
-  };
+  outputs = inputs:
+    (inputs.nixpkgs.lib.evalModules
+      {
+        modules = [(inputs.import-tree ./modules)];
+        specialArgs.inputs = inputs;
+      }).config.flake;
 
   inputs = {
     # ==== Nix
@@ -13,70 +15,63 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-24.11"; # update manually
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      # url = "github:0x006E/home-manager"; # fork
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    import-tree.url = "github:vic/import-tree";
+
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # index for comma
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
     # nix options searcher
-    optnix = {
-      url = "github:water-sucks/optnix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # optnix = {
+    # url = "github:water-sucks/optnix";
+    # inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # neovim
-    nvf = {
-      url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nvf.url = "github:notashelf/nvf";
+    nvf.inputs.nixpkgs.follows = "nixpkgs";
 
     # ==== secrets ====
-    sops-nix = {
-      url = "github:mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    sops-nix.url = "github:mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-secrets = {
-      url = "git+ssh://git@github.com/st4rt-up/nix-secrets?ref=main&shallow=1";
-      inputs = {};
-    };
+    nix-secrets.url = "git+ssh://git@github.com/st4rt-up/nix-secrets.git?ref=main";
+    nix-secrets.inputs = {};
 
     # ==== theming / gui ====
     # dynamic wayland compositor
-    hyprland = {
-      url = "github:hyprwm/Hyprland?submodules=1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # hyprland = {
+    # url = "github:hyprwm/Hyprland?submodules=1";
+    # inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # scrolling wayland compositor
-    niri = {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # niri = {
+    # url = "github:sodiboo/niri-flake";
+    # inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
-    rose-pine-hyprcursor = {
-      url = "github:ndom91/rose-pine-hyprcursor";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # rose-pine-hyprcursor = {
+    # url = "github:ndom91/rose-pine-hyprcursor";
+    # inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # colours and general themeing
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # stylix = {
+    # url = "github:danth/stylix";
+    # inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # wallpaper daemon
-    awww = {
-      url = "git+https://codeberg.org/LGFae/awww";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # awww = {
+    # url = "git+https://codeberg.org/LGFae/awww";
+    # inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # ==== apps ====
     zen-browser = {
@@ -85,14 +80,14 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # firefox-addons = {
+    # url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+    # inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
-    nixcord = {
-      url = "github:kaylorben/nixcord";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nixcord = {
+    # url = "github:kaylorben/nixcord";
+    # inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 }
