@@ -4,7 +4,7 @@
   ...
 }: let
   inherit (lib) mkOption flip mapAttrs mkIf;
-  inherit (lib.types) lazyAttrsOf deferredModule submodule unspecified;
+  inherit (lib.types) lazyAttrsOf deferredModule submodule unspecified anything;
 in {
   options.configurations.users = mkOption {
     type = lazyAttrsOf (submodule {
@@ -15,25 +15,24 @@ in {
     # hacky fix do NOT question
     apply = outputs: (flip mapAttrs outputs (
       name: value: let
-        cfg =
+        cfg = let
+          optionType = mkOption {
+            type = submodule {
+              freeformType = lazyAttrsOf anything;
+            };
+          };
+        in
           (lib.evalModules {
             specialArgs.inputs = inputs;
             modules = [
               {
-                options = let
-                  optionType = mkOption {
-                    type = submodule {
-                      freeformType = lazyAttrsOf unspecified;
-                    };
-                    default = {};
-                  };
-                in {
+                options = {
                   userConfig = optionType;
                   nixosConfig = optionType;
                 };
                 config = {
-                  userConfig = mkIf (value ? user) {imports = [value.user];};
-                  nixosConfig = mkIf (value ? nixos) {imports = [value.nixos];};
+                  userConfig = mkIf (value ? user) (_: {imports = [value.user];});
+                  nixosConfig = mkIf (value ? nixos) (_: {imports = [value.nixos];});
                 };
               }
             ];
