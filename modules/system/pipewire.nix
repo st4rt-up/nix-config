@@ -26,7 +26,10 @@
       };
     };
     user = {
-      extraGroups = ["pipewire"];
+      extraGroups = [
+        "pipewire"
+        "audio"
+      ];
     };
   };
 }

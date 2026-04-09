@@ -6,23 +6,41 @@
         systemd-boot
         quiet-boot
 
-        networkmanager
+        wayland
+        pipewire
         bluetooth
         fingerprint
-        pipewire
+        networkmanager
+
         ssh-agent
-
         locale
-
+        direnv
+        plymouth
         nh
         nix-settings
         nix-comma
 
         fonts
-        plasma
+        plasma # safeguard
+        nvf-temp
+        nvf-nix
+        nvf-vhdl
+
+        firefox
+        git
+        tmux
+        steam
       ])
       ++ (with config.configurations; [
         users.kai
       ]);
+  };
+
+  modules.lobelia.nixos = {pkgs, ...}: {
+    environment.systemPackages = with pkgs; [
+      firefox
+      git
+      neovim
+    ];
   };
 }

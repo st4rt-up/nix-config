@@ -1,5 +1,7 @@
 {
-  modules.admin.user = {
-    extraGroups = ["wheel"];
+  modules.admin = {
+    user = {
+      extraGroups = ["wheel"];
+    };
   };
 }

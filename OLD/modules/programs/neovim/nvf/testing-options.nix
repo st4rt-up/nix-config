@@ -13,7 +13,6 @@
         };
         utility.yazi-nvim = {
           enable = true;
-
           setupOpts.open_for_directories = true;
         };
       };
