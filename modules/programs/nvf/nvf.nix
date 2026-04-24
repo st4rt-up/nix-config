@@ -46,7 +46,7 @@
           highlight.enable = true;
 
           # textobjects.enable = true; # broken
-          fold = true; # I don't really use this ...?
+          # fold = true; # I don't really use this ...?
         };
 
         languages = {

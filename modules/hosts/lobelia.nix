@@ -7,7 +7,7 @@
         quiet-boot
 
         wayland
-        pipewire
+        # pipewire
         bluetooth
         fingerprint
         networkmanager
@@ -25,11 +25,6 @@
         nvf-temp
         nvf-nix
         nvf-vhdl
-
-        firefox
-        git
-        tmux
-        steam
       ])
       ++ (with config.configurations; [
         users.kai

@@ -23,7 +23,10 @@ in {
           };
         in
           (lib.evalModules {
-            specialArgs.inputs = inputs;
+            specialArgs = {
+              inherit inputs;
+              pkgs = import inputs.nixpkgs {system = "x86_64-linux";};
+            };
             modules = [
               {
                 options = {
@@ -32,13 +35,14 @@ in {
                 };
                 config = {
                   userConfig = mkIf (value ? user) (_: {imports = [value.user];});
-                  nixosConfig = mkIf (value ? nixos) (_: {imports = [value.nixos];});
+                  nixosConfig = mkIf (value ? nixos) value.nixos;
                 };
               }
             ];
           }).config;
 
         nixos = {
+          users.mutableUsers = true;
           users.users.${name} =
             {
               inherit name;
