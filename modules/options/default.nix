@@ -5,10 +5,17 @@ in {
   options = {
     modules = mkOption {
       # .<name>
-      type = lazyAttrsOf (submodule {
-        # .<type>
-        freeformType = lazyAttrsOf deferredModule;
-      });
+      type =
+        lazyAttrsOf (lazyAttrsOf deferredModule)
+        /*
+        (
+          submodule {
+            # .<type>
+            freeformType = lazyAttrsOf deferredModule;
+          }
+        )
+        */
+        ;
     };
     flake = mkOption {
       type = lazyAttrsOf unspecified;

@@ -8,12 +8,10 @@
       programs.ssh.startAgent = true;
     };
 
-    home = {
-      programs.ssh = {
-        enable = true;
-        enableDefaultConfig = false;
-        matchBlocks."*" = {};
-      };
+    home.programs.ssh = {
+      enable = true;
+      # enableDefaultConfig = false;
+      settings."*" = {};
     };
   };
 }

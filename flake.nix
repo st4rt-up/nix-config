@@ -12,7 +12,7 @@
     # ==== Nix
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-24.11"; # update manually
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11"; # update manually
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     import-tree.url = "github:vic/import-tree";
@@ -50,16 +50,26 @@
     # inputs.nixpkgs.follows = "nixpkgs";
     # };
 
+    quickshell.url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+    quickshell.inputs.nixpkgs.follows = "nixpkgs";
+
+    stasis.url = "github:saltnpepper97/stasis/main";
+    stasis.inputs.nixpkgs.follows = "nixpkgs";
+
+    qml-niri = {
+      url = "github:imiric/qml-niri/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.quickshell.follows = "quickshell";
+    };
+
     # scrolling wayland compositor
     # niri = {
     # url = "github:sodiboo/niri-flake";
     # inputs.nixpkgs.follows = "nixpkgs";
     # };
 
-    # rose-pine-hyprcursor = {
-    # url = "github:ndom91/rose-pine-hyprcursor";
-    # inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
+    rose-pine-hyprcursor.inputs.nixpkgs.follows = "nixpkgs";
 
     # colours and general themeing
     # stylix = {
@@ -80,14 +90,14 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    # firefox-addons = {
-    # url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-    # inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    # nixcord = {
-    # url = "github:kaylorben/nixcord";
-    # inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    nixcord = {
+      url = "github:FlameFlag/nixcord";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
   };
 }

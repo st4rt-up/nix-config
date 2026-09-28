@@ -13,7 +13,7 @@ in {
     settings = {
       auto-optimise-store = true;
       experimental-features = ["nix-command" "flakes"];
-      keep-going = true;
+      # keep-going = true;
     };
 
     # used for lsps

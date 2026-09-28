@@ -17,6 +17,7 @@ in {
         "steam-original"
         "steam-run"
       ];
+
     programs = {
       steam = {
         enable = true;

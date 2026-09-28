@@ -1,7 +1,15 @@
 {
   modules.networkmanager = {
     nixos = _: {
-      networking.networkmanager.enable = true;
+      networking = {
+        /*
+        firewall = {
+          enable = true;
+          allowedTCPPorts = [80 443];
+        };
+        */
+        networkmanager.enable = true;
+      };
     };
 
     user = {

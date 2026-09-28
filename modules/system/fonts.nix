@@ -26,6 +26,7 @@
 
         # other
         noto-fonts-color-emoji
+        font-awesome
 
         #jp
         ipafont

@@ -1,8 +1,6 @@
 {inputs, ...}: {
   modules.sops.nixos = {
-    imports = [
-      inputs.sops-nix.nixosModules.sops
-    ];
+    imports = [inputs.sops-nix.nixosModules.sops];
 
     sops = {
       age.sshKeyPaths = [

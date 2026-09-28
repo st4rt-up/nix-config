@@ -1,10 +1,8 @@
 {inputs, ...}: let
   inherit (inputs) sops-nix;
-  sopsFolder = builtins.toString inputs.nix-secrets;
+  sopsFolder = toString inputs.nix-secrets;
 in {
-  imports = [
-    sops-nix.nixosModules.sops
-  ];
+  imports = [sops-nix.nixosModules.sops];
 
   sops = {
     age.sshKeyPaths = [

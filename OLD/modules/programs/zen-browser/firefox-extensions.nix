@@ -48,6 +48,7 @@
 
     save-all-images-webextension
 
+    youtube-recommended-videos #unhook
     improved-tube
     dearrow
     sponsorblock

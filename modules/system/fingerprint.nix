@@ -1,10 +1,16 @@
 {
-  modules.fingerprint.nixos = {
-    systemd.services.fprintd = {
-      wantedBy = ["multi-user.target"];
-      serviceConfig.Type = "simple";
+  modules.fingerprint = {
+    nixos = {
+      systemd.services.fprintd = {
+        wantedBy = ["multi-user.target"];
+        serviceConfig.Type = "simple";
+      };
+
+      services.fprintd.enable = true;
     };
 
-    services.fprintd.enable = true;
+    user = {
+      extraGroups = [""];
+    };
   };
 }

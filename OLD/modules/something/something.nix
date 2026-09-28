@@ -49,10 +49,11 @@ in {
           ];
         }
     );
-
+    /*
     jhomes = flip mapAttrs config.configurations.home (
       name: {module}:
         home {}
     );
+    */
   };
 }

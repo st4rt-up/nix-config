@@ -4,6 +4,11 @@
       inputs.nvf.nixosModules.default
     ];
 
+    programs.neovim = {
+      enable = true;
+      defaultEditor = true;
+    };
+
     programs.nvf = {
       enable = true;
 
@@ -90,8 +95,10 @@
 
         statusline.lualine = {
           enable = true;
-          globalStatus = true;
-          icons.enable = true;
+          setupOpts.options = {
+            icons_enabled = true;
+            globalstatus = true;
+          };
         };
 
         session = {
@@ -122,7 +129,7 @@
         };
 
         binds.hardtime-nvim = {
-          enable = true;
+          enable = false;
 
           setupOpts = {
             max_count = 8;
@@ -155,6 +162,7 @@
 
           # (mkBind "oo" "o<Esc>" noWait)
           # (mkBind "OO" "O<Esc>" noWait)
+          (mkBind "`" "" allModes)
           (mkBind "n" "nzzzv" {})
           (mkBind "N" "Nzzzv" {})
           (mkBind "<C-d>" "<C-d>zz" {})
