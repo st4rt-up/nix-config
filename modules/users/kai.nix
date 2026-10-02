@@ -13,7 +13,8 @@ in {
   configurations.users.kai = _: {
     imports = with config.modules; [
       kai
-      # for user groups
+
+      # == user groups
       networkmanager
       admin
       pipewire
@@ -21,21 +22,46 @@ in {
       firefox
       zen-browser
       tor-browser
-      signal
+      obsidian
+      clipboard-wayland
+
+      # messaging
       nixcord
+      ms-teams
+      signal
+      # signal-cli
+
+      # == games
       steam
       minecraft
-      ms-teams
+      osu
 
-      github-secrets
+      # == secrets
       keepass
+      github-secrets
 
-      shell-utils
-      zoxide
+      # == shell
       tmux
+      zoxide
+      shell-utils
       ssh-agent
-      rose-pine-cursor
 
+      # == theming
+      rose-pine-cursor
+      stylix
+      stylix-fonts
+      stylix-icons
+      stylix-colours
+      stylix-fuzzel
+
+      # == home-manager config
+      alacritty
+      fuzzel
+      yazi
+      okular
+      stasis-framework
+
+      # ==
       home-manager
     ];
   };

@@ -28,7 +28,7 @@ in {
       environment.systemPackages = with pkgs; [
         wmctrl
         xwayland-satellite
-        nirimod # gui settings screen
+        # nirimod # gui settings screen
         grim # screenshots
         brightnessctl
         libnotify

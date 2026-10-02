@@ -53,14 +53,15 @@
     quickshell.url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
     quickshell.inputs.nixpkgs.follows = "nixpkgs";
 
-    stasis.url = "github:saltnpepper97/stasis/main";
-    stasis.inputs.nixpkgs.follows = "nixpkgs";
-
     qml-niri = {
       url = "github:imiric/qml-niri/main";
+      # url = "github:wrldspawn/qml-niri/icon-fixes";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.quickshell.follows = "quickshell";
     };
+
+    stasis.url = "github:saltnpepper97/stasis/main";
+    stasis.inputs.nixpkgs.follows = "nixpkgs";
 
     # scrolling wayland compositor
     # niri = {
@@ -72,10 +73,10 @@
     rose-pine-hyprcursor.inputs.nixpkgs.follows = "nixpkgs";
 
     # colours and general themeing
-    # stylix = {
-    # url = "github:danth/stylix";
-    # inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # wallpaper daemon
     # awww = {

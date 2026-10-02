@@ -14,7 +14,8 @@
 
 @switch:
   git add . -N
-  nh os switch --ask --verbose && notify-send "nix switch" "finished building, configuration switched\nconfig WILL apply on restart"
+  nh os switch --ask --verbose --elevation-strategy="none"
+  notify-send "nix switch" "finished building, configuration switched\nconfig WILL apply on restart"
 
 @update:
   git add . -N
@@ -25,4 +26,5 @@
   git add . -N
   nh os switch --ask --impure --no-net
 
-@commit:
+@tmux:
+  tmux new -As cfg

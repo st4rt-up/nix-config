@@ -50,6 +50,8 @@
           unbind b
           bind Tab last-window
           set-option -g allow-rename off
+
+          set -g status-right ' #{?client_prefix,#[reverse]<Prefix>#[noreverse] ,}"#{=21:pane_title}" %H:%M %d-%b-%y'
         '';
       };
     };

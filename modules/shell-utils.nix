@@ -8,6 +8,7 @@
       # yazi # tui file manager
       tmux # terminal multiplexer
       btop # task manager
+      fastfetch
     ];
   };
 

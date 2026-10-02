@@ -39,5 +39,10 @@ _: {
         };
       };
     };
+    home = {
+      programs.yazi = {
+        enable = true;
+      };
+    };
   };
 }

@@ -25,6 +25,7 @@
         lora
 
         # other
+        noto-fonts-monochrome-emoji
         noto-fonts-color-emoji
         font-awesome
 

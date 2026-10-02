@@ -1,11 +1,14 @@
 {inputs, ...}: {
-  modules.nixcord.home = {
+  modules.nixcord.home = {pkgs, ...}: {
     imports = [inputs.nixcord.homeModules.nixcord];
 
     programs.nixcord = {
       enable = true;
-      discord.vencord.enable = false;
-      discord.equicord.enable = true;
+      discord = {
+        package = pkgs.discord;
+        vencord.enable = false;
+        equicord.enable = true;
+      };
 
       config = {
         # transparent = true;

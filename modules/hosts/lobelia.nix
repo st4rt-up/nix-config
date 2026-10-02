@@ -25,7 +25,9 @@
         drawing-tablet
         ssh-agent
         locale
+
         fonts
+        papirus-icons
 
         # == desktop environment / interface
         greetd
@@ -35,7 +37,7 @@
         yazi
         stasis
 
-        kitty
+        # kitty
         # plasma
 
         # == nix
@@ -56,6 +58,11 @@
         nvf-java
 
         intellij
+
+        # == school
+        distrobox
+        misc-usr-fix
+        vivado-usb
       ])
       ++ (with config.configurations; [
         users.kai
@@ -65,15 +72,15 @@
   modules.lobelia.nixos = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
       libreoffice
-      obsidian
-
-      labwc
+      # labwc
       krita
       aseprite
+      kdePackages.okular
       godot
       obs-studio
       vlc
       mpv
+      qalculate-qt
     ];
 
     services.greetd.settings = let
