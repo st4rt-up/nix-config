@@ -8,9 +8,7 @@
           style.blinking = "Always";
           blink_interval = 450;
         };
-        window = {
-          decorations = "None";
-        };
+        # window = { decorations = "None"; };
       };
     };
   };

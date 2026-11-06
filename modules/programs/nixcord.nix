@@ -1,11 +1,32 @@
-{inputs, ...}: {
-  modules.nixcord.home = {pkgs, ...}: {
+{
+  inputs,
+  lib,
+  ...
+}: {
+  modules.nixcord.home = {pkgs, ...}:
+  /*
+    let
+    # discord thanks for breaking
+    # (this is temporary until they fix it)
+    stable-pkgs = import inputs.nixpkgs-stable {
+      inherit (pkgs.stdenv.hostPlatform) system;
+      config.allowUnfreePredicate = pkg:
+        builtins.elem (lib.getName pkg) [
+          "discord"
+        ];
+    };
+  in
+  */
+  {
     imports = [inputs.nixcord.homeModules.nixcord];
 
     programs.nixcord = {
       enable = true;
       discord = {
-        package = pkgs.discord;
+        # package = stable-pkgs.discord;
+
+        # broken
+        # package = pkgs.discord;
         vencord.enable = false;
         equicord.enable = true;
       };

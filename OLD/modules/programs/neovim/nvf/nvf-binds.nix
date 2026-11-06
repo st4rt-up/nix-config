@@ -45,6 +45,9 @@
       (mkBind "<M-k>" "<C-w>k" normalMode)
       (mkBind "<M-l>" "<C-w>l" normalMode)
 
+      (mkBind "<Tab>" ">>" normalMode)
+      (mkBind "<S-Tab>" "<<" normalMode)
+
       (mkBind "<C-h>" "<Left>" insertMode)
       (mkBind "<C-l>" "<Right>" insertMode)
     ];

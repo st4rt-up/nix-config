@@ -82,7 +82,7 @@ in {
               home-manager.users.${name} =
                 {
                   home.username = name;
-                  home.stateVersion = "24.11";
+                  home.stateVersion = "26.05";
                   programs.home-manager.enable = true;
                 }
                 // cfg.homeConfig;

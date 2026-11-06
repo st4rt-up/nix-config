@@ -163,6 +163,7 @@
           # (mkBind "oo" "o<Esc>" noWait)
           # (mkBind "OO" "O<Esc>" noWait)
           (mkBind "`" "" allModes)
+          (mkBind "q:" "" allModes)
           (mkBind "n" "nzzzv" {})
           (mkBind "N" "Nzzzv" {})
           (mkBind "<C-d>" "<C-d>zz" {})
@@ -172,6 +173,10 @@
           (mkBind "<M-j>" "<C-w>j" normalMode)
           (mkBind "<M-k>" "<C-w>k" normalMode)
           (mkBind "<M-l>" "<C-w>l" normalMode)
+
+          (mkBind "<Tab>" ">>" normalMode)
+          (mkBind "<S-Tab>" "<<" normalMode)
+          (mkBind "<S-Tab>" "<Esc><<i" insertMode)
 
           (mkBind "<C-h>" "<Left>" insertMode)
           (mkBind "<C-l>" "<Right>" insertMode)

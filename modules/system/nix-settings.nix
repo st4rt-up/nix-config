@@ -6,6 +6,6 @@
       # keep-going = true;
     };
 
-    nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+    nix.settings.nix-path = ["nixpkgs=${inputs.nixpkgs}"];
   };
 }

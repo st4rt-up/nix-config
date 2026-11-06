@@ -1,4 +1,5 @@
 {
+  # maybe broken
   modules.quiet-boot.nixos = {
     boot = {
       loader.timeout = 0;

@@ -6,7 +6,6 @@
 }: let
   tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
   # session = "${pkgs.hyprland}/bin/Hyprland";
-  session = "niri-session";
 in {
   environment.systemPackages = [pkgs.tuigreet];
 
@@ -14,10 +13,6 @@ in {
     enable = true;
 
     settings = {
-      initial_session = {
-        user = "${username}";
-        command = "${session}"; # temp
-      };
       default_session = {
         user = "greeter";
         command = "${tuigreet} --greeting 'nixos' --remember --remember-user-session --time --cmd ${session}";

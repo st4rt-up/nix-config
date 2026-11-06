@@ -84,7 +84,7 @@
           ];
 
           # ==== binds
-          keyboardShortcutsVersion = 20;
+          keyboardShortcutsVersion = 21;
           keyboardShortcuts = let
             mkBind = key: id: {
               control ? false,

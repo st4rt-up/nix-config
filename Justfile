@@ -14,7 +14,7 @@
 
 @switch:
   git add . -N
-  nh os switch --ask --verbose --elevation-strategy="none"
+  nh os switch --ask --verbose 
   notify-send "nix switch" "finished building, configuration switched\nconfig WILL apply on restart"
 
 @update:

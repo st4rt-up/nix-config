@@ -13,7 +13,7 @@
 
         # == boot
         systemd-boot
-        quiet-boot
+        # quiet-boot
         plymouth
 
         # == core system
@@ -22,7 +22,6 @@
         bluetooth
         fingerprint
         networkmanager
-        drawing-tablet
         ssh-agent
         locale
 
@@ -30,15 +29,21 @@
         papirus-icons
 
         # == desktop environment / interface
-        greetd
         niri
         quickshell
-        # noctalia
         yazi
         stasis
-
+        greetd
+        noctalia
         # kitty
+        libreoffice
+        misc-files
+        labwc
         # plasma
+
+        # == art
+        # aseprite
+        # krita
 
         # == nix
         nh
@@ -48,6 +53,8 @@
 
         # == dev tools
         cargo
+        intellij
+        # godot
 
         nvf-temp
         nvf-rust
@@ -55,39 +62,23 @@
         nvf-nix
         nvf-vhdl
         nvf-python
-        nvf-java
-
-        intellij
+        # nvf-java
 
         # == school
         distrobox
         misc-usr-fix
         vivado-usb
       ])
-      ++ (with config.configurations; [
-        users.kai
+      ++ (with config.configurations.users; [
+        kai
       ]);
   };
 
   modules.lobelia.nixos = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
-      libreoffice
-      # labwc
-      krita
-      aseprite
-      kdePackages.okular
-      godot
       obs-studio
-      vlc
-      mpv
       qalculate-qt
+      feh
     ];
-
-    services.greetd.settings = let
-      cmd = "${pkgs.niri}/bin/niri-session";
-    in {
-      initial_session.command = cmd;
-      default_session.command = cmd;
-    };
   };
 }

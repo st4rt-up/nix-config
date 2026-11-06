@@ -18,10 +18,11 @@ in {
       networkmanager
       admin
       pipewire
+      adb
 
-      firefox
+      # firefox
       zen-browser
-      tor-browser
+      # tor-browser
       obsidian
       clipboard-wayland
 
@@ -33,8 +34,9 @@ in {
 
       # == games
       steam
-      minecraft
-      osu
+      # minecraft-java
+      # minecraft-bedrock
+      osu-lazer
 
       # == secrets
       keepass
@@ -67,18 +69,13 @@ in {
   };
 
   modules.kai = {
-    nixos = {config, ...}: {
+    nixos = {
       imports = [inputs.sops-nix.nixosModules.sops];
       sops = {
         age.keyFile = "/home/kai/.config/sops/age/keys.txt";
         age.generateKey = true;
         defaultSopsFile = "${inputs.nix-secrets}/secrets.yaml";
         validateSopsFiles = false;
-      };
-
-      services.greetd.settings = mkIf config.services.greetd.enable {
-        initial_session.user = "kai";
-        default_session.user = "kai";
       };
     };
 

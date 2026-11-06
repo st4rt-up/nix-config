@@ -39,13 +39,13 @@
     stylix-icons.nixos = {pkgs, ...}: {
       stylix.icons = {
         enable = true;
-        #dark = "Papirus-Dark";
-        #light = "Papirus";
-        #package = pkgs.papirus-icon-theme;
+        dark = "Papirus-Dark";
+        light = "Papirus";
+        package = pkgs.papirus-icon-theme;
 
-        dark = "rose-pine-icons";
-        light = "rose-pine-dawn-icons";
-        package = pkgs.rose-pine-icon-theme;
+        # dark = "rose-pine-icons";
+        # light = "rose-pine-dawn-icons";
+        # package = pkgs.rose-pine-icon-theme;
       };
     };
 

@@ -1,9 +1,7 @@
 {
-  modules.minecraft.nixos = {pkgs, ...}: {
+  modules.minecraft-java.nixos = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
       prismlauncher
-      mcpelauncher-client
-      mcpelauncher-ui-qt
     ];
 
     networking.firewall = {
@@ -15,5 +13,12 @@
         }
       ];
     };
+  };
+
+  modules.minecraft-bedrock.nixos = {pkgs, ...}: {
+    environment.systemPacakges = with pkgs; [
+      mcpelauncher-client
+      mcpelauncher-ui-qt
+    ];
   };
 }

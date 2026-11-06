@@ -1,4 +1,4 @@
-{
+_: {
   policies = {
     # categories from nix wiki:
     # https://wiki.nixos.org/wiki/Firefox
